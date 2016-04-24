@@ -2,7 +2,9 @@ autocommand
 autocommands
 Autocommands
 config
+coreutils
 Ctrl
+github
 GPG
 i3
 i3wm
