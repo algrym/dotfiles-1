@@ -4,6 +4,7 @@ Autocommands
 config
 coreutils
 Ctrl
+dotfiles
 github
 GPG
 i3
