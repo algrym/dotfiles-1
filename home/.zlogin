@@ -16,7 +16,6 @@ declare -x EDITOR="$VISUAL"
 declare -x SITEMULE_EDITOR="$VISUAL"
 
 # Default Pager
-declare -x LESSOPEN="| rc-hilite-lesspipe.sh %s"
 declare -x LESS=' -RSNCi '
 declare -x PAGER=less
 
