@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+"use strict";
+var express = require('express');
+var request = require('request');
+var util = require('util');
+var path = require('path');
+
+if (process.argv.length < 4) {
+  process.stderr.write(util.format('Usage: %s $url $static_directory\n', path.basename(process.argv[1])));
+  process.exit(1);
+}
+
+var app = express();
+app.use(express.static(process.argv[3], { maxAge: 0 }));
+app.get('*', (req, res) => {
+  req.pipe(request.get(process.argv[2] + '/' + req.originalUrl)).pipe(res);
+});
+app.post('*', (req, res) => {
+  req.pipe(request.post(process.argv[2] + '/' + req.originalUrl, {
+    form: req.body
+  })).pipe(res);
+});
+app.listen(1337);

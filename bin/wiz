@@ -1,0 +1,94 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+# utf-8 encode stdin, stdout & stderr. This will not utf-8 encode @ARGV
+use open qw(:std :utf8);
+# Used to utf-8 encode @ARGV
+use I18N::Langinfo qw(langinfo CODESET);
+use Encode;
+
+use HTTP::Tiny;
+use IO::Uncompress::Gunzip qw/gunzip $GunzipError/;
+
+use JSON;
+use URI::Encode qw/uri_encode/;
+use HTML::Entities;
+use Term::ANSIColor;
+
+my $query = "site:stackoverflow.com";
+
+# Make sure all arguments is in UTF-8
+my $codeset = langinfo(CODESET);
+foreach my $q (map { decode $codeset, $_ } @ARGV) {
+	$query.= " $q";
+}
+
+my @ids = get_so_ids();
+my $best_answer = get_best_answer(@ids);
+if (-t STDOUT) {
+	my @colors = (color("reset"), color("italic"), color("bold"), color("underline"));
+	$best_answer =~ s{\*\*(.*?)\*\*}{$colors[2]$1$colors[0]}g;
+	$best_answer =~ s{\*(.*?)\*}{$colors[1]$1$colors[0]}g;
+	$best_answer =~ s{`(.*?)`}{$colors[3]$1$colors[0]}g;
+}
+$best_answer =~ s{<.*?>|\n*?(?=\s*?\n\s*?\n)}{}gs;
+$best_answer =~ s{\s*$}{\n}g;
+
+print $best_answer;
+
+sub get_best_answer {
+	my ($id) = @_;
+	my $url = sprintf "https://api.stackexchange.com/2.2/questions/%s/answers?order=desc&sort=activity&site=stackoverflow&filter=!--nSZmlxgx_Q", $id;
+	my $data = get($url);
+	my $json = decode_json $data;
+	my @answers = sort {
+		our($a, $b);
+
+		return $b->{score} <=> $a->{score};
+	} @{$json->{items}};
+
+	return decode_entities $answers[0]->{body_markdown};
+}
+
+sub get_so_ids {
+	my $url = sprintf "https://www.google.com/search?hl=en&q=%s&start=1&sa=N&num=10&ie=UTF-8&oe=UTF-8&gws_rd=ssl", uri_encode($query);
+	my $data = get($url);
+	my @urls = $data =~ m~https?://stackoverflow.com/[\w/-]+~gi;
+
+	return map { m~questions/(\d+)/~; $1 } @urls;
+}
+
+sub get {
+	my ($url) = @_;
+	my $http = HTTP::Tiny->new(
+		agent => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
+		default_headers => {
+			'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+			'accept-encoding' => 'gzip',
+			'accept-language' => 'en-US,en;q=0.8',
+			'avail-dictionary' => 'nB49tQMB',
+			'cache-control' => 'max-age=0',
+			'upgrade-insecure-requests' => 1
+		},
+		keep_alive => 0
+	);
+	my $resp = $http->get($url);
+	
+	if (!$resp->{success}) {
+		printf STDERR "%s, %s\n%s", $resp->{status}, $resp->{reason}, $resp->{content};
+		exit 2;
+	}
+
+	if ($resp->{headers}->{'content-encoding'} eq 'gzip') {
+		my $content = $resp->{content};
+		my ($content_decompressed, $scalar, $GunzipError);
+		gunzip (
+			\$content => \$content_decompressed,
+			MultiStream => 1,
+			Append => 1,
+			TrailingData => \$scalar
+		) or die "gunzip failed: $GunzipError\n";
+		$resp->{ content } = $content_decompressed;
+	}
+}

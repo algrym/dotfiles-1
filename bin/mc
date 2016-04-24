@@ -1,0 +1,11 @@
+#!/bin/sh
+# This program show a list of my connections, wireless, ethernet, ...
+# This is in no way an attempt to substitute 'ip addr show' but rater a shorter
+# command name to show the same.
+
+ip link show | sed -n 's/^[1-9]*: \([a-z0-9]*\).*/\1/p' | while read -r device; do
+  ip=$(ip addr show "$device" | sed -n 's/.*inet \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\).*/\1/p')
+  if [ -n "$ip" ]; then
+    printf "% 7s : %s\n" "$device" "$ip"
+  fi
+done

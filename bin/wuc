@@ -1,0 +1,9 @@
+#!/bin/sh
+# Print a list of processes sorted by CPU usage
+ps ax -o pcpu,ucmd | awk '
+  (NR > 1) && ($1 > .1) {
+    cmd[$2] += $1
+  }
+  END {
+    for(n in cmd) printf("%4.1f %s\n", cmd[n], n)
+  }' | sort -nr

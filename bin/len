@@ -1,0 +1,4 @@
+#!/usr/bin/perl -pl
+use strict;
+use warnings;
+$_ = y///c;

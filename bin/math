@@ -1,0 +1,12 @@
+#!/usr/bin/env perl
+=pod
+=head1 NAME
+math - Do simple calculations
+=head1 SYNOPSIS
+math "$equation"
+=cut
+use strict;
+use warnings;
+use 5.010;
+use bignum;
+say eval join " ", @ARGV;

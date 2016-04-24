@@ -1,0 +1,16 @@
+#!/bin/sh
+
+[ "$#" -lt 1 ] && { >&2 printf "Usage '%s +inc'\n" "${0##*/}"; exit 2; }
+
+readonly min=2
+readonly max=100
+
+inc=$1; shift
+current=$(xbacklight)
+current=${current%%.*}
+next=$((inc + current))
+
+[ "$next" -lt "$min" ] && next="$min"
+[ "$next" -gt "$max" ] && next="$max"
+
+xbacklight -time 0 -set "$next"

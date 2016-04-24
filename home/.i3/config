@@ -1,0 +1,242 @@
+# vim: fdm=marker fmr={{{,}}} fdl=0
+# Author Andreas Louv <andreas@louv.dk>
+# This is my personal i3 configuration. 
+# Use at own risk, NO WARRANTY, to the extent permitted by law.
+
+# Variables --------------------------------------------------------------- {{{
+
+# Mod1 = Alt
+set $mod Mod1
+
+set $root_dir $I3_CONFIG_ROOT
+
+# }}}
+# Container focus --------------------------------------------------------- {{{
+
+# Change focuced container
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Focus next/previous workspace
+bindsym $mod+Ctrl+h workspace prev_on_output
+bindsym $mod+Ctrl+l workspace next_on_output
+
+# Bring workspace in focus
+workspace_auto_back_and_forth yes
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# }}}
+# Container movement ------------------------------------------------------ {{{
+
+# Move focuced container
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# }}}
+# Container layout -------------------------------------------------------- {{{
+
+# Minimal border between windows
+new_window normal 1 px
+
+# Vertical/Horizontal split, this will open next container accordingly
+bindsym $mod+v split vertical
+bindsym $mod+b split horizontal
+
+# Tabbed container layout
+bindsym $mod+w layout tabbed
+
+# Splitted container layout
+bindsym $mod+e layout toggle split
+
+# Toggle fullscreen
+bindsym $mod+space fullscreen
+
+# }}}
+# Modes ------------------------------------------------------------------- {{{
+
+bindsym $mod+r mode "resize"
+bindsym $mod+m mode "Move workspace"
+bindsym $mod+Shift+w mode"Workflow"
+
+# Resize containers {{{
+
+mode "resize" {
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym j resize grow height 10 px or 10 ppt
+  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
+
+  bindsym $mod+h focus left
+  bindsym $mod+j focus down
+  bindsym $mod+k focus up
+  bindsym $mod+l focus right
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+# }}}
+# Move whole workspace {{{
+
+# This is good when working with multiply monitors
+mode "Move workspace" {
+  bindsym h move workspace to output left
+  bindsym l move workspace to output right
+
+  bindsym $mod+h focus left
+  bindsym $mod+j focus down
+  bindsym $mod+k focus up
+  bindsym $mod+l focus right
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+# }}}
+# Workflow {{{
+
+# Makes it easy to open applications that are not used to often
+mode "Workflow" {
+  bindsym a exec "chromium --app='https://system-metode.axosoft.com'"
+  bindsym s exec "rdesktop -g 1200x900 -P -z -x 1 -r sound:off -u and DKSRV02"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+# }}}
+
+# }}}
+# Other key binds --------------------------------------------------------- {{{
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Restart i3 inplace
+bindsym $mod+Shift+r restart
+
+# Lock the screen
+bindsym $mod+Shift+s exec --no-startup-id lockscreen
+
+# Close focuced container
+bindsym $mod+q exec --no-startup-id $root_dir/i3/menu-kill
+
+# Change background image
+bindsym $mod+s exec --no-startup-id reddit-wallpaper
+
+# Toggle between danish and american keyboard layout
+bindsym $mod+c exec --no-startup-id "toggle-keyboard && killall -USR1 i3status"
+
+# Program launcher
+bindsym $mod+p exec --no-startup-id dmenu_run
+
+# Scratchpad {{{
+
+bindsym $mod+Shift+m move scratchpad
+bindsym $mod+o scratchpad show
+
+# }}}
+# Applications {{{
+
+bindsym $mod+g exec chromium
+bindsym $mod+Shift+g exec "chromium-sl --incognito"
+bindsym $mod+t exec "transmission-gtk"
+bindsym $mod+f exec filezilla
+bindsym $mod+Return exec i3-sensible-terminal
+
+# Open 5250 emulator
+bindsym $mod+Shift+Return exec --no-startup-id "$root_dir/i3/acs-launch"
+
+# Clipboard manager
+bindsym $mod+d exec --no-startup-id dclip
+
+# }}}
+# Volume {{{
+
+# Toggle volume on/off with <Alt-F1>
+bindcode $mod+67 exec --no-startup-id "amixer sset Master toggle && killall -USR1 i3status"
+
+# Decrease volume with <Alt-F3>
+bindcode $mod+68 exec --no-startup-id "amixer sset Master 2%- && killall -USR1 i3status"
+
+# Increase volume with <Alt-F2>
+bindcode $mod+69 exec --no-startup-id "amixer sset Master 2%+ && killall -USR1 i3status"
+
+# }}}
+# Backlight {{{
+
+# Decrease backlight with <Alt-F5>
+bindcode $mod+71 exec --no-startup-id "backlight-tune -10 && killall -USR1 i3status"
+# Increase backlight with <Alt-F6>
+bindcode $mod+72 exec --no-startup-id "backlight-tune 10 && killall -USR1 i3status"
+
+# }}}
+# Screenshot {{{
+
+bindsym Print exec --no-startup-id scrot --focused --quality 100 "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+
+bindsym $mod+Print exec --no-startup-id scrot --quality 100 "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+
+# }}}
+
+# }}}
+# Colors and font --------------------------------------------------------- {{{
+
+font pango:Monospace, Awesome 12px
+
+#                       border  backgr. text    indica.
+client.focused          #000000 #000000 #D7D787 #555555
+client.unfocused        #000000 #000000 #999999 #555555
+client.focused_inactive #000000 #000000 #999999 #555555
+client.urgent           #a41700 #a41700 #fafafa #555555
+
+# }}}
+# Status bar -------------------------------------------------------------- {{{
+
+bar {
+  status_command "$I3_CONFIG_ROOT/i3/status"
+  mode hide
+  hidden_state hide
+  modifier $mod
+
+  colors {
+    # class            border  backgrd text
+    focused_workspace  #D7D787 #D7D787 #000000
+    inactive_workspace #000000 #000000 #696f89
+    urgent_workspace   #a41700 #a41700 #fafafa
+  }
+}
+
+# }}}
+# Startup scripts --------------------------------------------------------- {{{
+
+exec --no-startup-id "$root_dir/i3/cat-batt"
+exec --no-startup-id "$root_dir/i3/cat-cpu-temp"
+
+exec --no-startup-id "$root_dir/i3/startup"
+
+# }}}

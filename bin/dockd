@@ -1,0 +1,69 @@
+#!/bin/sh
+# This script will listen for dock / undock events
+# and adjust monitors accordingly
+# Requires: acpid
+# Listen for dock / undock events:
+
+readonly pgm="dockd"
+readonly pidfile="/tmp/.$pgm.pid"
+
+start() {
+	if [ -f "$pidfile" ] && kill -0 "$(cat "$pidfile")" > /dev/null 2>&1; then
+		>&2 printf "%s is allready running (PID: %s)\n" "$pgm" "$(cat "$pidfile")"
+		exit 3
+	fi
+
+	if ! systemctl is-active acpid > /dev/null 2>&1; then
+		>&2 printf "%s: 'acpid' needs to be running, try: '%s'\n" \
+			"$pgm" "systemctl start acpid.service"
+		exit 4
+	fi
+
+	setsid "$0" "fork" "$@" &
+	printf "%s is started\n" "$pgm"
+}
+fork() {
+	exec > /dev/null 2>&1
+	printf "%s" $$ > "$pidfile"
+	trap 'rm "$pidfile"' EXIT
+
+	# Initial check of monitor state
+	mon "$(xrandr | grep -c '\<connected\>')"
+
+	acpi_listen | while read -r line; do
+		# Undocking
+		if printf "%s\n" "$line" | grep -qe '00004011$'; then
+			mon 1
+		# Docking
+		elif printf "%s\n" "$line" | grep -qe '00004010$'; then
+			mon 2
+		fi
+	done
+}
+stop() {
+	if [ ! -f "$pidfile" ] || ! kill -0 "$(cat "$pidfile")" > /dev/null 2>&1; then
+		>&2 printf "%s is not running\n" "$pgm"
+		exit 1
+	else
+		kill "$(cat "$pidfile")" && printf "%s is stopped\n" "$pgm"
+	fi
+}
+
+mon() {
+	if [ "$1" = 1 ]; then
+		xrandr --output eDP1 --auto
+	elif [ "$1" = 2 ]; then
+		xrandr --output eDP1 --off
+		sleep 1
+		xrandr --output DP2-1 --auto
+	else
+		false
+	fi
+}
+
+case $1 in
+	start) shift; start "$@";;
+	fork) shift; fork "$@";;
+	stop) shift; stop "$@";;
+	*) >&2 printf "Usage: %s {start|stop}\n" "$pgm"; exit 2;;
+esac

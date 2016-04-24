@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# Keyboard
+setxkbmap us
+
+# Monotor
+reddit-wallpaper
+xbacklight -set 100
+if pgrep redshift; then
+	killall -9 redshift
+fi
+redshift &
+
+# Adjust monitors on docking
+dockd start
+
+# Using cVim for chrome, start a small server so editing
+#  text fields in vim is possible
+cvim-server &
+
+# Autolock
+pid=$(pgrep xautolock)
+if [ $? = 0 ]; then
+	kill -9 "$pid"
+fi
+xautolock -time 5 -locker "lockscreen --delayed" &
+# Subscribe to suspend, hibernate and lock the screen
+xss-lock -- lockscreen &
+
+# Volume
+amixer sset Master mute
+amixer sset Master 30%
+
+# Clipboard
+clipbored

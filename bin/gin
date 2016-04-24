@@ -1,0 +1,14 @@
+#!/bin/sh
+ip=8.8.8.8
+quiet=0
+for arg; do
+	case $arg in
+		--work|-w) ip=192.168.5.206;;
+		--quiet|-q) quiet=1
+	esac
+done
+[ "$quiet" -eq 1 ] && exec > /dev/null 2>&1
+
+while ! ping -c 1 "$ip"; do
+	sleep 1;
+done

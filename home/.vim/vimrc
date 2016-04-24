@@ -1,0 +1,528 @@
+" vim: fdm=marker fmr={{{,}}} fdl=0
+" Author Andreas Louv <andreas@louv.dk>
+" This is my personal vim configuration. 
+" Use at own risk, NO WARRANTY, to the extent permitted by law.
+
+" With great respect and thanks to: Steve Losh, Amir Salihefendic, Henrik Nyh,
+" Martin Grenfell and many others for fantastic help and inspiration
+
+" Basic options ----------------------------------------------------------- {{{
+
+" Vundle {{{
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+" Theme
+Plugin 'baskerville/bubblegum'
+Plugin 'vim-scripts/donbass.vim'
+
+" Basics
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-commentary'
+
+" Auto complete on <tab>
+Plugin 'ervandew/supertab'
+
+" Auto insert quotes, ...
+Plugin 'Raimondi/delimitMate'
+
+" Auto detect tabstop, shiftwidth, softtabstop and expandtab
+Plugin 'tpope/vim-sleuth'
+
+" Statusline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Distraction free
+Plugin 'junegunn/goyo.vim'
+
+" Language specific plugins
+Plugin 'pangloss/vim-javascript'
+Plugin 'andlrc/rpgle.vim'
+Plugin 'PotatoesMaster/i3-vim-syntax'
+Plugin 'elzr/vim-json'
+
+call vundle#end()
+
+" }}}
+
+filetype plugin on
+
+set encoding=utf-8
+set modeline
+set modelines=2
+set autoindent
+set showmode
+set showcmd
+set hidden
+set visualbell
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set relativenumber
+set laststatus=2
+set history=1000
+set undofile
+set undoreload=10000
+set list
+set listchars=tab:¦\ ,eol:¬,extends:❯,precedes:❮
+set lazyredraw
+set matchtime=0
+set showbreak=↪
+set splitbelow
+set splitright
+set autowrite
+set autoread
+set shiftround
+set title
+set linebreak
+set colorcolumn=+1
+
+" Spelling
+"
+set dictionary=/usr/share/dict/words
+set spellfile=~/.vim/spell.utf-8.add
+
+" Don't try to highlight lines longer than 800 characters.
+set synmaxcol=800
+
+" Time out on key codes but not mappings.
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+" Make Vim able to edit crontab files again.
+set backupskip=/tmp/*,/private/tmp/*"
+
+" Better Completion
+set complete=.,w,b,u,t
+set completeopt=longest,menuone,preview
+
+" Save when losing focus
+au FocusLost * :silent! wall
+
+" Resize splits when the window is resized
+au VimResized * :wincmd =
+
+" Leader
+let mapleader = ","
+let maplocalleader = ","
+
+" Cursorline {{{
+" Only show cursorline in the current window and in normal mode.
+
+augroup cline
+  set cursorline
+  au!
+  au WinLeave,InsertEnter * set nocursorline
+  au WinEnter,InsertLeave * set cursorline
+augroup END
+
+" }}}
+" Trailing whitespace {{{
+" Only shown when not in insert mode
+
+augroup trailing
+  au!
+  au InsertEnter * :set listchars-=trail:⌴
+  au InsertLeave * :set listchars+=trail:⌴
+augroup END
+
+" }}}
+" Wildmenu completion {{{
+
+set wildmenu
+set wildmode=longest,full
+
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll            " compiled object files
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.orig                           " Merge resolution files
+
+" Clojure/Leiningen
+set wildignore+=classes
+set wildignore+=lib
+
+" }}}
+" Make sure Vim returns to the same line when you reopen a file. {{{
+augroup line_return
+  au!
+  au BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \     execute 'normal! g`"zvzz' |
+    \ endif
+augroup END
+
+" }}}
+" Tabs, spaces, wrapping {{{
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set nowrap
+set textwidth=80
+set formatoptions=qrn1j
+
+" }}}
+" Backups {{{
+
+set backup                        " enable backups
+set noswapfile                    " Got 16GB of memory
+
+set undodir=~/.vim/tmp/undo//     " undo files
+set backupdir=~/.vim/tmp/backup// " backups
+set directory=~/.vim/tmp/swap//   " swap files
+
+" Make those folders automatically if they don't already exist.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
+
+" }}}
+" Color scheme {{{
+
+syntax on
+set background=dark
+colorscheme bubblegum-256-dark
+
+" }}}
+
+" }}}
+" Abbreviations ----------------------------------------------------------- {{{
+
+iabbrev al@ andreas@louv.dk
+
+" }}}
+" Convenience mappings ---------------------------------------------------- {{{
+
+" Kill window
+nnoremap K :q<cr>
+
+" Man
+nnoremap M K
+
+" Speed up scrolling of the viewport slightly
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
+
+" Toggle between relative and line numbers
+nnoremap <leader>n :setlocal number!<bar>setlocal relativenumber!<cr>
+
+" sort lines
+nnoremap <leader>s vip:!sort<cr>
+vnoremap <leader>s :!sort<cr>
+
+" Clean trailing whitespace
+nnoremap <silent> <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+
+" Keep the cursor in place while joining lines
+nnoremap J mzJ`z
+
+" Split line (sister to [J]oin lines)
+" The normal use of S is covered by cc, so don't worry about shadowing it.
+nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
+
+" On Lenovo x200 the <esc> is located on top of the <F-keys> and not left of
+" them, therefore remap <F1> to <esc>
+xnoremap <F1> <esc>
+inoremap <F1> <esc>
+
+" Sudo to write
+cnoremap w!! w !sudo tee % >/dev/null
+
+" Toggle [i]nvisible characters
+nnoremap <leader>i :set list!<cr>
+
+vnoremap > >gv
+vnoremap < <gv
+
+" Enable <C-z> in insert mode
+inoremap <C-z> <esc><C-z>a
+
+" Uppercase word under cursor
+inoremap <C-u> <esc>mzviwU`za
+
+" Insert line after current line
+nnoremap <leader>o mzo<esc>`z
+
+" Insert line before current line
+nnoremap <leader>O mzO<esc>`z
+
+" More text objects {{{
+"
+for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '%', '`' ]
+  execute 'xnoremap i' . char . ' :<C-u>normal! T' . char . 'vt' . char . '<CR>'
+  execute 'onoremap i' . char . ' :normal vi' . char . '<CR>'
+  execute 'xnoremap a' . char . ' :<C-u>normal! F' . char . 'vf' . char . '<CR>'
+  execute 'onoremap a' . char . ' :normal va' . char . '<CR>'
+endfor
+
+" }}}
+" Toggle colors theme {{{
+"
+function! s:ToggleCS()
+  if g:colors_name == 'donbass'
+    execute 'colorscheme bubblegum-256-dark'
+  else
+    execute 'colorscheme donbass'
+  endif
+endfunction
+
+nnoremap <leader>t :call <SID>ToggleCS()<cr>
+
+" }}}
+" Wrap words and visual {{{
+
+for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
+  let a = substitute(char, '\v(.).', '\1', '')
+  let b = substitute(char, '\v.(.)', '\1', '')
+  execute 'nnoremap <leader>w' . a . ' mzviw<esc>a' . b . '<esc>hbi' . a . '<esc>`z'
+
+  if a != b
+    execute 'nnoremap <leader>w' . b . ' mzviw<esc>a' . b . '<esc>hbi' . a . '<esc>`z'
+  endif
+endfor
+
+" Wrap selection in ...
+for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
+  let a = substitute(char, '\v(.).', '\1', '')
+  let b = substitute(char, '\v.(.)', '\1', '')
+  execute 'vnoremap <leader>w' . a . ' mzc' . a . '<esc>pa' . b . '<esc>`z'
+
+  if a != b
+    execute 'vnoremap <leader>w' . b . ' mzc' . a . '<esc>pa' . b . '<esc>`z'
+  endif
+endfor
+
+" }}}
+" Buffers {{{
+
+nnoremap <leader>l :bnext<cr>
+nnoremap <leader>h :bprevious<cr>
+
+" }}}
+" Insert Mode Completion {{{
+
+inoremap <c-f> <c-x><c-f>
+inoremap <c-]> <c-x><c-]>
+inoremap <c-l> <c-x><c-l>
+
+" }}}
+
+" }}}
+" Quick editing ----------------------------------------------------------- {{{
+
+nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>ez :split ~/.zshrc<cr>
+nnoremap <leader>eg :split ~/.gitconfig<cr>
+nnoremap <leader>es :split ~/.vim-local-dictionary.utf-8.add<cr>
+nnoremap <leader>ei :split ~/.i3/config<cr>
+
+" Edit file in same directory as current file:
+" vimcasts.org/e/14
+nnoremap <leader>ew :e <C-r>=expand("%:p:h")."/"<CR>
+
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" }}}
+" Searching and movement -------------------------------------------------- {{{
+
+" Use sane regexes.
+nnoremap / /\v
+vnoremap / /\v
+
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set hlsearch
+set gdefault
+
+set scrolloff=5
+set sidescroll=1
+set sidescrolloff=10
+
+set virtualedit+=block
+
+noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
+
+runtime macros/matchit.vim
+map <tab> %
+
+" Don't move on *
+" I'd use a function for this but Vim clobbers the last search when you're in
+" a function so fuck it, practicality beats purity.
+nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Sometimes I fuck up the modes and try to nagivate on insert mode
+inoremap jj <esc>j
+inoremap kk <esc>k
+
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
+" Emacs like keys for command line {{{
+
+cnoremap <C-a> <home>
+cnoremap <C-e> <end>
+
+" }}}
+" Visual Mode {{{
+
+function! s:VSetSearch()
+  let temp = @@
+  norm! gvy
+  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+  let @@ = temp
+endfunction
+
+vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR><c-o>
+vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
+
+" }}}
+"
+" }}}
+" Folding ----------------------------------------------------------------- {{{
+
+set foldlevelstart=10
+
+set foldmethod=indent
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+
+" Make zO recursively open whatever fold we're in, even if it's partially open.
+nnoremap zO zczO
+
+function! MyFoldText() " {{{
+  let line = getline(v:foldstart)
+
+  let nucolwidth = &fdc + &number * &numberwidth
+  let windowwidth = winwidth(0) - nucolwidth - 3
+  let foldedlinecount = v:foldend - v:foldstart
+
+  " expand tabs into spaces
+  let onetab = strpart('          ', 0, &tabstop)
+  let line = substitute(line, '\t', onetab, 'g')
+
+  let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+  return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+set foldtext=MyFoldText()
+
+" }}}
+" Plugin settings --------------------------------------------------------- {{{
+
+" AirLine {{{
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'base16'
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" }}}
+" Commentary {{{
+
+nmap <leader>c <Plug>CommentaryLine
+xmap <leader>c <Plug>Commentary
+
+augroup plugin_commentary
+  au!
+  au FileType sh,perl,ruby,python setlocal commentstring=#\ %s
+  au FileType c,javascript setlocal commentstring=//\ %s
+  au FileType vim setlocal commentstring=\"\ %s
+  au FileType lisp,scheme setlocal commentstring=;\ %s
+augroup END
+
+" }}}
+" Ctrl-P {{{
+
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_show_hidden=1
+let g:ctrlp_match_window='bottom,order:bottom'
+
+" Only list files versioned within git
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+
+let g:ctrlp_map = '<leader>,'
+nnoremap <leader>. :CtrlPBuffer<cr>
+
+" }}}
+" DelimitMate {{{
+
+let delimitMate_excluded_ft = "lisp"
+
+" }}}
+" Goyo {{{
+
+function! s:goyo_enter()
+  silent !i3-msg fullscreen enable
+endfunction
+
+function! s:goyo_leave()
+  silent !i3-msg fullscreen disable
+endfunction
+
+nnoremap <leader>g :Goyo 81<cr>
+
+augroup GoyoEvents
+  au!
+  au User GoyoEnter nested :call <SID>goyo_enter()
+  au User GoyoLeave nested :call <SID>goyo_leave()
+augroup END
+
+" }}}
+" Supertab {{{
+
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabLongestHighlight = 1
+let g:SuperTabCrMapping = 1
+
+"}}}
+" Syntastic {{{
+
+let g:syntastic_javascript_checkers=['jscs']
+let g:syntastic_perl_checkers=['perlcritic']
+let g:syntastic_enable_signs = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_jump = 0
+let g:syntastic_mode_map = {
+            \ "mode": "active",
+            \ "active_filetypes": [],
+            \ "passive_filetypes": ['html', 'rst']
+            \ }
+let g:syntastic_stl_format = '[%E{%e Errors}%B{, }%W{%w Warnings}]'
+
+nnoremap <leader>C :SyntasticCheck<cr>
+
+" }}}
+
+" }}}

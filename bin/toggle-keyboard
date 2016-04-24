@@ -1,0 +1,7 @@
+#!/bin/sh
+
+layout=$(setxkbmap -query | sed -n 's/^layout.*\([^ ][^ ]\)$/\1/p')
+
+[ "$layout" = "us" ] && layout="dk" || layout="us"
+
+setxkbmap "$layout"
