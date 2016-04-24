@@ -25,7 +25,8 @@ vim-clean:
 
 vim-install:
 	mkdir -p "$(HOME)/.vim/bundle"
-	sed -n "s/Plugin \(['\"]\)\(.*\)\1/\2/p;/vundle#end/q" "$(root)/home/.vim/vimrc" | while read -r f; do \
+	sed -n "s/Plugin \(['\"]\)\(.*\)\1/\2/p;/vundle#end/q" "$(root)/home/.vim/vimrc" \
+		| while read -r f; do \
 			git clone https://github.com/"$$f" \
 				"$(HOME)/.vim/bundle/$$(basename "$$f")" 2> /dev/null || true; \
 		done
