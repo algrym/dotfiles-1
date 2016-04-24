@@ -4,6 +4,8 @@
 # Use at own risk, NO WARRANTY, to the extent permitted by law.
 # Environment Variables --------------------------------------------------- {{{
 
+export DOTFILES_ROOT="$HOME/work/dotfiles"
+
 # i3-terminal, needs to be at the top before startx is called, otherwide the
 #   terminal will not explicit be set to termite
 declare -x TERMINAL=termite

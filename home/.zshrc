@@ -4,9 +4,6 @@
 # Use at own risk, NO WARRANTY, to the extent permitted by law.
 # Basic Settings ---------------------------------------------------------- {{{
 
-export I3_CONFIG_ROOT="$HOME/work/i3-config"
-export DOTFILES_ROOT="$HOME/work/dotfiles"
-
 # noclobber: Prevent overwriting of files by redirection
 # Can be overridden with '>|'
 set -C
@@ -18,7 +15,7 @@ mkdir -p "$HOME/.zsh"
 export KEYTIMEOUT=100
 
 # 'cd' will now also look in the 'work' directory this will make commands like
-# 'cd i3-config' work from everywhere.
+# 'cd dotfiles' work from everywhere.
 export CDPATH="$HOME/work"
 
 # Set BROWSER

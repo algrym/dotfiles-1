@@ -8,7 +8,7 @@
 # Mod1 = Alt
 set $mod Mod1
 
-set $root_dir $I3_CONFIG_ROOT
+set $root_dir $DOTFILES_ROOT
 
 # }}}
 # Container focus --------------------------------------------------------- {{{
@@ -218,7 +218,7 @@ client.urgent           #a41700 #a41700 #fafafa #555555
 # Status bar -------------------------------------------------------------- {{{
 
 bar {
-  status_command "$I3_CONFIG_ROOT/i3/status"
+  status_command "$root_dir/i3/status"
   mode hide
   hidden_state hide
   modifier $mod

@@ -1,4 +1,4 @@
-# i3-config
+# dotfiles
 
 This is my personal `.files` and configuration and scripts that I use for
 development  
