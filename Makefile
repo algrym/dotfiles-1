@@ -7,9 +7,13 @@ clean: rc-clean vim-clean
 rc-clean:
 	git log --pretty=format: --name-only --diff-filter=A | sort -u \
 		| sed -n '/^home/p' | xargs -n 1 -I '{}' \
-			sh -c 'file="{}"; \
-				unlink "$(HOME)/$${file#home/}" 2> /dev/null; \
-				rmdir "$$(dirname "$(HOME)/$${file#home/}")" 2> /dev/null || exit 0'
+			sh -c 'file="{}"; file_abs="$(HOME)/$${file#home/}"; \
+				if (stat "$$file_abs" 2> /dev/null || printf "\n") | sed -n '\''/ -> /q;q1'\''; then \
+					unlink -- "$$file_abs"; \
+					rmdir -- "$$(dirname "$$file_abs")" 2> /dev/null; \
+				else \
+				>&2 printf "%s is not a symbolic link\n" "$$file"; \
+				fi; exit 0'
 
 rc-install:
 	find home -type f | while read -r file; do \
