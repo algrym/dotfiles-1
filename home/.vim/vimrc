@@ -245,7 +245,7 @@ inoremap <F1> <esc>
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 
-" Toggle [i]nvisible characters
+" Toggle invisible characters
 nnoremap <leader>i :set list!<cr>
 
 " Keep visual selection after indent/dedent
