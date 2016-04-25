@@ -490,7 +490,7 @@ function! s:goyo_leave()
   silent !i3-msg fullscreen disable
 endfunction
 
-nnoremap <leader>g :Goyo 81<cr>
+nnoremap <leader>g :Goyo<cr>
 
 augroup GoyoEvents
   au!
