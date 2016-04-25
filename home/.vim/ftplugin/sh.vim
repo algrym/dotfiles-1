@@ -1,2 +1,3 @@
 setlocal foldmethod=syntax
-iabbrev err >&2 printf
+setlocal sw=2 ts=2 expandtab
+
