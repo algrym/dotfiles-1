@@ -302,10 +302,10 @@ endfor
 for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
   let a = substitute(char, '\v(.).', '\1', '')
   let b = substitute(char, '\v.(.)', '\1', '')
-  execute 'vnoremap <leader>w' . a . ' mzc' . a . '<esc>pa' . b . '<esc>`z'
+  execute 'vnoremap <leader>w' . a . ' mz<esc>`>a' . a . '<esc>`<i' . b . '<esc>`z'
 
   if a != b
-    execute 'vnoremap <leader>w' . b . ' mzc' . a . '<esc>pa' . b . '<esc>`z'
+    execute 'vnoremap <leader>w' . b . ' mz<esc>`>a' . a . '<esc>`<i' . b . '<esc>`z'
   endif
 endfor
 
