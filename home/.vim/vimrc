@@ -111,7 +111,7 @@ au VimResized * :wincmd =
 
 " Leader
 let mapleader = ","
-let maplocalleader = ","
+let maplocalleader = "\\"
 
 " Cursorline {{{
 " Only show cursorline in the current window and in normal mode.
