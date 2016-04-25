@@ -62,9 +62,3 @@ setlocal textwidth=80
 " Use <localleader>1/2 to add headings:
 nnoremap <buffer> <localleader>1 yypVr=:redraw<cr>
 nnoremap <buffer> <localleader>2 yypVr-:redraw<cr>
-
-" Wrap selection in a link
-vnoremap <buffer> <localleader>el di[<C-o>P]()<esc>h
-
-" Wrap word under cursor in a link
-nnoremap <buffer> <localleader>el ciW[<C-o>P]()<esc>h
