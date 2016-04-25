@@ -312,8 +312,8 @@ endfor
 " }}}
 " Buffers {{{
 
-nnoremap <leader>l :bnext<cr>
-nnoremap <leader>h :bprevious<cr>
+nnoremap <C-l> :bnext<cr>
+nnoremap <C-h> :bprevious<cr>
 
 " }}}
 " Insert Mode Completion {{{
