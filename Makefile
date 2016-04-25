@@ -18,7 +18,7 @@ rc-clean:
 rc-install:
 	find home -type f | while read -r file; do \
 		mkdir -p "$(HOME)/$$(dirname "$${file#home/}")"; \
-		ln -s "$(root)/$$file" "$(HOME)/$${file#home/}"; \
+		ln -sv "$(root)/$$file" "$(HOME)/$${file#home/}" || true; \
 	done
 
 vim-clean:
