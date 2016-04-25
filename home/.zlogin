@@ -19,6 +19,9 @@ declare -x SITEMULE_EDITOR="$VISUAL"
 declare -x LESS=' -RSNCi '
 declare -x PAGER=less
 
+# Use Vim as man pager
+export MANPAGER="/bin/sh -c \"col -b | vim +'set ft=man' -\""
+
 # reddit-wallaper
 declare -x REDDIT_WALLPAPER_OUTPUT="$HOME/Pictures/Wallpapers"
 declare -x REDDIT_WALLPAPER_CACHE=1
