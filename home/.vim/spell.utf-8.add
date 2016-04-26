@@ -5,6 +5,8 @@ config
 coreutils
 Ctrl
 dotfiles
+filetype
+filetypes
 github
 GPG
 i3
@@ -17,6 +19,8 @@ Lenovo
 Louv
 namespacing
 POSIX
+reindent
+reindented
 SuperOffice
 Vimscript
 x200
