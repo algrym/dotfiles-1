@@ -172,6 +172,9 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 # Enable case-insesensitive completing
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+# Complete for vpnc
+compdef '_files -W /etc/vpnc' vpnc
+
 # }}}
 # Aliases ----------------------------------------------------------------- {{{
 
