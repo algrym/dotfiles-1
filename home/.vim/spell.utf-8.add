@@ -3,6 +3,7 @@ autocommands
 Autocommands
 config
 coreutils
+crontab
 Ctrl
 dotfiles
 filetype
@@ -23,6 +24,7 @@ reindent
 reindented
 SuperOffice
 Vimscript
+vpnc
 x200
 zipSeries
 zlogin
