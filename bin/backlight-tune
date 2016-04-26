@@ -1,4 +1,5 @@
 #!/bin/sh
+# Author: Andreas Louv <andreas@louv.dk>
 
 [ "$#" -lt 1 ] && { >&2 printf "Usage '%s +inc'\n" "${0##*/}"; exit 2; }
 
