@@ -1,4 +1,5 @@
 #!/bin/sh
+# Author: Andreas Louv <andreas@louv.dk>
 # This program reads each line from STDIN and output an
 # JSON array containing those lines:
 # $'a\nb\nc\n12.34' -> ["a", "b", "c", 12.34]

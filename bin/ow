@@ -1,4 +1,5 @@
 #!/bin/sh
+# Author: Andreas Louv <andreas@louv.dk>
 sitemule_root="/home/and/work/Sitemule"
 project=${1:-"$(cd "$sitemule_root" || exit 1; git branch | sed 's/\* \(.*\)/\1/p;d')"}
 port="$(SITEMULE_ROOT="$sitemule_root" sm_start "$project" --port-only 2> /dev/null)"

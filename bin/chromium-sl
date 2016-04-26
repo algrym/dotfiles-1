@@ -1,4 +1,5 @@
 #!/bin/sh
+# Author: Andreas Louv <andreas@louv.dk>
 # Chromium Session Less
 # This program opens chromium with a new data directory every time, this means
 # that everytime this program is started it will not share any sessions, etc

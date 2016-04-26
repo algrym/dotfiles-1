@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# Author: Andreas Louv <andreas@louv.dk>
 # This script enables editing <textarea>'s on websites in gvim
 # Requires: cvim for Chromium
 

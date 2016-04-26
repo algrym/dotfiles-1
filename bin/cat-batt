@@ -1,4 +1,5 @@
 #!/bin/sh
+# Author: Andreas Louv <andreas@louv.dk>
 # This script will concatenate the output from two batteries
 # so that it can be used by 'i3status'
 # Usage:

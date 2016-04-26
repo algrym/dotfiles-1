@@ -1,4 +1,5 @@
 #!/usr/bin/env perl
+# Author: Andreas Louv <andreas@louv.dk>
 use strict;
 use warnings;
 
