@@ -196,8 +196,22 @@ alias grep="grep --color=auto --exclude-dir={.git} --line-number"
 # Function and includes --------------------------------------------------- {{{
 
 open() {
-  xdg-open "$@" || $EDITOR "$@"
+  file=$1
+  while read -r dir; do
+    [ -e "$file" ] && break
+    file="$dir/$1"
+  done < <(printf "%s\n" "$CDPATH" | tr ':' '\n')
+
+  xdg-open "$file" || $EDITOR "$file"
 }
+_update_open() {
+  local arg;
+  while read -r dir; do
+    arg+="_files -W '$dir';"
+  done < <(printf "%s\n" "$CDPATH" | tr ':' '\n')
+  compdef "${arg}_files -W '$PWD'" open
+}
+_update_open
 
 # Update PATH list, nice when just installed a program and want to run it
 # immediately, but are to lazy to type the full name
@@ -213,6 +227,7 @@ d() {
 # 'cd dfd', 'cd bas', ...
 work() {
   export CDPATH="/mnt/dksrv206/www/dev:$CDPATH"
+  _update_open
 }
 
 if [ -f "$HOME/work/Sitemule/bin/.zshrc" ]; then
