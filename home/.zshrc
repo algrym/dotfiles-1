@@ -204,7 +204,7 @@ open() {
     file="$dir/$1"
   done < <(tr ':' '\n' <<< "$CDPATH")
 
-  if file "$file" | grep -q text; then
+  if file -L -- "$file" | grep -q text; then
     "$EDITOR" "$file"
   else
     xdg-open "$file"
