@@ -195,23 +195,34 @@ alias grep="grep --color=auto --exclude-dir={.git} --line-number"
 # }}}
 # Function and includes --------------------------------------------------- {{{
 
+# open files, directories, images, etc... {{{
+
 open() {
-  file=$1
+  local file=$1
   while read -r dir; do
     [ -e "$file" ] && break
     file="$dir/$1"
-  done < <(printf "%s\n" "$CDPATH" | tr ':' '\n')
+  done < <(tr ':' '\n' <<< "$CDPATH")
 
-  xdg-open "$file" || $EDITOR "$file"
+  if file "$file" | grep -q text; then
+    "$EDITOR" "$file"
+  else
+    xdg-open "$file"
+  fi
 }
-_update_open() {
-  local arg;
-  while read -r dir; do
-    arg+="_files -W '$dir';"
-  done < <(printf "%s\n" "$CDPATH" | tr ':' '\n')
-  compdef "${arg}_files -W '$PWD'" open
+_update_open_suggest() {
+  local arg="_files -W '$PWD'; _files -W '${CDPATH//:/"'; _files -W '"}'"
+  compdef "$arg" open
 }
-_update_open
+_update_open_suggest
+
+# }}}
+# After mounting the work development server its nice to be able to use
+# 'cd dfd', 'cd bas', ...
+work() {
+  export CDPATH="/mnt/dksrv206/www/dev:$CDPATH"
+  _update_open_suggest
+}
 
 # Update PATH list, nice when just installed a program and want to run it
 # immediately, but are to lazy to type the full name
@@ -221,13 +232,6 @@ u() {
 
 d() {
   date +'Week %W, %a %F, %T'
-}
-
-# After mounting the work development server its nice to be able to use
-# 'cd dfd', 'cd bas', ...
-work() {
-  export CDPATH="/mnt/dksrv206/www/dev:$CDPATH"
-  _update_open
 }
 
 if [ -f "$HOME/work/Sitemule/bin/.zshrc" ]; then
