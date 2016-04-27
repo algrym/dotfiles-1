@@ -195,28 +195,12 @@ alias grep="grep --color=auto --exclude-dir={.git} --line-number"
 # }}}
 # Function and includes --------------------------------------------------- {{{
 
-# open files, directories, images, etc... {{{
-
-open() {
-  local file=$1
-  while read -r dir; do
-    [ -e "$file" ] && break
-    file="$dir/$1"
-  done < <(tr ':' '\n' <<< "$CDPATH")
-
-  if file -L -- "$file" | grep -q text; then
-    "$EDITOR" "$file"
-  else
-    xdg-open "$file"
-  fi
-}
 _update_open_suggest() {
   local arg="_files -W '$PWD'; _files -W '${CDPATH//:/"'; _files -W '"}'"
   compdef "$arg" open
 }
 _update_open_suggest
 
-# }}}
 # After mounting the work development server its nice to be able to use
 # 'cd dfd', 'cd bas', ...
 work() {

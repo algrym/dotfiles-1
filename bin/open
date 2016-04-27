@@ -1,0 +1,20 @@
+#!/bin/sh
+
+file=$1
+file=$(printf ".\n%s" "$CDPATH" | tr ':' '\n' | while read -r dir; do
+  if [ -e "$dir/$file" ]; then
+    printf "%s/%s" "$dir" "$file"
+    break
+  fi
+done)
+
+if [ -z "$file" ]; then
+  >&2 printf "$0: cannot access '%s': No such file or directory\n" "$1"
+  exit 2
+fi
+
+if file -L -- "$file" | grep -q text; then
+  "$EDITOR" "$file"
+else
+  xdg-open "$file"
+fi
