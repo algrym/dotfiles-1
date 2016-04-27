@@ -1,4 +1,8 @@
 #!/bin/sh
+# Author: Andreas Louv <andreas@louv.dk>
+# This command will open a file either though your editor of choice or xdg-open
+# It will look for the specified file in either the current working directory
+# or in a directory specified in the 'CDPATH' environment variable
 
 file=$1
 file=$(printf ".\n%s" "$CDPATH" | tr ':' '\n' | while read -r dir; do
