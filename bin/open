@@ -4,6 +4,9 @@
 # It will look for the specified file in either the current working directory
 # or in a directory specified in the 'CDPATH' environment variable
 
+pgm=${0##*/}
+version=1.0.0
+
 file=$1
 file=$(printf ".\n%s" "$CDPATH" | tr ':' '\n' | while read -r dir; do
   if [ -e "$dir/$file" ]; then
@@ -13,7 +16,7 @@ file=$(printf ".\n%s" "$CDPATH" | tr ':' '\n' | while read -r dir; do
 done)
 
 if [ -z "$file" ]; then
-  >&2 printf "$0: cannot access '%s': No such file or directory\n" "$1"
+  >&2 printf "%s: cannot access '%s': No such file or directory\n" "$pgm" "$1"
   exit 2
 fi
 
