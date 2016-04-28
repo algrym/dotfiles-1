@@ -8,6 +8,8 @@
 # Can be overridden with '>|'
 set -C
 
+export TERM=xterm
+
 # Root zshell directory, used to store history, etc...
 mkdir -p "$HOME/.zsh"
 
