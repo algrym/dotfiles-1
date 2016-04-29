@@ -26,6 +26,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
 
+" Make <C-a>/<C-x> work on dates, times etc.
+Plugin 'tpope/vim-speeddating'
 
 " Auto complete on <tab>
 Plugin 'ervandew/supertab'
