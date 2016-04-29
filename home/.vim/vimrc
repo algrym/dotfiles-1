@@ -24,6 +24,8 @@ Plugin 'vim-scripts/donbass.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-repeat'
+
 
 " Auto complete on <tab>
 Plugin 'ervandew/supertab'
