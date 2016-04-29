@@ -1,14 +1,20 @@
 #!/bin/sh
 # Author: Andreas Louv <andreas@louv.dk>
+# Version: 1.0.1
 # This command will open a file either though your editor of choice or xdg-open
 # It will look for the specified file in either the current working directory
 # or in a directory specified in the 'CDPATH' environment variable
 
 pgm=${0##*/}
-version=1.0.0
 
 file=$1
-file=$(printf ".\n%s" "$CDPATH" | tr ':' '\n' | while read -r dir; do
+
+if [ -z "$file" ]; then
+  >&2 printf "Usage '%s <file>'\n" "$pgm"
+  exit 2
+fi
+
+file=$(printf ".\n%s\n" "$CDPATH" | tr ':' '\n' | while read -r dir; do
   if [ -e "$dir/$file" ]; then
     printf "%s/%s" "$dir" "$file"
     break
@@ -21,7 +27,7 @@ if [ -z "$file" ]; then
 fi
 
 if file -L -- "$file" | grep -q text; then
-  "$EDITOR" "$file"
+  exec $EDITOR "$file"
 else
-  xdg-open "$file"
+  exec $BROWSER "$file"
 fi
