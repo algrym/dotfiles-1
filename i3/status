@@ -19,14 +19,12 @@ while (my ($statusline) = (<$i3status> =~ /^,?(.*)/)) {
   my @blocks = @{decode_json($statusline)};
 
   # Music playing:
-  if (`pgrep deadbeef` && `deadbeef --nowplaying-tf '%isplaying%'`) {
+  if (`pgrep deadbeef`) {
     my $music = `deadbeef --nowplaying-tf '%artist% - %title%'`;
-    if ($music ne 'nothing') {
-      splice(@blocks, 1, 0, {
-        full_text => "\x{f025} $music",
-        color => '#D78787'
-      });
-    }
+    splice(@blocks, 1, 0, {
+      full_text => "\x{f025} $music",
+      color => '#D78787'
+    });
   }
 
   # Backlight
