@@ -260,7 +260,7 @@ vnoremap < <gv
 vnoremap <Space> I<Space><Esc>gv
 
 " Uppercase word under cursor
-inoremap <C-u> <esc>mzviwU`za
+inoremap <C-u> <esc>lmzviwU`zi
 
 " Insert line after current line
 nnoremap <leader>o mzo<esc>`z
