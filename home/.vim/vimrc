@@ -221,9 +221,8 @@ nnoremap K :q<cr>
 " Man
 nnoremap M K
 
-" Speed up scrolling of the viewport slightly
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
+" Enable <C-z> in insert mode
+inoremap <C-z> <esc><C-z>a
 
 " Toggle between relative and line numbers
 nnoremap <leader>n :setlocal number!<bar>setlocal relativenumber!<cr>
@@ -257,8 +256,8 @@ nnoremap <leader>i :set list!<cr>
 vnoremap > >gv
 vnoremap < <gv
 
-" Enable <C-z> in insert mode
-inoremap <C-z> <esc><C-z>a
+"Use . to indent sepected lines with space good for aligning multiply lines
+vnoremap <Space> I<Space><Esc>gv
 
 " Uppercase word under cursor
 inoremap <C-u> <esc>mzviwU`za
@@ -388,6 +387,10 @@ noremap k gk
 noremap gj j
 noremap gk k
 
+" Speed up scrolling of the viewport slightly
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
+
 " Emacs like keys for command line {{{
 
 cnoremap <C-a> <home>
@@ -417,7 +420,6 @@ set foldmethod=indent
 
 " Space to toggle folds.
 nnoremap <Space> za
-vnoremap <Space> za
 
 " Make zO recursively open whatever fold we're in, even if it's partially open.
 nnoremap zO zczO
