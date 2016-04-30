@@ -11,4 +11,8 @@ trap 'rm -r "$data_dir" 2> /dev/null' EXIT INT
 
 # Prevent first run help page
 touch "$data_dir/First Run"
+
+# Disable plugins by default
+mkdir -p "$data_dir/Default"
+echo '{"profile":{"default_content_setting_values":{"plugins":2}}}' > "$data_dir/Default/Preferences"
 chromium --user-data-dir="$data_dir" "$@"
