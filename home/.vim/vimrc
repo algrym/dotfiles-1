@@ -239,13 +239,7 @@ nnoremap <silent> <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 nnoremap J mzJ`z
 
 " Split line (sister to [J]oin lines)
-" The normal use of S is covered by cc, so don't worry about shadowing it.
 nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
-
-" On Lenovo x200 the <esc> is located on top of the <F-keys> and not left of
-" them, therefore remap <F1> to <esc>
-xnoremap <F1> <esc>
-inoremap <F1> <esc>
 
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
@@ -394,6 +388,9 @@ nnoremap N Nzzzv
 " Sometimes I fuck up the modes and try to nagivate on insert mode
 inoremap jj <esc>j
 inoremap kk <esc>k
+
+" Quick way to exit insert mode
+inoremap jk <esc>
 
 noremap j gj
 noremap k gk
