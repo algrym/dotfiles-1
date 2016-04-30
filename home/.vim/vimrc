@@ -224,8 +224,9 @@ nnoremap M K
 " Enable <C-z> in insert mode
 inoremap <C-z> <esc><C-z>a
 
-" Toggle between relative and line numbers
-nnoremap <leader>n :setlocal number!<bar>setlocal relativenumber!<cr>
+" Insert line before and after current line
+nnoremap <leader>O mzO<esc>`z
+nnoremap <leader>o mzo<esc>`z
 
 " sort lines
 nnoremap <leader>s vip:!sort<cr>
@@ -249,9 +250,6 @@ inoremap <F1> <esc>
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 
-" Toggle invisible characters
-nnoremap <leader>i :set list!<cr>
-
 " Keep visual selection after indent/dedent
 vnoremap > >gv
 vnoremap < <gv
@@ -262,12 +260,27 @@ vnoremap <Space> I<Space><Esc>gv
 " Uppercase word under cursor
 inoremap <C-u> <esc>lmzviwU`zi
 
-" Insert line after current line
-nnoremap <leader>o mzo<esc>`z
+" Open URL {{{"
 
-" Insert line before current line
-nnoremap <leader>O mzO<esc>`z
+function! OpenURL(url)
+  execute ':silent !$BROWSER ' . shellescape(a:url)
+  :redraw!
+endfunction
+command! -nargs=1 OpenURL :call OpenURL(<q-args>)
 
+nnoremap gw :OpenURL <cfile><cr>
+nnoremap gs :OpenURL https://duckduckgo.com/<cword><cr>
+
+" }}}
+" Toggle list & number {{{
+"
+" Toggle between relative and line numbers
+nnoremap <leader>n :setlocal number!<bar>setlocal relativenumber!<cr>
+
+" Toggle invisible characters
+nnoremap <leader>i :set list!<cr>
+
+" }}}
 " More text objects {{{
 "
 for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '%', '`' ]
