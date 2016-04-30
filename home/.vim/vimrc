@@ -1,10 +1,11 @@
 " vim: fdm=marker fmr={{{,}}} fdl=0
 " Author Andreas Louv <andreas@louv.dk>
-" This is my personal vim configuration. 
+" This is my personal vim configuration.
 " Use at own risk, NO WARRANTY, to the extent permitted by law.
 
-" With great respect and thanks to: Steve Losh, Amir Salihefendic, Henrik Nyh,
-" Martin Grenfell and many others for fantastic help and inspiration
+" With great respect and thanks to: Tim Pope Steve Losh, Amir Salihefendic,
+" Henrik Nyh, Martin Grenfell and many others for fantastic help and
+" inspiration
 
 " Basic options ----------------------------------------------------------- {{{
 
@@ -28,6 +29,8 @@ Plugin 'tpope/vim-repeat'
 
 " Make <C-a>/<C-x> work on dates, times etc.
 Plugin 'tpope/vim-speeddating'
+
+Plugin 'tpope/vim-unimpaired'
 
 " Auto complete on <tab>
 Plugin 'ervandew/supertab'
@@ -321,12 +324,6 @@ for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
     execute 'vnoremap <leader>w' . b . ' mz<esc>`>a' . a . '<esc>`<i' . b . '<esc>`z'
   endif
 endfor
-
-" }}}
-" Buffers {{{
-
-nnoremap <C-l> :bnext<cr>
-nnoremap <C-h> :bprevious<cr>
 
 " }}}
 " Insert Mode Completion {{{
