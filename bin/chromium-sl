@@ -1,9 +1,10 @@
 #!/bin/sh
 # Author: Andreas Louv <andreas@louv.dk>
+# Version: 1.0.0
 # Chromium Session Less
 # This program opens chromium with a new data directory every time, this means
-# that everytime this program is started it will not share any sessions, etc
-# with any other instance of chromium
+# that everytime this program is started it will *not* share any cookies,
+# caches, sessions, etc with any other instance of chromium
 readonly pgm=${0##*/}
 readonly data_dir=$(mktemp -dt "$pgm-XXXXXXXXXX")
 
