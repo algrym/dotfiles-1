@@ -86,6 +86,7 @@ set shiftround
 set title
 set linebreak
 set colorcolumn=+1
+set shell=/bin/sh
 
 " Spelling
 "
