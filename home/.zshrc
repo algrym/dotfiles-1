@@ -81,7 +81,7 @@ bindkey -s ',ev' 'vim ~/.vim/vimrc\n'
 bindkey -s ',ez' 'vim ~/.zshrc\n'
 bindkey -s ',eg' 'vim ~/.gitconfig\n'
 bindkey -s ',es' 'vim ~/.vim/spell.utf-8.add\n'
-bindkey -s ',ei' 'vim ~/.i3/config\n'
+bindkey -s ',ei' 'vim ~/.config/i3/config\n'
 
 # Source .zshrc
 bindkey -s ',sz' 'source ~/.zshrc\n'

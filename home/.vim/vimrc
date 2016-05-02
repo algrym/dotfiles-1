@@ -341,7 +341,7 @@ nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>ez :split ~/.zshrc<cr>
 nnoremap <leader>eg :split ~/.gitconfig<cr>
 nnoremap <leader>es :split ~/.vim/spell.utf-8.add<cr>
-nnoremap <leader>ei :split ~/.i3/config<cr>
+nnoremap <leader>ei :split ~/.config/i3/config<cr>
 
 " Edit file in same directory as current file:
 " vimcasts.org/e/14
