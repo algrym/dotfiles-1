@@ -164,7 +164,7 @@ bindsym $mod+f exec filezilla
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Open 5250 emulator
-bindsym $mod+Shift+Return exec --no-startup-id "$root_dir/i3/acs-launch"
+bindsym $mod+Shift+Return exec --no-startup-id "acs-launch"
 
 # Clipboard manager
 bindsym $mod+d exec --no-startup-id dclip
