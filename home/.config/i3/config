@@ -81,7 +81,6 @@ bindsym $mod+space fullscreen
 
 bindsym $mod+r mode "resize"
 bindsym $mod+m mode "Move workspace"
-bindsym $mod+Shift+w mode"Workflow"
 
 # Resize containers {{{
 
@@ -113,17 +112,6 @@ mode "Move workspace" {
   bindsym $mod+k focus up
   bindsym $mod+l focus right
 
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-
-# }}}
-# Workflow {{{
-
-# Makes it easy to open applications that are not used to often
-mode "Workflow" {
-  bindsym a exec "chromium --app='https://system-metode.axosoft.com'"
-  bindsym s exec "rdesktop -g 1200x900 -P -z -x 1 -r sound:off -u and DKSRV02"
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
