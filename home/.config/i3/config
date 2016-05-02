@@ -1,8 +1,7 @@
 # vim: fdm=marker fmr={{{,}}} fdl=0
 # Author Andreas Louv <andreas@louv.dk>
-# This is my personal i3 configuration. 
+# This is my personal i3 configuration.
 # Use at own risk, NO WARRANTY, to the extent permitted by law.
-
 # Variables --------------------------------------------------------------- {{{
 
 # Mod1 = Alt
@@ -77,6 +76,11 @@ bindsym $mod+e layout toggle split
 bindsym $mod+space fullscreen
 
 # }}}
+# Fix floating ------------------------------------------------------------ {{{
+
+for_window [class="^rdesktop"] floating disable
+
+# }}}
 # Modes ------------------------------------------------------------------- {{{
 
 bindsym $mod+r mode "resize"
@@ -120,6 +124,9 @@ mode "Move workspace" {
 
 # }}}
 # Other key binds --------------------------------------------------------- {{{
+
+# Open remote desktop as big as current monitor size
+bindsym $mod+i exec "rdesktop -g $(xrandr | perl -nle 'print $1-5, x, $2-20 if /connected \K(\d+x)(\d+)/') -P -z -x 1 -r sound:off -u and DKSRV02"
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
