@@ -1,2 +1,2 @@
-au BufNewFile,BufRead *.aspx setlocal filetype=rpgle
+au BufNewFile,BufRead *.aspx,*.asmx setlocal filetype=rpgle
 
