@@ -245,6 +245,10 @@ nnoremap J mzJ`z
 " Split line (sister to [J]oin lines)
 nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 
+" zg will add <cword> to the custom spell file, sort that file after adding
+nnoremap zg zg:silent ! sort ~/.vim/spell.utf-8.add -o
+  \ ~/.vim/spell.utf-8.add<cr>:redraw!<cr>
+
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 
