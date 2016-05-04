@@ -5,6 +5,7 @@ config
 coreutils
 crontab
 Ctrl
+deadbeef
 dotfiles
 filetype
 filetypes
