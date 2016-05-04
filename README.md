@@ -28,7 +28,7 @@ home directory (`$HOME`). Directories will be created as needed.
 * [`vimrc`](home/.vim/vimrc)
 * [`zshrc`](home/.zshrc)
 * [`zlogin`](home/.zlogin)
-* [`i3 configuration file`](home/.i3/config)
+* [`i3 configuration file`](home/.config/i3/config)
 
 License:
 --------
