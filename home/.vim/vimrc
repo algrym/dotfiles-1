@@ -225,6 +225,9 @@ nnoremap K :q<cr>
 " Man
 nnoremap M K
 
+" Don't move when undoing
+nnoremap u u<C-O>
+
 " Enable <C-z> in insert mode
 inoremap <C-z> <esc><C-z>a
 
