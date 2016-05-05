@@ -308,13 +308,25 @@ nnoremap <leader>t :call <SID>ToggleCS()<cr>
 " }}}
 " Wrap words and visual {{{
 
+" Wrap word in ...
 for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
   let a = substitute(char, '\v(.).', '\1', '')
   let b = substitute(char, '\v.(.)', '\1', '')
-  execute 'nnoremap <leader>w' . a . ' mzviw<esc>a' . b . '<esc>hbi' . a . '<esc>`z'
+  execute 'nnoremap <leader>w' . a . ' mzviw<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
 
   if a != b
-    execute 'nnoremap <leader>w' . b . ' mzviw<esc>a' . b . '<esc>hbi' . a . '<esc>`z'
+    execute 'nnoremap <leader>w' . b . ' mzviw<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
+  endif
+endfor
+
+" Wrap to EOL in ...
+for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
+  let a = substitute(char, '\v(.).', '\1', '')
+  let b = substitute(char, '\v.(.)', '\1', '')
+  execute 'nnoremap <leader>W' . a . ' mzv$<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
+
+  if a != b
+    execute 'nnoremap <leader>W' . b . ' mzv$<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
   endif
 endfor
 
