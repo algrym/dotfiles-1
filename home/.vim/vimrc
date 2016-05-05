@@ -306,40 +306,29 @@ endfunction
 nnoremap <leader>t :call <SID>ToggleCS()<cr>
 
 " }}}
-" Wrap words and visual {{{
+" Wrap in quotes, brackets, and other special characters {{{
 
-" Wrap word in ...
-for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
-  let a = substitute(char, '\v(.).', '\1', '')
-  let b = substitute(char, '\v.(.)', '\1', '')
-  execute 'nnoremap <leader>w' . a . ' mzviw<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
+function! s:QuoteMotions()
+  let motions = {
+    \ 'w': 'iw',
+    \ 'W': 'iW',
+    \ '$': '$',
+    \ }
 
-  if a != b
-    execute 'nnoremap <leader>w' . b . ' mzviw<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
-  endif
-endfor
+  for key in keys(l:motions)
+    let motion = motions[key]
+    for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
+      let a = substitute(char, '\v(.).', '\1', '')
+      let b = substitute(char, '\v.(.)', '\1', '')
+      execute 'nnoremap -' . key . a . ' mzv' . motion . '<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
 
-" Wrap to EOL in ...
-for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
-  let a = substitute(char, '\v(.).', '\1', '')
-  let b = substitute(char, '\v.(.)', '\1', '')
-  execute 'nnoremap <leader>W' . a . ' mzv$<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
+      if a != b
+        execute 'nnoremap -' . key . b . ' mzv' . motion . '<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
+      endif
+    endfor
+  endfor
 
-  if a != b
-    execute 'nnoremap <leader>W' . b . ' mzv$<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
-  endif
-endfor
-
-" Wrap selection in ...
-for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
-  let a = substitute(char, '\v(.).', '\1', '')
-  let b = substitute(char, '\v.(.)', '\1', '')
-  execute 'vnoremap <leader>w' . a . ' mz<esc>`>a' . a . '<esc>`<i' . b . '<esc>`z'
-
-  if a != b
-    execute 'vnoremap <leader>w' . b . ' mz<esc>`>a' . a . '<esc>`<i' . b . '<esc>`z'
-  endif
-endfor
+call <SID>QuoteMotions()
 
 " }}}
 " Insert Mode Completion {{{
