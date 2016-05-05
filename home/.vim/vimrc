@@ -259,6 +259,9 @@ cnoremap w!! w !sudo tee % >/dev/null
 vnoremap > >gv
 vnoremap < <gv
 
+" Don't move when yanking
+vnoremap y mzy`z
+
 "Use . to indent sepected lines with space good for aligning multiply lines
 vnoremap <Space> I<Space><Esc>gv
 
