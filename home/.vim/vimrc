@@ -318,8 +318,8 @@ function! s:QuoteMotions()
   for key in keys(l:motions)
     let motion = motions[key]
     for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
-      let a = substitute(char, '\v(.).', '\1', '')
-      let b = substitute(char, '\v.(.)', '\1', '')
+      let a = char[0]
+      let b = char[1]
       for trigger in a != b ? [ key . a, key . b ] : [ key . a ]
         execute 'nnoremap -' . trigger . ' mzv' . motion . '<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
       endfor
