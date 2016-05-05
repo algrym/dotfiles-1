@@ -320,11 +320,9 @@ function! s:QuoteMotions()
     for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
       let a = substitute(char, '\v(.).', '\1', '')
       let b = substitute(char, '\v.(.)', '\1', '')
-      execute 'nnoremap -' . key . a . ' mzv' . motion . '<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
-
-      if a != b
-        execute 'nnoremap -' . key . b . ' mzv' . motion . '<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
-      endif
+      for trigger in a != b ? [ key . a, key . b ] : [ key . a ]
+        execute 'nnoremap -' . trigger . ' mzv' . motion . '<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
+      endfor
     endfor
   endfor
 endfunction
