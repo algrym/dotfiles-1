@@ -327,6 +327,7 @@ function! s:QuoteMotions()
       endif
     endfor
   endfor
+endfunction
 
 call <SID>QuoteMotions()
 
