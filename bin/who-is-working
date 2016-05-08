@@ -1,4 +1,5 @@
 #!/bin/sh
+# See how many commits each person have done
 
 pgm=${0##*/}
 
