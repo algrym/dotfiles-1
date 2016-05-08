@@ -22,7 +22,7 @@ Plugin 'baskerville/bubblegum'
 Plugin 'vim-scripts/donbass.vim'
 
 " Basics
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
