@@ -237,7 +237,6 @@ nnoremap <leader>O mzO<esc>`z
 nnoremap <leader>o mzo<esc>`z
 
 " sort lines
-nnoremap <leader>s vip:!sort<cr>
 vnoremap <leader>s :!sort<cr>
 
 " Clean trailing whitespace
