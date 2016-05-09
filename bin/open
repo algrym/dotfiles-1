@@ -26,7 +26,7 @@ if [ -z "$file" ]; then
   exit 2
 fi
 
-if file -L -- "$file" | grep -q text; then
+if file -L -- "$file" | grep -q 'text\|directory'; then
   exec $EDITOR "$file"
 else
   exec $BROWSER "$file"
