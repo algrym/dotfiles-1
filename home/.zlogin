@@ -44,6 +44,7 @@ path+=(
   "$HOME/work/zipSeries/bin"
   "$HOME/work/charinfo"
   "$DOTFILES_ROOT/bin"
+  "$HOME/work/bin/bin"
   "$HOME/work/reddit-wallpaper"
   "$HOME/work/lockscreen"
   "$HOME/work/git-linfo"
