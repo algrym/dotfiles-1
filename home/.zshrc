@@ -220,8 +220,12 @@ d() {
   date +'Week %W, %a %F, %T'
 }
 
-if [ -f "$HOME/work/Sitemule/core/.zshrc" ]; then
-  source "$HOME/work/Sitemule/core/.zshrc"
+if [ -f "$HOME/work/Sitemule/util/.zshrc" ]; then
+  source "$HOME/work/Sitemule/util/.zshrc"
+fi
+
+if [ -f "$HOME/work/EXT/util/.zshrc" ]; then
+  source "$HOME/work/EXT/util/.zshrc"
 fi
 
 # Auto Complete the following scripts
