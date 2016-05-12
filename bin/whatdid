@@ -4,7 +4,7 @@
 # Repos are hardcoded but could easily come from arguments, same goes for the
 # date.
 
-for parent in "$SITEMULE_ROOT/.." "$HOME/work/EXT"; do
+for parent in "$SITEMULE_ROOT/.." "$EXT_ROOT/.."; do
     cd "$parent" || exit 5
     for f in *; do
         cd "$f" > /dev/null 2>&1 || continue
