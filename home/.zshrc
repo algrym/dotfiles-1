@@ -180,6 +180,9 @@ compdef '_files -W /etc/vpnc' vpnc
 # }}}
 # Aliases ----------------------------------------------------------------- {{{
 
+# Make aliases work with sudo
+alias sudo="sudo "
+
 alias cd..="cd .."
 # Suppress annoying directory print when directory is found in '$CDPATH'
 alias cd="cd > /dev/null"
