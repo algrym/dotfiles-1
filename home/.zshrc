@@ -116,7 +116,7 @@ precmd () {
   if [ "$NO_GIT_PROMPT" -gt 0 ] || [[ "$PWD" =~ "/mnt"* ]]; then
     _prompt_git="%{$fg[red]%}NO GIT%{%b%}"
   else
-    _prompt_git="$(git-linfo)"
+    _prompt_git="$(git-radar --zsh --fetch)"
   fi
 }
 
