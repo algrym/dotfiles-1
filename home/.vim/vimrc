@@ -232,10 +232,6 @@ nnoremap u u<C-O>
 inoremap <C-z> <esc><C-z>a
 vnoremap <C-z> <esc><C-z>gv
 
-" Insert line before and after current line
-nnoremap <leader>O mzO<esc>`z
-nnoremap <leader>o mzo<esc>`z
-
 " sort lines
 vnoremap <leader>s :!sort<cr>
 
