@@ -380,6 +380,10 @@ noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 runtime macros/matchit.vim
 map <tab> %
 
+" Since we map <tab> (<C-i>) we will need to remap <C-i> to get control of our
+" jumplist again
+nnoremap <C-p> <C-i>
+
 " Don't move on *
 " I'd use a function for this but Vim clobbers the last search when you're in
 " a function so fuck it, practicality beats purity.
