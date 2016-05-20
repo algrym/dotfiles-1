@@ -224,8 +224,8 @@ if [ -f "$HOME/work/Sitemule/util/.zshrc" ]; then
   source "$HOME/work/Sitemule/util/.zshrc"
 fi
 
-if [ -f "$HOME/work/EXT/util/.zshrc" ]; then
-  source "$HOME/work/EXT/util/.zshrc"
+if [ -f "$HOME/work/extensions/util/.zshrc" ]; then
+  source "$HOME/work/extensions/util/.zshrc"
 fi
 
 # Auto Complete the following scripts
