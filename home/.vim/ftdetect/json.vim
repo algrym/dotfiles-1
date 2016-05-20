@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.xjson,*.xpd,*.ns,*.dmd setlocal filetype=json
+au BufNewFile,BufRead *.xjson,*.xpd,*.ns,*.dmd,*.lib setlocal filetype=json
