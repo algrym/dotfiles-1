@@ -261,8 +261,19 @@ vnoremap y mzy`z
 "Use . to indent sepected lines with space good for aligning multiply lines
 vnoremap <Space> I<Space><Esc>gv
 
-" Uppercase word under cursor
-inoremap <C-u> <esc>lmzviwU`zi
+" Toggle upper/lowercase on word under cursor
+function! s:ToggleCase()
+  :normal l
+  :normal mz
+  if expand("<cword>") =~ '[[:lower:]]'
+    :normal viwU
+  else
+    :normal viwu
+  endif
+  :normal `z
+  :startinsert
+endfunction
+inoremap <C-u> <esc>:call <SID>ToggleCase()<cr>
 
 " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
 " positioned inside of them AND the following code doesn't get unfolded.
