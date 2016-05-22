@@ -118,7 +118,7 @@ au FocusLost * :silent! wall
 au VimResized * :wincmd =
 
 " Leader
-let mapleader = ","
+let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
 " Cursorline {{{
@@ -443,9 +443,6 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
 set foldlevelstart=10
 
 set foldmethod=indent
-
-" Space to toggle folds.
-nnoremap <Space> za
 
 " Make zO recursively open whatever fold we're in, even if it's partially open.
 nnoremap zO zczO
