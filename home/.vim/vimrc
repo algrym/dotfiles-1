@@ -272,6 +272,10 @@ inoremap <C-u> <esc>:call <SID>ToggleCase()<cr>
 " positioned inside of them AND the following code doesn't get unfolded.
 inoremap {<cr> {}<left><cr><tab>.<cr><esc>kA<bs>
 
+" Store relative line number jumps in the jumplist
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
+
 " Open URL {{{"
 
 function! OpenURL(url)
