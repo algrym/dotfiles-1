@@ -402,8 +402,8 @@ nnoremap <C-p> <C-i>
 nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
 
 " Keep search matches in the middle of the window.
-nnoremap n nzzzv
-nnoremap N Nzzzv
+nnoremap n :normal! nzzzv<cr>
+nnoremap N :normal! Nzzzv<cr>
 
 " Sometimes I fuck up the modes and try to nagivate on insert mode
 inoremap jj <esc>j
