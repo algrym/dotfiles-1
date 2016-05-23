@@ -1,0 +1,17 @@
+#!/bin/sh
+
+current_hour=$(date +"%H")
+color=0
+
+if [ "$current_hour" -gt 7 ] && [ "$current_hour" -lt 15 ]; then
+  color=1
+fi
+
+[ -n "$1" ] && [ "$1" = "-r" ] && color=$(( (color + 1) * 2 ));
+
+if [ "$color" -eq 1 ] || [ "$color" -eq 2 ]; then
+
+  termite -c "$DOTFILES_ROOT/home/.config/termite/light-config"
+else
+  termite -c "$DOTFILES_ROOT/home/.config/termite/config"
+fi
