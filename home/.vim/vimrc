@@ -35,6 +35,9 @@ Plugin 'tpope/vim-unimpaired'
 " Auto complete on <tab>
 Plugin 'ervandew/supertab'
 
+" Easy access of undolist
+Plugin 'sjl/gundo.vim'
+
 " Auto insert quotes, ...
 Plugin 'Raimondi/delimitMate'
 
@@ -553,6 +556,11 @@ augroup GoyoEvents
   au User GoyoEnter nested :call <SID>goyo_enter()
   au User GoyoLeave nested :call <SID>goyo_leave()
 augroup END
+
+" }}}
+" Gundo {{{
+
+nnoremap <F4> :GundoToggle<CR>
 
 " }}}
 " Supertab {{{
