@@ -107,7 +107,7 @@ precmd () {
 
   # Define variables that will be used by PROMPT
   _prompt_date="%{$fg[cyan]%}($(date +%r))%{%b%}"
-  _prompt_jobs="%{$fg[yellow]%}$( (jobs) | wc -l)"
+  _prompt_jobs="%{$fg[yellow]%}$(jobs | awk '/^\[/{c++}; END {if (c) print " " c}')"
   _prompt_sudo="$(sudo -n true 2> /dev/null && echo "%{$fg[red]%}\$" || echo "%{$fg[green]%}%%")"
 
   # Show git information on the right, unless we are in a mounted directory.
@@ -126,7 +126,7 @@ precmd () {
 setopt PROMPT_SUBST
 
 # PROMPT relies on 'precmd'
-declare -x PROMPT="%{$fg_bold[yellow]%} %~ %{%b%}\$_prompt_date \$_prompt_jobs \$_prompt_sudo %{$reset_color%b%}"
+declare -x PROMPT="%{$fg_bold[yellow]%} %~ %{%b%}\$_prompt_date\$_prompt_jobs \$_prompt_sudo %{$reset_color%b%}"
 declare -x PROMPT2="%{$fg_bold[red]%}-->%{$reset_color$b%} "
 declare -x RPROMPT="\$_prompt_git"
 
