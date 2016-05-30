@@ -160,11 +160,16 @@ bindsym $mod+o scratchpad show
 bindsym $mod+g exec chromium
 bindsym $mod+Shift+g exec "chromium-sl --incognito"
 bindsym $mod+f exec filezilla
-bindsym $mod+Return exec 'terminal-date'
-bindsym $mod+t exec terminal-date -r
+
+# Open node REPL
+bindsym $mod+Shift+t exec terminal-date -e node
 
 # Open 5250 emulator
 bindsym $mod+Shift+Return exec --no-startup-id "acs-launch"
+
+# Open terminal, with theme that suits the time of day
+bindsym $mod+Return exec terminal-date
+bindsym $mod+t exec terminal-date -r
 
 # Clipboard manager
 bindsym $mod+d exec --no-startup-id dclip
