@@ -1,1 +1,1 @@
-exec ssh-agent i3
+exec ssh-agent i3 > /tmp/i3-log 2>&1
