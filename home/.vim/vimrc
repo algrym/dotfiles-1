@@ -56,6 +56,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'andlrc/rpgle.vim'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'elzr/vim-json'
+Plugin 'mxw/vim-jsx'
+Plugin 'digitaltoad/vim-pug'
 
 call vundle#end()
 
