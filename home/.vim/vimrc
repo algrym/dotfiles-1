@@ -58,6 +58,7 @@ Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'elzr/vim-json'
 Plugin 'mxw/vim-jsx'
 Plugin 'digitaltoad/vim-pug'
+Plugin 'mustache/vim-mustache-handlebars'
 
 call vundle#end()
 
