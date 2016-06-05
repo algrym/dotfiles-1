@@ -494,15 +494,22 @@ augroup END
 
 " Make files starting with a shebang executable if they are not already. This
 " could potential be dangerous.
-autocmd BufWritePost * call AutoCmdChmodX()
-function! AutoCmdChmodX()
-  if getline(1) =~ '^#!'
-    let filename = shellescape(@%, 1)
-    if stridx(getfperm(@%), 'x') == -1
-      call system('chmod +x -- '. filename)
+augroup AutoChmodX
+
+  au!
+  au BufWritePost * call AutoCmdChmodX()
+
+  function! AutoCmdChmodX()
+    if getline(1) =~ '^#!'
+      let filename = shellescape(@%, 1)
+      if stridx(getfperm(@%), 'x') == -1
+        call system('chmod +x -- '. filename)
+      endif
     endif
-  endif
-endfunction
+  endfunction
+
+augroup END
+
 
 " }}}
 " Plugin settings --------------------------------------------------------- {{{
