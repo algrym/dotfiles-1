@@ -484,6 +484,14 @@ set foldtext=MyFoldText()
 " }}}
 " Auto Commands ----------------------------------------------------------- {{{
 
+" Disable blink on first + last line
+augroup GuiVim
+
+  au!
+  au GUIEnter * set vb t_vb=
+
+augroup END
+
 " Make files starting with a shebang executable if they are not already. This
 " could potential be dangerous.
 autocmd BufWritePost * call AutoCmdChmodX()
