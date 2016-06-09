@@ -14,7 +14,7 @@ fi
 
 if [ "$color" -eq 1 ] || [ "$color" -eq 2 ]; then
 
-  termite -c "$DOTFILES_ROOT/home/.config/termite/light-config" "$@"
+  termite -c "$DOTFILES_ROOT/home/.config/termite/high-contrast-config" "$@"
 else
   termite -c "$DOTFILES_ROOT/home/.config/termite/config" "$@"
 fi
