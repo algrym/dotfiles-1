@@ -2,42 +2,40 @@
 font = Monospace 10
 
 [colors]
-
 # special
-foreground      = #00FF00
-foreground_bold = #0000FF
-cursor          = #00FF00
+foreground      = #FFDC00
+foreground_bold = #FFDC00
+cursor          = #FFDC00
 background      = #000000
 
 # black
-color9  = #999999
-color8  = #999999
+color0  = #000000
+color8  = #000000
 
 # red
-color1  = #FF0000
-color9  = #FF0000
+color1  = #FFBE00
+color9  = #FFBE00
 
 # green
-color2  = #00FF00
-color10 = #00FF00
+color2  = #FFDC00
+color10 = #FFBE00
 
 # yellow
-color3  = #FFFF00
-color11 = #FFFF00
+color3  = #FFDC00
+color11 = #FFBE00
 
 # blue
-color4  = #6666FF
-color12 = #0000FF
+color4  = #FFDE20
+color12 = #FFDE20
 
 # magenta
-color5  = #00FFFF
-color13 = #00FFFF
+color5  = #FFBE00
+color13 = #FFBE00
 
 # cyan
-color6  = #FF00FF
-color14 = #FF00FF
+color6  = #FFDC00
+color14 = #FFBE00
 
 # white
-color7  = #ffffff
-color15 = #ffffff
-
+color7  = #FFDC00
+color15 = #FFDC00
