@@ -192,7 +192,7 @@ alias ls='ls --color=auto'
 alias l='ls -lAh'
 alias ll='ls -lh'
 
-alias grep="grep --color=auto --exclude-dir={.git} --line-number"
+alias grep="grep --color=auto --exclude-dir={.git}"
 
 # }}}
 # Function and includes --------------------------------------------------- {{{
