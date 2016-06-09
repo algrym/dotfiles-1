@@ -19,7 +19,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Theme
 Plugin 'baskerville/bubblegum'
-Plugin 'vim-scripts/donbass.vim'
 
 " Basics
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -318,10 +317,10 @@ endfor
 " Toggle colors theme {{{
 "
 function! s:ToggleCS()
-  if g:colors_name == 'donbass'
-    execute 'colorscheme bubblegum-256-dark'
+  if g:colors_name == 'bubblegum-256-dark'
+    execute 'colorscheme default'
   else
-    execute 'colorscheme donbass'
+    execute 'colorscheme bubblegum-256-dark'
   endif
 endfunction
 
@@ -329,7 +328,7 @@ nnoremap <leader>t :call <SID>ToggleCS()<cr>
 
 " Use light these during the start of the day.
 let current_hour = system('date +"%H" | tr -d "\n"')
-if current_hour > 7 && current_hour < 15
+if current_hour > 7 && current_hour < 12
   call <SID>ToggleCS()
 endif
 
