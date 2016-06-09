@@ -3,7 +3,7 @@
 current_hour=$(date +"%H")
 color=0
 
-if [ "$current_hour" -gt 7 ] && [ "$current_hour" -lt 15 ]; then
+if [ "$current_hour" -gt 7 ] && [ "$current_hour" -lt 12 ]; then
   color=1
 fi
 
