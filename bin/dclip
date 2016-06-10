@@ -22,4 +22,4 @@ choice_number=$((choice_number + 1))
 full_clipboard=$(clipbored --last "$last" \
   | sed -n "$choice_number"'{s/[^0-9]*[0-9]* //p;q}')
 
-echo "$full_clipboard" | xclip -selection "${CLIPBORED_X_SELECTION:-primary}"
+printf "%s" "$full_clipboard" | xclip -selection "${CLIPBORED_X_SELECTION:-primary}"
