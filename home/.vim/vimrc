@@ -461,6 +461,26 @@ set foldlevelstart=10
 
 set foldmethod=indent
 
+" Automatic set foldmethod to manual when entering insert mode, this is done to
+" prevent vim from unfolding automatic folds, when the code changes.
+
+augroup LazyFolds
+
+  au!
+  au InsertEnter,WinLeave * :call <SID>LazyFolds(0)
+  au InsertLeave,WinEnter * :call <SID>LazyFolds(1)
+
+  function! s:LazyFolds(type)
+    if a:type == 0
+      let s:lazy_foldmethod=&foldmethod
+      setlocal foldmethod=manual
+    else
+      execute 'setlocal foldmethod=' . s:lazy_foldmethod
+    endif
+  endfunction
+
+augroup END
+
 " Make zO recursively open whatever fold we're in, even if it's partially open.
 nnoremap zO zczO
 
