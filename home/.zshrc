@@ -54,9 +54,10 @@ bindkey -e
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
-    printf "\n%s\n" "$(jobs)"
-    fg
-    zle accept-line
+    if [ $(jobs | wc -l) -gt 0 ]; then
+      fg
+      zle accept-line
+    fi
   else
     zle push-input
   fi
