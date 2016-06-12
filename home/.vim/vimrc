@@ -434,6 +434,8 @@ nnoremap <C-y> 2<C-y>
 
 " Emacs like keys for command line {{{
 
+cnoremap <C-b> <left>
+cnoremap <C-f> <right>
 cnoremap <C-a> <home>
 cnoremap <C-e> <end>
 
