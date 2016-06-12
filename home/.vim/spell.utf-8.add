@@ -11,6 +11,7 @@ filetype
 filetypes
 foldmethod
 github
+golang
 GPG
 i3
 i3wm
@@ -26,6 +27,8 @@ POSIX
 reindent
 reindented
 SuperOffice
+unicode
+utf8
 Vimscript
 vpnc
 x200
