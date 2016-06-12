@@ -147,6 +147,11 @@ setopt auto_menu
 setopt complete_in_word
 setopt always_to_end
 
+# Make <Tab> complete word left of cursor instead word under cursor:
+# sud|ls /etc/blah -> <Tab> -> sudols /etc/blah
+#    ^ Cursor
+bindkey '^i' expand-or-complete-prefix
+
 # Write part of command and press <Up>/<Down> complete it though history search
 # and bring the cursor to the end of the line
 autoload -U up-line-or-beginning-search
