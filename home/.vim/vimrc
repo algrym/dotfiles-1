@@ -233,9 +233,6 @@ nnoremap K :q<cr>
 " Man
 nnoremap M K
 
-" Don't move when undoing
-nnoremap u u<C-O>
-
 " Enable <C-z> in insert mode and keep selection in visual
 inoremap <C-z> <esc><C-z>a
 vnoremap <C-z> <esc><C-z>gv
