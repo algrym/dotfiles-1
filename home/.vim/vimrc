@@ -60,6 +60,7 @@ Plugin 'digitaltoad/vim-pug'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'yko/mojo.vim'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'vito-c/jq.vim'
 
 call vundle#end()
 
