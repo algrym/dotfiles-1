@@ -413,10 +413,6 @@ nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(st
 nnoremap n :normal! nzzzv<cr>
 nnoremap N :normal! Nzzzv<cr>
 
-" Sometimes I fuck up the modes and try to nagivate on insert mode
-inoremap jj <esc>j
-inoremap kk <esc>k
-
 " Quick way to exit insert mode
 inoremap jk <esc>
 
