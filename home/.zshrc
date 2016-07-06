@@ -92,9 +92,8 @@ bindkey -s ',sz' 'source ~/.zshrc\n'
 # }}}
 # Pre command and PS1, PS2, right PS1 ------------------------------------- {{{
 
-# Set this to one to disable git prompt, useful when needing to temporary
-# disable the prompt
-export NO_GIT_PROMPT=0
+# Set this to one to disable git prompt, on mounted drives
+export PROMPT_NO_MOUNT=1
 
 precmd () {
   # List most recent changed files when changing directory
@@ -112,12 +111,16 @@ precmd () {
   _prompt_sudo="$(sudo -n true 2> /dev/null && echo "%{$fg[red]%}\$" || echo "%{$fg[green]%}%%")"
 
   # Show git information on the right, unless we are in a mounted directory.
-  # Usually I mount samba drives, etc which might contain git repos, and the
+  # Usually I mount samba drives which might contain git repos, and the
   # prompt will stall if we are calling git status after each command
-  if [ "$NO_GIT_PROMPT" -gt 0 ] || [[ "$PWD" =~ "/mnt"* ]]; then
-    _prompt_git="%{$fg[red]%}NO GIT%{%b%}"
+  if git rev-parse --is-inside-work-tree &> /dev/null; then
+    if [[ "$PWD" =~ "/mnt"* ]] && [ "$PROMPT_NO_MOUNT" -eq 1 ]; then
+      _prompt_git="%{$fg[red]%}NO GIT%{%b%}"
+    else
+      _prompt_git="$(git-radar --zsh --fetch)"
+    fi
   else
-    _prompt_git="$(git-radar --zsh --fetch)"
+    _prompt_git=""
   fi
 }
 
