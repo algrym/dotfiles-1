@@ -1,2 +1,2 @@
-#!/usr/bin/env sh
+#!/bin/sh
 i3-sensible-terminal -e "vim $*"
