@@ -536,13 +536,10 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " }}}
 " Commentary {{{
 
-nmap <leader>c <Plug>CommentaryLine
-xmap <leader>c <Plug>Commentary
-
 augroup plugin_commentary
   au!
   au FileType sh,perl,ruby,python setlocal commentstring=#\ %s
-  au FileType c,javascript setlocal commentstring=//\ %s
+  au FileType c,javascript,rpgle setlocal commentstring=//\ %s
   au FileType vim setlocal commentstring=\"\ %s
   au FileType lisp,scheme setlocal commentstring=;\ %s
 augroup END
