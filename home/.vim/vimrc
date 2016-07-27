@@ -257,20 +257,6 @@ nnoremap zg zg:silent ! sort ~/.vim/spell.utf-8.add -o
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 
-" Toggle upper/lowercase on word under cursor
-function! s:ToggleCase()
-  :normal l
-  :normal mz
-  if expand("<cword>") =~ '[[:lower:]]'
-    :normal viwU
-  else
-    :normal viwu
-  endif
-  :normal `z
-  :startinsert
-endfunction
-inoremap <C-u> <esc>:call <SID>ToggleCase()<cr>
-
 " Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
 " positioned inside of them AND the following code doesn't get unfolded.
 inoremap {<cr> {}<left><cr><tab>.<cr><esc>kA<bs>
