@@ -56,6 +56,9 @@ export PATH
 # }}}
 # Start X and map keys ---------------------------------------------------- {{{
 
+# Remap <CapsLock> to <Ctrl>
+loadkeys /usr/share/kbd/keymaps/i386/qwerty/emacs2.map.gz
+
 # Auto start i3wm if tty1 (<Alt-S-F1>)
 if [ "$TTY" = "/dev/tty1" ]; then
   startx
