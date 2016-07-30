@@ -97,9 +97,8 @@ export PROMPT_NO_MOUNT=1
 
 precmd () {
   # List most recent changed files when changing directory
-  if [ ! "$_OLD_DIR" = "$PWD" ]; then
+  if [ ! "$OLDPWD" = "$PWD" ]; then
     ls --color=always -lAht | sed '1d;7q'
-    export _OLD_DIR="$PWD"
   fi
 
   # Set terminal title to current directory
