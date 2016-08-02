@@ -220,6 +220,17 @@ work() {
   _update_open_suggest
 }
 
+# Exit files from PATH list:
+vibin() {
+  loc=$(which -p "$1")
+  if [ $? -eq 0 ]; then
+    $EDITOR "$loc"
+  else
+    printf "%s\n" "$loc"
+    return 1
+  fi
+}
+
 # Update PATH list, nice when just installed a program and want to run it
 # immediately, but are to lazy to type the full name
 u() {
@@ -240,5 +251,7 @@ fi
 
 # Auto Complete the following scripts
 compdef _gnu_generic zipSeries
+
+compdef "_files -W '${PATH//:/"'; _files -W '"}'" vibin
 
 # }}}
