@@ -162,14 +162,14 @@ bindsym $mod+Shift+g exec "chromium-sl --incognito"
 bindsym $mod+f exec filezilla
 
 # Open node REPL
-bindsym $mod+Shift+t exec terminal-date -e node
+bindsym $mod+Shift+t exec termite -e node
 
 # Open 5250 emulator
 bindsym $mod+Shift+Return exec --no-startup-id "acs-launch"
 
 # Open terminal, with theme that suits the time of day
-bindsym $mod+Return exec terminal-date
-bindsym $mod+t exec terminal-date -r
+bindsym $mod+Return exec termite
+bindsym $mod+t exec termite
 
 # Clipboard manager
 bindsym $mod+d exec --no-startup-id dclip
