@@ -22,6 +22,7 @@
   untracked = red bold
 [diff]
   tool = vimdiff
+  compactionHeuristic = true
 [difftool]
   prompt = false
 [url "git@github.com:"]
