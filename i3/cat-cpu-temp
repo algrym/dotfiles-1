@@ -10,7 +10,8 @@
 readonly out="/tmp/cat-batt.uevent"
 readonly bat1="/sys/class/power_supply/BAT1/uevent"
 
-cd /sys/devices/platform/coretemp.0/hwmon/hwmon2 2> /dev/null \
+cd /sys/devices/platform/coretemp.0/hwmon/hwmon1 2> /dev/null \
+	|| cd /sys/devices/platform/coretemp.0/hwmon/hwmon2 2> /dev/null \
 	|| cd /sys/devices/platform/coretemp.0/hwmon/hwmon3 2> /dev/null \
 	|| exit 5
 while :; do
