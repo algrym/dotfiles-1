@@ -4,12 +4,14 @@
 setxkbmap us
 
 # Monotor
-reddit-wallpaper
 xbacklight -set 100
 if pgrep redshift; then
 	killall -9 redshift
 fi
 redshift &
+
+feh --bg-fill "$DOTFILES_ROOT/wallpaper.jpg"
+compton -bf -i 0.8 -e 0.8 --no-fading-openclose
 
 # Adjust monitors on docking
 dockd start
@@ -24,8 +26,6 @@ if [ $? = 0 ]; then
 	kill -9 "$pid"
 fi
 xautolock -time 5 -locker "lockscreen --delayed" &
-# Subscribe to suspend, hibernate and lock the screen
-xss-lock -- lockscreen &
 
 # Volume
 amixer sset Master mute

@@ -9,6 +9,9 @@ set $mod Mod1
 
 set $root_dir $DOTFILES_ROOT
 
+gaps inner 10
+gaps outer 2
+
 # }}}
 # Container focus --------------------------------------------------------- {{{
 
@@ -208,12 +211,11 @@ bindsym $mod+Print exec --no-startup-id scrot --quality 100 "$HOME/Pictures/Scre
 
 font pango:Monospace, Awesome 12px
 
-#                       border  backgr. text    indica.
-client.focused          #000000 #000000 #D7D787 #555555
-client.unfocused        #000000 #000000 #999999 #555555
-client.focused_inactive #000000 #000000 #999999 #555555
-client.urgent           #a41700 #a41700 #fafafa #555555
-
+# Assign colors         (Border/Background/Text/Indicator).
+client.focused          #3465A4 #204A87 #EEEEEC #3465A4
+client.focused_inactive #888A85 #555753 #BABDB6 #888A85
+client.unfocused        #555753 #2E3436 #BABDB6 #888A85
+client.urgent           #EF2929 #CC0000 #EEEEEC #EF2929
 # }}}
 # Status bar -------------------------------------------------------------- {{{
 
@@ -224,10 +226,13 @@ bar {
   modifier $mod
 
   colors {
-    # class            border  backgrd text
-    focused_workspace  #D7D787 #D7D787 #000000
-    inactive_workspace #000000 #000000 #696f89
-    urgent_workspace   #a41700 #a41700 #fafafa
+    background              #222222
+    separator               #444444
+    statusline              #888A85
+    active_workspace        #BABDB6 #888A85 #BABDB6
+    focused_workspace       #3465A4 #204A87 #EEEEEC
+    inactive_workspace      #555753 #2E3436 #BABDB6
+    urgent_workspace        #CC0000 #A40000 #EEEEEC
   }
 }
 
