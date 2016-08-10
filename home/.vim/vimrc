@@ -40,6 +40,9 @@ Plugin 'sjl/gundo.vim'
 " Auto insert quotes, ...
 Plugin 'Raimondi/delimitMate'
 
+" More and better text objects
+Plugin 'wellle/targets.vim'
+
 " Auto detect tabstop, shiftwidth, softtabstop and expandtab
 Plugin 'tpope/vim-sleuth'
 
@@ -277,16 +280,6 @@ nnoremap <leader>n :setlocal number!<bar>setlocal relativenumber!<cr>
 
 " Toggle invisible characters
 nnoremap <leader>i :set list!<cr>
-
-" }}}
-" More text objects {{{
-"
-for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '%', '`' ]
-  execute 'xnoremap i' . char . ' :<C-u>normal! T' . char . 'vt' . char . '<CR>'
-  execute 'onoremap i' . char . ' :normal vi' . char . '<CR>'
-  execute 'xnoremap a' . char . ' :<C-u>normal! F' . char . 'vf' . char . '<CR>'
-  execute 'onoremap a' . char . ' :normal va' . char . '<CR>'
-endfor
 
 " }}}
 " Wrap in quotes, brackets, and other special characters {{{
