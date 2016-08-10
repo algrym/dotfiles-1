@@ -192,22 +192,16 @@ set formatoptions=qrn1j
 " }}}
 " Backups {{{
 
-set backup                        " enable backups
 set noswapfile                    " Got 16GB of memory
+set nowritebackup                 " We still have undo list after close/reopen,
+                                  " and this is mangling the original creation
+                                  " date of the target file.
 
 set undodir=~/.vim/tmp/undo//     " undo files
-set backupdir=~/.vim/tmp/backup// " backups
-set directory=~/.vim/tmp/swap//   " swap files
 
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
     call mkdir(expand(&undodir), "p")
-endif
-if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), "p")
-endif
-if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
 endif
 
 " }}}
