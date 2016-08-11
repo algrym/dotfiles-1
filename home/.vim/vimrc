@@ -50,9 +50,6 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" Distraction free
-Plugin 'junegunn/goyo.vim'
-
 " Language specific plugins
 Plugin 'pangloss/vim-javascript'
 Plugin 'andlrc/rpgle.vim'
@@ -548,28 +545,9 @@ nnoremap <leader>. :CtrlPBuffer<cr>
 let delimitMate_excluded_ft = "lisp"
 
 " }}}
-" Goyo {{{
-
-function! s:goyo_enter()
-  silent !i3-msg fullscreen enable
-endfunction
-
-function! s:goyo_leave()
-  silent !i3-msg fullscreen disable
-endfunction
-
-nnoremap <leader>g :Goyo<cr>
-
-augroup GoyoEvents
-  au!
-  au User GoyoEnter nested :call <SID>goyo_enter()
-  au User GoyoLeave nested :call <SID>goyo_leave()
-augroup END
-
-" }}}
 " Gundo {{{
 
-nnoremap <F4> :GundoToggle<CR>
+nnoremap <F9> :GundoToggle<CR>
 
 " }}}
 " Supertab {{{
