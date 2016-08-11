@@ -221,9 +221,7 @@ iabbrev al@ andreas@louv.dk
 " Convenience mappings ---------------------------------------------------- {{{
 
 " Kill window
-nnoremap K :q<cr>
-
-nnoremap <buffer> M :call <SID>VimHelp()<cr>
+nnoremap M :q<cr>
 
 " Enable <C-z> in insert mode and keep selection in visual
 inoremap <C-z> <esc><C-z>a
@@ -442,26 +440,6 @@ function! MyFoldText() " {{{
   return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
-
-" }}}
-" Manual / Help ----------------------------------------------------------- {{{
-
-" Since K is overridden to exit vim the man page lookup needs to be remapped:
-" Man
-nnoremap M :call <SID>VimHelp()<CR>
-
-function! s:VimHelp()
-  let l:word = expand("<cword>")
-
-  if l:word != ''
-    if &ft == 'vim'
-      execute ':help ' . l:word
-    else
-      execute ':silent !man ' . l:word
-      :redraw!
-    endif
-  endif
-endfunction
 
 " }}}
 " Auto Commands ----------------------------------------------------------- {{{
