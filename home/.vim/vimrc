@@ -94,8 +94,6 @@ set matchtime=0
 set showbreak=↪
 set splitbelow
 set splitright
-set autowrite
-set autoread
 set shiftround
 set title
 set linebreak
