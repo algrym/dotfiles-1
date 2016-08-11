@@ -1,8 +1,48 @@
 root := $$(git rev-parse --show-toplevel)
 
-all: clean install
-install: rc-install vim-install
-clean: rc-clean vim-clean
+all:
+	@echo "Run:"
+	@echo "  deps-install"
+	@echo "  yaourt-install"
+	@echo "  dash-install"
+	@echo "  rc-install"
+	@echo "  vim-install"
+
+deps-install:
+	sudo pacman -S base-devel gvim xorg-backlight sysstat alsa-utils termite \
+		xautolock chromium nodejs npm feh acpi acpid ttf-dejavu redshift xclip ed \
+		rdesktop openssh deadbeef imagemagick scrot dmenu perl-json
+
+	sudo npm install -g jscs
+	sudo cpan install Perl::Critic
+	sudo pacman -S shellcheck
+
+	git clone https://github.com/trapd00r/clipbored "$(HOME)/.clipbored" || true
+	git clone https://github.com/andlrc/lockscreen "$(HOME)/work/lockscreen" || true
+	git clone https://github.com/michaeldfallen/git-radar "$(HOME)/.git-radar" || true
+
+yaourt-install:
+	mkdir -p build
+	rm -rf build/package-query 2> /dev/null || true
+	git clone https://aur.archlinux.org/package-query.git build/package-query
+	cd build/package-query; \
+		makepkg -si
+
+	rm -rf build/yaourt 2> /dev/null || true
+	git clone https://aur.archlinux.org/yaourt.git build/yaourt
+	cd build/yaourt; \
+		makepkg -si
+
+dash-install:
+	sudo pacman -S dash
+	sudo ln -sfT dash /bin/sh
+	sudo sed -i '/^\[options\]/,/^\[/ { /^NoUpgrade\|^NoExtract/d; }' /etc/pacman.conf
+	( echo '/\[options\]/a'; \
+		echo 'NoUpgrade = usr/bin/sh'; \
+		echo 'NoExtract = usr/bin/sh'; \
+		echo '.'; \
+		echo 'w'; \
+	) | sudo ed -s /etc/pacman.conf
 
 rc-clean:
 	git log --pretty=format: --name-only --diff-filter=A | sort -u \
