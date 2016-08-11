@@ -200,9 +200,7 @@ bindcode $mod+72 exec --no-startup-id "backlight-tune 10 && killall -USR1 i3stat
 # }}}
 # Screenshot {{{
 
-bindsym Print exec --no-startup-id scrot --focused --quality 100 "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
-
-bindsym $mod+Print exec --no-startup-id scrot --quality 100 "$HOME/Pictures/Screenshots/$(date +%Y-%m-%d_%H:%M:%S).png"
+bindsym Print exec --no-startup-id scrot --focused --quality 100 "$HOME/Downloads/screenshot-$(date +%Y-%m-%d_%H:%M:%S).png"
 
 # }}}
 
