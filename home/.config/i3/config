@@ -9,6 +9,9 @@ set $mod Mod1
 
 set $root_dir $DOTFILES_ROOT
 
+# }}}
+# Gaps {{{
+
 gaps inner 10
 gaps outer 2
 smart_gaps on
@@ -224,6 +227,8 @@ bar {
   mode hide
   hidden_state hide
   modifier $mod
+  tray_output no
+  strip_workspace_numbers yes
 
   colors {
     background              #222222
