@@ -495,7 +495,6 @@ augroup END
 
 " AirLine {{{
 
-let g:airline_powerline_fonts = 1
 let g:airline_theme = 'base16'
 
 " Enable the list of buffers
