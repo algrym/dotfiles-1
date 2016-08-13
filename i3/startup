@@ -11,7 +11,8 @@ fi
 redshift &
 
 feh --bg-fill "$DOTFILES_ROOT/wallpaper.jpg"
-compton -bf -i 0.8 -e 0.8 --no-fading-openclose
+compton --opengl --sw-opti --vsync opengl-swc --paint-on-overlay \
+	-fb -i 0.8 -e 0.8 --no-fading-openclose --backend glx
 
 # Adjust monitors on docking
 dockd start
