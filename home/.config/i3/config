@@ -244,26 +244,25 @@ bar {
 # }}}
 # Startup scripts --------------------------------------------------------- {{{
 
-exec --no-startup-id '$root_dir/i3/cat-batt'
-exec --no-startup-id '$root_dir/i3/cat-cpu-temp'
+exec --no-startup-id "$root_dir/i3/cat-batt"
+exec --no-startup-id "$root_dir/i3/cat-cpu-temp"
 
-exec --no-startup-id 'setxkbmap us'
-exec --no-startup-id 'xbacklight -set 100'
-exec --no-startup-id 'redshift'
-exec --no-startup-id 'dunst'
+exec --no-startup-id "setxkbmap us"
+exec --no-startup-id "xbacklight -set 100"
+exec --no-startup-id "redshift"
+exec --no-startup-id "dunst"
 
-exec_always --no-startup-id 'feh --bg-fill "$DOTFILES_ROOT/wallpaper.jpg"'
+exec_always --no-startup-id "feh --bg-fill \"$root_dir/wallpaper.jpg\""
 
-exec --no-startup-id 'compton --opengl --sw-opti --vsync opengl-swc --paint-on-overlay \
-  -fb -i 0.8 -e 0.8 --no-fading-openclose --backend glx'
+exec --no-startup-id "compton --opengl --sw-opti --vsync opengl-swc --paint-on-overlay -fb -i 0.8 -e 0.8 --no-fading-openclose --backend glx"
 
-exec --no-startup-id 'dockd start'
-exec --no-startup-id 'cvim-server'
-exec --no-startup-id 'xautolock -time 5 -locker "lockscreen --delayed"'
+exec --no-startup-id "dockd start"
+exec --no-startup-id "cvim-server"
+exec --no-startup-id "xautolock -time 5 -locker 'lockscreen --delayed'"
 
-exec --no-startup-id 'amixer sset Master mute'
-exec --no-startup-id 'amixer sset Master 30%'
+exec --no-startup-id "amixer sset Master mute"
+exec --no-startup-id "amixer sset Master 30%"
 
-exec --no-startup-id 'clipbored'
+exec --no-startup-id "clipbored"
 
 # }}}
