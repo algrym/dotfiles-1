@@ -213,6 +213,13 @@ colorscheme bubblegum-256-dark
 " }}}
 
 " }}}
+" Gvim cursor ------------------------------------------------------------- {{{
+
+if has("gui_running")
+  set guicursor=a:block-cursor
+endif
+
+" }}}
 " Abbreviations ----------------------------------------------------------- {{{
 
 iabbrev al@ andreas@louv.dk
