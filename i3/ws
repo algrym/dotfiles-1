@@ -1,0 +1,21 @@
+#!/bin/sh
+
+current_id=$(i3-msg -t get_workspaces | jq '.[] | select(.focused) | .num')
+new_id=$1
+
+# Change to workspace
+ws_name=$(sed '/ws'"$new_id"'/!d;s/.*"\(.*\)".*/\1/;q' \
+  "$DOTFILES_ROOT/home/.config/i3/config")
+
+i3-msg workspace "$ws_name"
+
+if ! [ "$current_id" = "$new_id" ]; then
+  case $new_id in
+    9) deadbeef;;
+    10)
+      if ! pgrep '^mutt$'; then
+        termite -e 'mutt' -t 'mutt-mail'
+      fi
+      ;;
+  esac
+fi
