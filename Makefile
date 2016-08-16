@@ -11,7 +11,8 @@ all:
 deps-install:
 	sudo pacman -S base-devel gvim xorg-backlight sysstat alsa-utils termite \
 		xautolock chromium nodejs npm feh acpi acpid ttf-dejavu redshift xclip ed \
-		rdesktop openssh deadbeef imagemagick scrot dmenu perl-json
+		rdesktop openssh deadbeef imagemagick scrot dmenu perl-json \
+		msmtp fetchmail procmail mutt
 
 	sudo npm install -g jscs
 	sudo cpan install Perl::Critic
