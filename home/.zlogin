@@ -1,6 +1,6 @@
 # vim: fdm=marker fmr={{{,}}} fdl=0
 # Author Andreas Louv <andreas@louv.dk>
-# This is my personal zsh configuration. 
+# This is my personal zsh configuration.
 # Use at own risk, NO WARRANTY, to the extent permitted by law.
 # Environment Variables --------------------------------------------------- {{{
 
@@ -54,14 +54,8 @@ path+=(
 export PATH
 
 # }}}
-# Start X and map keys ---------------------------------------------------- {{{
+# Source .zshrc ----------------------------------------------------------- {{{
 
-# Remap <CapsLock> to <Ctrl>
-loadkeys /usr/share/kbd/keymaps/i386/qwerty/emacs2.map.gz
-
-# Auto start i3wm if tty1 (<Alt-S-F1>)
-if [ "$TTY" = "/dev/tty1" ]; then
-  startx
-fi
+source ~/.zshrc
 
 # }}}

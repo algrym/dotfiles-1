@@ -4,6 +4,12 @@
 # Use at own risk, NO WARRANTY, to the extent permitted by law.
 # Basic Settings ---------------------------------------------------------- {{{
 
+# zsh souces .zshrc before .zlogin, I do NOT like that!
+if [ -z "$DOTFILES_ROOT" ]; then
+  return
+fi
+
+
 # noclobber: Prevent overwriting of files by redirection
 # Can be overridden with '>|'
 set -C
