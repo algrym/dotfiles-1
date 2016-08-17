@@ -452,7 +452,7 @@ function! MyFoldText() " {{{
     let s:width = 80
   endif
   let s:left_max = s:width - len(s:count)
-  let s:left = substitute(s:left, '\v(.{' . (s:left_max - 3) . '}).*', '\1...', '')
+  let s:left = substitute(s:left, '\v(.{' . (s:left_max - 1) . '}).*', '\1…', '')
   let s:left = s:left . repeat(' ', s:left_max - len(s:left))
 
   return s:left . s:count
