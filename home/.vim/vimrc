@@ -7,7 +7,7 @@
 " Henrik Nyh, Martin Grenfell and many others for fantastic help and
 " inspiration
 
-" Basic options ----------------------------------------------------------- {{{
+" Basic options {{{
 
 " Vundle {{{
 
@@ -213,19 +213,19 @@ colorscheme bubblegum-256-dark
 " }}}
 
 " }}}
-" Gvim cursor ------------------------------------------------------------- {{{
+" Gvim cursor {{{
 
 if has("gui_running")
   set guicursor=a:block-cursor
 endif
 
 " }}}
-" Abbreviations ----------------------------------------------------------- {{{
+" Abbreviations {{{
 
 iabbrev al@ andreas@louv.dk
 
 " }}}
-" Convenience mappings ---------------------------------------------------- {{{
+" Convenience mappings {{{
 
 " Kill window
 nnoremap M :q<cr>
@@ -326,7 +326,7 @@ inoremap <c-l> <c-x><c-l>
 " }}}
 
 " }}}
-" Quick editing ----------------------------------------------------------- {{{
+" Quick editing {{{
 
 nnoremap <leader>ev :split $MYVIMRC<cr>
 nnoremap <leader>ez :split ~/.zshrc<cr>
@@ -341,7 +341,7 @@ nnoremap <leader>ew :e <C-r>=expand("%:p:h")."/"<CR>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " }}}
-" Searching and movement -------------------------------------------------- {{{
+" Searching and movement {{{
 
 " Use sane regexes.
 nnoremap / /\v
@@ -413,7 +413,7 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
 " }}}
 "
 " }}}
-" Folding ----------------------------------------------------------------- {{{
+" Folding {{{
 
 set foldlevelstart=10
 
@@ -442,21 +442,26 @@ augroup END
 " Make zO recursively open whatever fold we're in, even if it's partially open.
 nnoremap zO zczO
 
+set fillchars+=fold:\ 
+
 function! MyFoldText() " {{{
-  let line = ' ' . substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g') . ' '
-  let lines_count = v:foldend - v:foldstart + 1
-  let lines_count_text = '| ' . printf("%10s", lines_count . ' lines') . ' |'
-  let foldchar = matchstr(&fillchars, 'fold:\zs.')
-  let foldtextstart = strpart('+' . repeat(foldchar, v:foldlevel*2) . line, 0, (winwidth(0)*2)/3)
-  let foldtextend = lines_count_text . repeat(foldchar, 8)
-  let foldtextlength = strlen(substitute(foldtextstart . foldtextend, '.', 'x', 'g')) + &foldcolumn
-  return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
+  let s:left = substitute(getline(v:foldstart), '{{' . '{', '', 'g')
+  let s:count = printf(' # %2d lines', v:foldend - v:foldstart + 1)
+  let s:width = &textwidth
+  if s:width == 0
+    let s:width = 80
+  endif
+  let s:left_max = s:width - len(s:count)
+  let s:left = substitute(s:left, '\v(.{' . (s:left_max - 3) . '}).*', '\1...', '')
+  let s:left = s:left . repeat(' ', s:left_max - len(s:left))
+
+  return s:left . s:count
 endfunction " }}}
 
 set foldtext=MyFoldText()
 
 " }}}
-" Auto Commands ----------------------------------------------------------- {{{
+" Auto Commands {{{
 
 " Disable blink on first + last line
 augroup GuiVim
@@ -494,7 +499,7 @@ augroup NewFT
 augroup END
 
 " }}}
-" Plugin settings --------------------------------------------------------- {{{
+" Plugin settings {{{
 
 " AirLine {{{
 

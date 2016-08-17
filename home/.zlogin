@@ -2,7 +2,7 @@
 # Author Andreas Louv <andreas@louv.dk>
 # This is my personal zsh configuration.
 # Use at own risk, NO WARRANTY, to the extent permitted by law.
-# Environment Variables --------------------------------------------------- {{{
+# Environment Variables {{{
 
 export DOTFILES_ROOT="$HOME/work/dotfiles"
 
@@ -54,7 +54,7 @@ path+=(
 export PATH
 
 # }}}
-# Source .zshrc ----------------------------------------------------------- {{{
+# Source .zshrc {{{
 
 source ~/.zshrc
 

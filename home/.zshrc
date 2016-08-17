@@ -2,7 +2,7 @@
 # Author Andreas Louv <andreas@louv.dk>
 # This is my personal zsh configuration.
 # Use at own risk, NO WARRANTY, to the extent permitted by law.
-# Basic Settings ---------------------------------------------------------- {{{
+# Basic Settings {{{
 
 # zsh souces .zshrc before .zlogin, I do NOT like that!
 if [ -z "$DOTFILES_ROOT" ]; then
@@ -43,7 +43,7 @@ setopt pushd_ignore_dups
 setopt pushdminus
 
 # }}}
-# History configuration --------------------------------------------------- {{{
+# History configuration {{{
 
 setopt HIST_IGNORE_SPACE
 HISTSIZE=1000000000
@@ -52,7 +52,7 @@ SAVEHIST=1000000000
 HISTFILE="$HOME/.zsh/history"
 
 # }}}
-# Convenience mappings ---------------------------------------------------- {{{
+# Convenience mappings {{{
 
 bindkey -e
 
@@ -96,7 +96,7 @@ bindkey -s ',sz' 'source ~/.zshrc\n'
 # }}}
 
 # }}}
-# Pre command and PS1, PS2, right PS1 ------------------------------------- {{{
+# Pre command and PS1, PS2, right PS1 {{{
 
 # Set this to one to disable git prompt, on mounted drives
 export PROMPT_NO_MOUNT=1
@@ -144,7 +144,7 @@ declare -x RPROMPT="\$_prompt_git"
 # }}}
 
 # }}}
-# Command completion ------------------------------------------------------ {{{
+# Command completion {{{
 
 # Enable <tab> completion
 autoload -U compinit promptinit
@@ -194,7 +194,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 compdef '_files -W /etc/vpnc' vpnc
 
 # }}}
-# Aliases ----------------------------------------------------------------- {{{
+# Aliases {{{
 
 alias cd..="cd .."
 # Suppress annoying directory print when directory is found in '$CDPATH'
@@ -211,7 +211,7 @@ alias ll='ls -lh'
 alias grep="grep --color=auto --exclude-dir={.git}"
 
 # }}}
-# Function and includes --------------------------------------------------- {{{
+# Function and includes {{{
 
 _update_open_suggest() {
   local arg="_files -W '$PWD'; _files -W '${CDPATH//:/"'; _files -W '"}'"

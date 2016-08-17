@@ -2,7 +2,7 @@
 # Author Andreas Louv <andreas@louv.dk>
 # This is my personal i3 configuration.
 # Use at own risk, NO WARRANTY, to the extent permitted by law.
-# Variables --------------------------------------------------------------- {{{
+# Variables {{{
 
 # Mod1 = Alt
 set $mod Mod1
@@ -28,7 +28,7 @@ smart_gaps on
 smart_borders on
 
 # }}}
-# Container focus --------------------------------------------------------- {{{
+# Container focus {{{
 
 # Change focuced container
 bindsym $mod+h focus left
@@ -55,7 +55,7 @@ bindsym $mod+9 exec --no-startup-id $root_dir/i3/ws 9
 bindsym $mod+0 exec --no-startup-id $root_dir/i3/ws 10
 
 # }}}
-# Container movement ------------------------------------------------------ {{{
+# Container movement {{{
 
 # Move focuced container
 bindsym $mod+Shift+h move left
@@ -76,7 +76,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # }}}
-# Container layout -------------------------------------------------------- {{{
+# Container layout {{{
 
 # Minimal border between windows
 new_window normal 1 px
@@ -95,12 +95,12 @@ bindsym $mod+e layout toggle split
 bindsym $mod+space fullscreen
 
 # }}}
-# Fix floating ------------------------------------------------------------ {{{
+# Fix floating {{{
 
 for_window [class="^rdesktop"] floating disable
 
 # }}}
-# Modes ------------------------------------------------------------------- {{{
+# Modes {{{
 
 bindsym $mod+r mode "resize"
 bindsym $mod+m mode "Move workspace"
@@ -142,7 +142,7 @@ mode "Move workspace" {
 # }}}
 
 # }}}
-# Other key binds --------------------------------------------------------- {{{
+# Other key binds {{{
 
 # Open remote desktop as big as current monitor size
 bindsym $mod+i exec "rdesktop -g $(xrandr | perl -nle 'print $1-5, x, $2-20 if /connected \K(\d+x)(\d+)/') -P -z -x 1 -r sound:off -u and DKSRV02"
@@ -221,7 +221,7 @@ bindsym Print exec --no-startup-id scrot --focused --quality 100 "$HOME/Download
 # }}}
 
 # }}}
-# Colors and font --------------------------------------------------------- {{{
+# Colors and font {{{
 
 font pango:Monospace, Awesome 12px
 
@@ -231,7 +231,7 @@ client.focused_inactive #888A85 #555753 #BABDB6 #888A85
 client.unfocused        #555753 #2E3436 #BABDB6 #888A85
 client.urgent           #EF2929 #CC0000 #EEEEEC #EF2929
 # }}}
-# Status bar -------------------------------------------------------------- {{{
+# Status bar {{{
 
 bar {
   status_command "$root_dir/i3/status"
@@ -253,7 +253,7 @@ bar {
 }
 
 # }}}
-# Startup scripts --------------------------------------------------------- {{{
+# Startup scripts {{{
 
 exec --no-startup-id "$root_dir/i3/cat-batt"
 exec --no-startup-id "$root_dir/i3/cat-cpu-temp"
