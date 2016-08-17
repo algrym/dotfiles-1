@@ -9,7 +9,7 @@ ws_name=$(sed '/ws'"$new_id"'/!d;s/.*"\(.*\)".*/\1/;q' \
 
 i3-msg workspace "$ws_name"
 
-if ! [ "$current_id" = "$new_id" ]; then
+if [ "$current_id" != "$new_id" ]; then
   case $new_id in
     9) deadbeef;;
     10)
