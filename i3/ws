@@ -9,8 +9,23 @@ ws_name=$(sed '/ws'"$new_id"'/!d;s/.*"\(.*\)".*/\1/;q' \
 
 i3-msg workspace "$ws_name"
 
+is_workspace_empty() {
+  i3-save-tree --workspace "$1" | sed -n '2q1'
+}
+append_layout() {
+  i3-msg "append_layout $DOTFILES_ROOT/i3/workspace-$1.json"
+}
+
 if [ "$current_id" != "$new_id" ]; then
   case $new_id in
+    3)
+      if is_workspace_empty "$ws_name"; then
+        append_layout 3
+        chromium
+        termite &
+        acs-launch
+      fi
+      ;;
     9) deadbeef;;
     10)
       if ! pgrep '^mutt$'; then

@@ -1,0 +1,22 @@
+{
+    "layout": "splitv",
+    "percent": 0.5,
+    "nodes": [
+        {
+            "percent": 0.5,
+            "swallows": [ { "class": "(?i)^chromium$" } ]
+        },
+        {
+            "percent": 0.5,
+            "swallows": [ {
+                "class": "com-ibm-iaccess-launch-AcsLaunchPad",
+                "instance": "sun-awt-X11-XFramePeer"
+            } ]
+        }
+    ]
+}
+
+{
+    "percent": 0.5,
+    "swallows": [ { "class": "(?i)^termite$" } ]
+}
