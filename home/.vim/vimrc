@@ -238,24 +238,13 @@ vnoremap <C-z> <esc><C-z>gv
 vnoremap <leader>s :!sort<cr>
 
 " Clean trailing whitespace
-nnoremap <silent> <leader>ww mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+nnoremap <silent> <leader>ww mz:let z=@/<cr>:%s/\s\+$//<cr>:let @/=z<cr>`z
 
 " Keep the cursor in place while joining lines
 nnoremap J mzJ`z
 
-" Split line (sister to [J]oin lines)
-nnoremap S :call <SID>SplitLine()<cr>
-
-function s:SplitLine()
-  let l:search = @/
-  :execute "normal! i\<cr>"
-  :normal ^mzgk
-  :silent! s/\v +$//
-  :noh
-  :normal `z
-  let @/ = l:search
-endfunction
-"i<cr><esc>^mwgk:let a=@/<cr>:silent! s/\v +$//<cr>:let @/=a<cr>z:noh<cr>`w
+" Split Line
+nnoremap S :let z=@/<cr>i<cr><esc>^mzgk:s/\v\s+$//<cr>:let @/=z<cr>`z
 
 " zg will add <cword> to the custom spell file, sort that file after adding
 nnoremap zg zg:silent ! sort ~/.vim/spell.utf-8.add -o
