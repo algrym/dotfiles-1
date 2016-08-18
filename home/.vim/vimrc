@@ -433,9 +433,11 @@ nnoremap zO zczO
 
 set fillchars+=fold:\ 
 
+hi Folded term=standout ctermfg=9
+
 function! MyFoldText() " {{{
   let s:left = substitute(getline(v:foldstart), '{{' . '{', '', 'g')
-  let s:count = printf(' # %2d lines', v:foldend - v:foldstart + 1)
+  let s:count = printf(' ' . &commentstring, printf('%2d lines', v:foldend - v:foldstart + 1))
   let s:width = &textwidth
   if s:width == 0
     let s:width = 80
