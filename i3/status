@@ -28,9 +28,10 @@ while (my ($statusline) = (<$i3status> =~ /^,?(.*)/)) {
   }
 
   # Backlight
+  my $backlight = `xbacklight`;
   splice(@blocks, -1, 0, {
-    full_text => sprintf("\x{f0eb} %.0f", `xbacklight`)
-  });
+    full_text => sprintf("\x{f0eb} %.0f", $backlight)
+  }) unless defined $backlight;
 
   # Keyboard layout
   my ($keyboard_layout) = `setxkbmap -query` =~ /layout:\s+(.*?)$/;
