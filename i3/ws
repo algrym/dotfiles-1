@@ -20,10 +20,12 @@ if [ "$current_id" != "$new_id" ]; then
   case $new_id in
     3)
       if is_workspace_empty "$ws_name"; then
-        append_layout 3
-        chromium
-        termite &
-        acs-launch
+        if [ "$(printf "YES\nNO\n" | dmenu -p "Open workspace?")" = "YES" ]; then
+          append_layout 3
+          chromium
+          termite &
+          acs "$HOME/IBM/iAccessClient/Emulator/DKSRV206.hod"
+        fi
       fi
       ;;
     9)
