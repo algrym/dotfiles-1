@@ -1,8 +1,16 @@
-! Remap <CapsLock> -> <Escape>
+! Remap <CapsLock> -> <Esc>
 clear lock
 keycode 66 = Escape
 
-! Swap <Win> and <Alt>
+! Remap <Esc> so that we can type æøå by pressing <Esc>+;'[
+clear Mod3
+keycode 9 = Mode_switch
+
+keycode  47 = semicolon colon U00E6 U00C6
+keycode  48 = apostrophe quotedbl U00F8 U00D8
+keycode  34 = bracketleft braceleft U00E5 U00C5
+
+! Swap <Super> and <Alt>
 clear Mod1
 clear Mod4
 add Mod1 = Super_L Super_R
