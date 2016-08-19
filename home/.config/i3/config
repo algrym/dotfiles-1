@@ -4,7 +4,7 @@
 # Use at own risk, NO WARRANTY, to the extent permitted by law.
 # Variables {{{
 
-# Mod1 = Alt
+# Use Mod4 (SUPER_L) which is mapped on <Alt> see ../../.Xmodmap
 set $mod Mod4
 set $root_dir $DOTFILES_ROOT
 
