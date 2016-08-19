@@ -1,0 +1,13 @@
+{
+    "layout": "splitv",
+    "nodes": [
+        {
+            "percent": 0.7,
+            "swallows": [ { "class": "(?i)^deadbeef$" } ]
+        },
+        {
+            "percent": 0.3,
+            "swallows": [ { "class": "(?i)^termite$" } ]
+        }
+    ]
+}

@@ -26,7 +26,13 @@ if [ "$current_id" != "$new_id" ]; then
         acs-launch
       fi
       ;;
-    9) deadbeef;;
+    9)
+      if is_workspace_empty "$ws_name"; then
+        append_layout 9
+        deadbeef &
+        termite -d ~/Music &
+      fi
+      ;;
     10)
       if ! pgrep '^mutt$'; then
         termite -e 'mutt' -t 'mutt-mail'
