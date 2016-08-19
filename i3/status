@@ -33,12 +33,6 @@ while (my ($statusline) = (<$i3status> =~ /^,?(.*)/)) {
     full_text => sprintf("\x{f0eb} %.0f", $backlight)
   }) unless defined $backlight;
 
-  # Keyboard layout
-  my ($keyboard_layout) = `setxkbmap -query` =~ /layout:\s+(.*?)$/;
-  splice(@blocks, -1, 0, {
-    full_text => sprintf("\x{f11c} %s", uc $keyboard_layout)
-  });
-
   print encode_json(\@blocks) . ",\n";
 }
 
