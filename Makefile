@@ -11,7 +11,7 @@ all:
 deps-install:
 	sudo pacman -S base-devel gvim xorg-backlight sysstat alsa-utils termite \
 		xautolock chromium nodejs npm feh acpi acpid ttf-dejavu redshift xclip ed \
-		rdesktop openssh deadbeef imagemagick scrot dmenu perl-json \
+		rdesktop openssh deadbeef imagemagick scrot dmenu perl-json dunst \
 		msmtp fetchmail procmail mutt
 
 	sudo npm install -g jscs
@@ -19,7 +19,6 @@ deps-install:
 	sudo pacman -S shellcheck
 
 	git clone https://github.com/trapd00r/clipbored "$(HOME)/.clipbored" || true
-	git clone https://github.com/andlrc/lockscreen "$(HOME)/work/lockscreen" || true
 	git clone https://github.com/michaeldfallen/git-radar "$(HOME)/.git-radar" || true
 
 yaourt-install:

@@ -45,8 +45,6 @@ path+=(
   "$HOME/work/charinfo"
   "$DOTFILES_ROOT/bin"
   "$HOME/work/bin/bin"
-  "$HOME/work/reddit-wallpaper"
-  "$HOME/work/lockscreen"
   "$HOME/.git-radar"
   "$HOME/work/git-multi-status"
   "$HOME/.gem/ruby/2.3.0/bin"

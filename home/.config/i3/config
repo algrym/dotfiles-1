@@ -157,7 +157,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Lock the screen
-bindsym $mod+Shift+s exec --no-startup-id lockscreen
+bindsym $mod+Shift+s exec --no-startup-id $root_dir/i3/lock
 
 # Close focuced container
 bindsym $mod+q exec --no-startup-id $root_dir/i3/menu-kill
@@ -268,7 +268,7 @@ exec --no-startup-id "compton --opengl --sw-opti --vsync opengl-swc --paint-on-o
 
 exec --no-startup-id "dockd start"
 exec --no-startup-id "cvim-server"
-exec --no-startup-id "xautolock -time 5 -locker 'lockscreen --delayed'"
+exec --no-startup-id "xautolock -time 5 -locker \"$root_dir/i3/lock\""
 
 exec --no-startup-id "amixer sset Master mute"
 exec --no-startup-id "amixer sset Master 30%"
