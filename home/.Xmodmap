@@ -1,0 +1,9 @@
+! Swap <Win> and <Alt>
+clear Mod1
+clear Mod4
+add Mod1 = Super_L Super_R
+add Mod4 = Alt_L Alt_R
+
+! Remap <CapsLock> -> <Escape>
+clear lock
+keycode 66 = Escape

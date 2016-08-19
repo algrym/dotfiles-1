@@ -5,7 +5,7 @@
 # Variables {{{
 
 # Mod1 = Alt
-set $mod Mod1
+set $mod Mod4
 set $root_dir $DOTFILES_ROOT
 
 set $ws1  "1"
@@ -162,9 +162,6 @@ bindsym $mod+q exec --no-startup-id $root_dir/i3/menu-kill
 # Change background image
 bindsym $mod+s exec --no-startup-id reddit-wallpaper
 
-# Toggle between danish and american keyboard layout
-bindsym $mod+c exec --no-startup-id "toggle-keyboard && killall -USR1 i3status"
-
 # Program launcher
 bindsym $mod+p exec --no-startup-id dmenu_run
 
@@ -258,7 +255,8 @@ bar {
 exec --no-startup-id "$root_dir/i3/cat-batt"
 exec --no-startup-id "$root_dir/i3/cat-cpu-temp"
 
-exec --no-startup-id "setxkbmap -layout us -option ctrl:nocaps"
+exec --no-startup-id "setxkbmap -layout us"
+exec --no-startup-id "xmodmap ~/.Xmodmap"
 exec --no-startup-id "xbacklight -set 100"
 exec --no-startup-id "redshift"
 exec --no-startup-id "dunst"
