@@ -264,7 +264,7 @@ exec --no-startup-id "dunst"
 
 exec_always --no-startup-id "feh --bg-fill \"$root_dir/wallpaper.jpg\""
 
-exec --no-startup-id "compton --opengl --sw-opti --vsync opengl-swc --paint-on-overlay -fb -i 0.9 -e 0.9 --no-fading-openclose --backend glx"
+exec --no-startup-id "compton -b"
 
 exec --no-startup-id "dockd start"
 exec --no-startup-id "cvim-server"
