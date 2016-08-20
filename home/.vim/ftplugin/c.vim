@@ -1,3 +1,3 @@
-set expandtab
-set foldmethod=syntax
-set tabstop=2 shiftwidth=2 softtabstop=2
+setlocal expandtab
+setlocal foldmethod=syntax
+setlocal tabstop=2 shiftwidth=2 softtabstop=2

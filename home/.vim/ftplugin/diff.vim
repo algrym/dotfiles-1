@@ -14,7 +14,7 @@ function! DiffFoldLevel()
     endif
 endfunction
 
-set foldmethod=expr
-set foldexpr=DiffFoldLevel()
+setlocal foldmethod=expr
+setlocal foldexpr=DiffFoldLevel()
 
-set foldlevel=10
+setlocal foldlevel=10
