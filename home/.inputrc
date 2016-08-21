@@ -1,0 +1,11 @@
+set completion-ignore-case on
+
+set bell-style visible
+
+# list all matches in case multiple possible completions are possible
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# smarter history search w/ up and down arrows
+"\e[A": history-search-backward
+"\e[B": history-search-forward
