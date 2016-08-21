@@ -20,12 +20,10 @@ if [ "$current_id" != "$new_id" ]; then
   case $new_id in
     8)
       if is_workspace_empty "$ws_name"; then
-        if [ "$(printf "YES\nNO\n" | dmenu -p "Open workspace?")" = "YES" ]; then
-          append_layout "server"
-          chromium
-          termite &
-          acs "$HOME/IBM/iAccessClient/Emulator/DKSRV206.hod"
-        fi
+        append_layout "server"
+        chromium &
+        termite &
+        acs "$HOME/IBM/iAccessClient/Emulator/DKSRV206.hod"
       fi
       ;;
     9)
