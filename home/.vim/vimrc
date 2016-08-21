@@ -227,9 +227,6 @@ iabbrev al@ andreas@louv.dk
 " }}}
 " Convenience mappings {{{
 
-" Kill window
-nnoremap M :q<cr>
-
 " Enable <C-z> in insert mode and keep selection in visual
 inoremap <C-z> <esc><C-z>a
 vnoremap <C-z> <esc><C-z>gv
