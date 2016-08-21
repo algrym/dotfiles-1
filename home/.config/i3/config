@@ -27,6 +27,9 @@ gaps outer 2
 smart_gaps on
 smart_borders no_gaps
 
+workspace $ws8 gaps outer 70
+workspace $ws8 gaps inner 20
+
 workspace $ws9 gaps outer 70
 workspace $ws9 gaps inner 20
 
