@@ -1,7 +1,12 @@
 #!/bin/sh
 
 lock() {
-  i3lock -fei "$DOTFILES_ROOT/lock.png"
+  screen_size=$(xrandr | sed 's/[[:space:]]*\([[:digit:]]*x[[:digit:]]*\).*\*.*/\1/p;d')
+  lock="/tmp/lock-image-$screen_size.png"
+  if [ ! -e "$lock" ]; then
+    convert "$DOTFILES_ROOT/wallpaper.jpg" -resize "$screen_size" "$lock"
+  fi
+  i3lock -c "000000" -fei "$lock"
   sleep 60
   if pgrep i3lock > /dev/null; then
     xset dpms force off
