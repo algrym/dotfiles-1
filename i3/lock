@@ -4,8 +4,15 @@ lock() {
   screen_size=$(xrandr | sed 's/[[:space:]]*\([[:digit:]]*x[[:digit:]]*\).*\*.*/\1/p;d')
   lock="/tmp/lock-image-$screen_size.png"
   if [ ! -e "$lock" ]; then
-    convert "$DOTFILES_ROOT/wallpaper.jpg" -resize "$screen_size" "$lock"
+    tmp_mask="/tmp/lock-$$-mask.png"
+    tmp_lock="/tmp/lock-$$-lock.png"
+    convert -size "$screen_size" gradient:none-black -sigmoidal-contrast 6,50% "$tmp_mask"
+    convert "$DOTFILES_ROOT/wallpaper.jpg" -resize "$screen_size" "$tmp_lock"
+    convert "$tmp_lock" +swap "$tmp_mask" -composite "$lock"
+    rm -- "$tmp_mask"
+    rm -- "$tmp_lock"
   fi
+
   i3lock -c "000000" -fei "$lock"
   sleep 60
   if pgrep i3lock > /dev/null; then
