@@ -184,7 +184,7 @@ set softtabstop=2
 set expandtab
 set nowrap
 set textwidth=80
-set formatoptions=qrn1j
+set formatoptions=tcr1
 
 " }}}
 " Backups {{{
