@@ -1,0 +1,16 @@
+[options]
+read_all = False
+delete = False
+delievered_to = False
+received = False
+
+[retriever]
+type = SimpleIMAPSSLRetriever
+server = pop.gmail.com
+username = aalouv@gmail.com
+mailboxes = ("INBOX", )
+
+[destination]
+type = Maildir
+path = ~/mail/inbox/
+

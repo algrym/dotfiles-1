@@ -1,38 +1,39 @@
-#======================================================#
-set realname = "Andreas Louv"
-set from = aalouv@gmail.com
-set use_from = yes
-set envelope_from ="yes"
-set sendmail="/usr/bin/msmtp"
-#======================================================#
-set folder="~/Mail"                # Mailboxes in here
-set record="+sent"                 # where to store sent messages
-set postponed="+postponed"         # where to store draft messages
-set move=no                        # Don't move mail from the spool.
-#======================================================#
-# Watch these mailboxes for new mail:
-mailboxes ! +Fetchmail +slrn +mutt
-set sort_browser=alpha    # Sort mailboxes by alpha(bet)
-#======================================================#
-# Order of headers and what to show
-hdr_order Date: From: User-Agent: X-Mailer \
-          To: Cc: Reply-To: Subject:
+#~/.mutt/muttrc
+# Change the next 7 lines appropriately.
+set smtp_url            = smtp://aalouv@smtp.gmail.com:587/
+set from                = aalouv@gmail.com
+set realname            = "Andreas Louv"
+set editor              = 'vim'
+
+# Do not copy sent mail.  Gmail smtp already does this.
+set copy                = no
+
+set folder= ~/mail
+set spoolfile= +inbox
+
+# Don't move read mail.
+set move= no
+
+# Ignore all but the following headers in message
 ignore *
-unignore Date: From: User-Agent: X-Mailer  \
-         To: Cc: Reply-To: Subject:
+unignore from: subject to cc date user-agent
 
-#======================================================#
-set editor="vim -c 'set tw=70 et' '+/^$' "
-set edit_headers          # See the headers when editing
-#======================================================#
-# Aliases
+# Don't mark unread messages as old when mutt quits.
+unset mark_old
 
-set sort_alias=alias     # sort aliases in alpha order by alias name
+# Put headers in editor when composing messages
+set edit_headers
 
-#======================================================#
-# Odds and ends
-set markers          # mark wrapped lines of text in the pager with a +
-set smart_wrap       # Don't wrap mid-word
-set pager_context=5  # Retain 5 lines of previous page when scrolling.
-set status_on_top    # Status bar on top.
-push <show-version>  # Shows mutt version at startup
+# Do not ask for to, subject,... when replying.
+set fast_reply
+
+# Sort by newest conversation first.
+set sort                = reverse-threads
+set sort_aux            = last-date-received
+
+# Contact aliases, could also use `goobook`.
+set alias_file          = ~/.mutt/aliases
+set sort_alias          = alias
+set reverse_alias       = yes
+set reverse_name        = yes
+source $alias_file
