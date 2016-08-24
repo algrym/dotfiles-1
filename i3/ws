@@ -18,6 +18,14 @@ append_layout() {
 
 if [ "$current_id" != "$new_id" ]; then
   case $new_id in
+    7)
+      if is_workspace_empty "$ws_name"; then
+        append_layout "client"
+        termite &
+        termite &
+        chromium &
+      fi
+      ;;
     8)
       if is_workspace_empty "$ws_name"; then
         append_layout "server"
