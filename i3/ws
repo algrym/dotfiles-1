@@ -42,7 +42,7 @@ if [ "$current_id" != "$new_id" ]; then
       fi
       ;;
     10)
-      if ! pgrep '^mutt$'; then
+      if is_workspace_empty "$ws_name"; then
         termite -e 'mutt' -t 'mutt-mail'
       fi
       ;;
