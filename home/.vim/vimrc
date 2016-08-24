@@ -433,6 +433,7 @@ hi Folded term=standout ctermfg=9
 
 function! MyFoldText() " {{{
   let s:left = substitute(getline(v:foldstart), '{{' . '{', '', 'g')
+  let s:left = substitute(s:left, '\v\t', repeat(' ', &tabstop), 'g')
   let s:count = printf(' ' . &commentstring, printf('%2d lines', v:foldend - v:foldstart + 1))
   let s:width = &textwidth
   if s:width == 0
