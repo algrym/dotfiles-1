@@ -103,7 +103,7 @@ bindsym $mod+space fullscreen
 # }}}
 # Fix floating {{{
 
-for_window [class="^rdesktop"] floating disable
+for_window [class="^rdesktop"] floating enable
 
 # }}}
 # Modes {{{
@@ -151,7 +151,7 @@ mode "Move workspace" {
 # Other key binds {{{
 
 # Open remote desktop as big as current monitor size
-bindsym $mod+i exec "rdesktop -g $(xrandr | perl -nle 'print $1-5, x, $2-20 if /connected \K(\d+x)(\d+)/') -P -z -x 1 -r sound:off -u and DKSRV02"
+bindsym $mod+i exec "$root_dir/i3/so-work"
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
