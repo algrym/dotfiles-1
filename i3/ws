@@ -28,7 +28,7 @@ if [ "$current_id" != "$new_id" ]; then
       ;;
     9)
       if is_workspace_empty "$ws_name"; then
-        append_layout 9
+        append_layout "music"
         deadbeef &
         termite -d ~/Music &
       fi
