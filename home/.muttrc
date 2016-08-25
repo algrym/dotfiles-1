@@ -1,7 +1,7 @@
 #~/.mutt/muttrc
 # Change the next 7 lines appropriately.
 set smtp_url            = smtp://aalouv@smtp.gmail.com:587/
-set from                = aalouv@gmail.com
+set from                = andreas@louv.dk
 set realname            = "Andreas Louv"
 set editor              = 'vim'
 
