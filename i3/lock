@@ -6,7 +6,7 @@ lock() {
   if [ ! -e "$lock" ]; then
     tmp_mask="/tmp/lock-$$-mask.png"
     tmp_lock="/tmp/lock-$$-lock.png"
-    convert -size "$screen_size" gradient:none-black -sigmoidal-contrast 6,50% "$tmp_mask"
+    convert -size "$screen_size" radial-gradient:none-black -sigmoidal-contrast 6,50% "$tmp_mask"
     convert "$DOTFILES_ROOT/wallpaper.jpg" -resize "$screen_size" "$tmp_lock"
     convert "$tmp_lock" +swap "$tmp_mask" -composite "$lock"
     rm -- "$tmp_mask"
