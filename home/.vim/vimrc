@@ -257,18 +257,6 @@ inoremap {<cr> {}<left><cr><tab>.<cr><esc>kA<bs>
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
-" Open URL {{{"
-
-function! OpenURL(url)
-  execute ':silent !$BROWSER ' . shellescape(a:url)
-  :redraw!
-endfunction
-command! -nargs=1 OpenURL :call OpenURL(<q-args>)
-
-nnoremap gw :OpenURL <cfile><cr>
-nnoremap gs :OpenURL https://duckduckgo.com/<cword><cr>
-
-" }}}
 " Toggle list & number {{{
 "
 " Toggle between relative and line numbers
