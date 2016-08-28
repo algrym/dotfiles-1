@@ -111,24 +111,6 @@ precmd () {
 
   # Set terminal title to current directory
   print -Pn "\e]2;%d\a"
-
-  # Define variables that will be used by PROMPT
-  _prompt_date="%{$fg[cyan]%}($(date +%r))%{%b%}"
-  _prompt_jobs="%{$fg[yellow]%}$(jobs | awk '/^\[/{c++}; END {if (c) print " " c}')"
-  _prompt_sudo="$(sudo -n true 2> /dev/null && echo "%{$fg[red]%}\$" || echo "%{$fg[green]%}%%")"
-
-  # Show git information on the right, unless we are in a mounted directory.
-  # Usually I mount samba drives which might contain git repos, and the
-  # prompt will stall if we are calling git status after each command
-  if git rev-parse --is-inside-work-tree &> /dev/null; then
-    if [[ "$PWD" =~ "/mnt"* ]] && [ "$PROMPT_NO_MOUNT" -eq 1 ]; then
-      _prompt_git="%{$fg[red]%}NO GIT%{%b%}"
-    else
-      _prompt_git="$(git-radar --zsh --fetch)"
-    fi
-  else
-    _prompt_git=""
-  fi
 }
 
 # Prompt {{{
@@ -136,10 +118,30 @@ precmd () {
 # Make '$PROMPT' evaluate '$'
 setopt PROMPT_SUBST
 
-# PROMPT relies on 'precmd'
-declare -x PROMPT="%{$fg_bold[yellow]%} %~ %{%b%}\$_prompt_date\$_prompt_jobs \$_prompt_sudo %{$reset_color%b%}"
+_prompt_date() {
+  echo "%{$fg[cyan]%}($(date +%r))%{%b%}"
+}
+_prompt_jobs() {
+  echo "%{$fg[yellow]%}$(jobs | awk '/^\[/{c++}; END {if (c) print " " c}')"
+}
+_prompt_sudo() {
+  echo "$(sudo -n true 2> /dev/null && echo "%{$fg[red]%}\$" || echo "%{$fg[green]%}%%")"
+}
+_prompt_git() {
+  # Show git information on the right, unless we are in a mounted directory.
+  # Usually I mount samba drives which might contain git repos, and the
+  # prompt will stall if we are calling git status after each command
+  if git rev-parse --is-inside-work-tree &> /dev/null; then
+    if [[ "$PWD" =~ "/mnt"* ]] && [ "$PROMPT_NO_MOUNT" -eq 1 ]; then
+      echo "%{$fg[red]%}NO GIT%{%b%}"
+    else
+      echo "$(git-radar --zsh --fetch)"
+    fi
+  fi
+}
+declare -x PROMPT="%{$fg_bold[yellow]%} %~ %{%b%}\$(_prompt_date)\$(_prompt_jobs) \$(_prompt_sudo) %{$reset_color%b%}"
 declare -x PROMPT2="%{$fg_bold[red]%}-->%{$reset_color$b%} "
-declare -x RPROMPT="\$_prompt_git"
+declare -x RPROMPT="\$?\$(_prompt_git)"
 
 # }}}
 
