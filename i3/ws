@@ -1,50 +1,30 @@
 #!/bin/sh
 
 current_id=$(i3-msg -t get_workspaces | jq '.[] | select(.focused) | .num')
-new_id=$1
 
-# Change to workspace
-ws_name=$(sed '/ws'"$new_id"'/!d;s/.*"\(.*\)".*/\1/;q' \
-  "$DOTFILES_ROOT/home/.config/i3/config")
-
-i3-msg workspace "$ws_name"
-
-is_workspace_empty() {
-  i3-save-tree --workspace "$1" | sed -n '2q1'
-}
 append_layout() {
   i3-msg "append_layout $DOTFILES_ROOT/i3/workspace-$1.json"
 }
 
-if [ "$current_id" != "$new_id" ]; then
-  case $new_id in
-    7)
-      if is_workspace_empty "$ws_name"; then
-        append_layout "client"
-        termite &
-        termite &
-        chromium &
-      fi
-      ;;
-    8)
-      if is_workspace_empty "$ws_name"; then
-        append_layout "server"
-        chromium &
-        termite &
-        acs "$HOME/IBM/iAccessClient/Emulator/DKSRV206.hod"
-      fi
-      ;;
-    9)
-      if is_workspace_empty "$ws_name"; then
-        append_layout "music"
-        deadbeef &
-        termite -d ~/Music &
-      fi
-      ;;
-    10)
-      if is_workspace_empty "$ws_name"; then
-        termite -e 'mutt' -t 'mutt-mail'
-      fi
-      ;;
-  esac
-fi
+case $current_id in
+  7)
+    append_layout "client"
+    termite &
+    termite &
+    chromium &
+    ;;
+  8)
+    append_layout "server"
+    chromium &
+    termite &
+    acs "$HOME/IBM/iAccessClient/Emulator/DKSRV206.hod"
+    ;;
+  9)
+    append_layout "music"
+    deadbeef &
+    termite -d ~/Music &
+    ;;
+  10)
+    termite -e 'mutt' -t 'mutt-mail'
+    ;;
+esac
