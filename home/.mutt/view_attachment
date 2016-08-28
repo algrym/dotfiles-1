@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# $1 = filename
+# $2 = type
+
+file=$1
+type=$2
+
+case $type in
+  html)
+    perl -p0e 'BEGIN {
+        use HTML::Strip;
+      }
+      my $parser = HTML::Strip->new();
+      $_ = $parser->parse($_);
+      s/\s+\n\s+/\n/g' "$file"
+    ;;
+  *)
+    chromium "$file"
+    ;;
+esac

@@ -1,39 +1,55 @@
 #~/.mutt/muttrc
-# Change the next 7 lines appropriately.
-set smtp_url            = smtp://aalouv@smtp.gmail.com:587/
-set from                = andreas@louv.dk
-set realname            = "Andreas Louv"
-set editor              = 'vim'
+set smtp_url=smtp://aalouv@smtp.gmail.com:587/
+set from=andreas@louv.dk
+set realname="Andreas Louv"
+set folder=~/mail
+set spoolfile=+inbox
 
-# Do not copy sent mail.  Gmail smtp already does this.
-set copy                = no
+set alias_file=~/.mutt/aliases            # Keep aliases in this file.
+set postpone=ask-no                       # Ask about postponing.
+set postponed=+postponed                  # Where postponed messages live.
+set nomove                                # Hold messages in $MAIL.
+set print=ask-yes                         # Ask before printing.
+set delete=ask-yes                        # Ask before doing a delete.
+set include                               # Include the message in replies.
+set sort=reverse-threads
+set sort_aux=last-date-received
+set charset=iso-8859-1
+set send_charset=utf-8
+set noallow_8bit                          # 8bit isn't safe via Demon.
+                                          # Attribution line.
+set attribution="* %n <%a> [%{%Y-%m-%d %H:%M:%S %Z}]:\n"
+set edit_headers                          # I want to edit the message headers.
+                                          # Use emacs.
+set editor="vim"
+set query_command="lbdbq '%s'"            # Use the little brother database for doing queries.
+set nomark_old                            # Don't mark unread new msgs as old.
+set mbox=+mbox                            # Default mailbox.
+set copy                                  # Keep copies of outgoing mail...
+set record=+outbox                        # ... and it gets saved in =outbox.
+set nobeep                                # We don't need no beeping software.
+set nosmart_wrap                          # Don't want smart wrapping.
+set nomarkers                             # Don't want any wrap markers.
+set mime_forward                          # Forward message as MIME attachments.
+set pager_context=3                       # Display 3 lines of context in pager.
+set nostrict_threads                      # Lets have some fuzzy threading.
+set sendmail_wait=-1                      # Don't wait around for sendmail.
+set fcc_clear                             # Keep fcc's clear of signatues and encryption.
+set nopipe_decode                         # Don't decode messages when piping.
 
-set folder= ~/mail
-set spoolfile= +inbox
+set tilde                                 # Fill out messages with '~'.
+set read_inc=100                          # Read counter ticks every 100 msgs.
+set write_inc=100                         # Write counter ticks every 100 msgs.
+set noconfirmappend                       # Just append, don't hassle me.
+set pager_stop                            # Don't skip msgs on next page.
+                                          # Where to find the mailcap.
+set mailcap_path=~/.mutt/mailcap:/usr/local/etc/mailcap:/etc/mailcap
+                                          # What we consider to be a quote.
+set quote_regexp="^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+set to_chars=" +TCF "                     # Drop the "L".
 
-# Don't move read mail.
-set move= no
-
-# Ignore all but the following headers in message
-ignore *
-unignore from: subject to cc date user-agent
-
-# Don't mark unread messages as old when mutt quits.
-unset mark_old
-
-# Put headers in editor when composing messages
-set edit_headers
-
-# Do not ask for to, subject,... when replying.
-set fast_reply
-
-# Sort by newest conversation first.
-set sort                = reverse-threads
-set sort_aux            = last-date-received
-
-# Contact aliases, could also use `goobook`.
-set alias_file          = ~/.mutt/aliases
-set sort_alias          = alias
-set reverse_alias       = yes
-set reverse_name        = yes
-source $alias_file
+source ~/.mutt/auto_views
+source ~/.mutt/headers
+source ~/.mutt/message-hooks
+source ~/.mutt/bindings
+source ~/.mutt/colors
