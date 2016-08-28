@@ -91,8 +91,14 @@ new_window normal 1 px
 bindsym $mod+v split vertical
 bindsym $mod+b split horizontal
 
+# Stacked container layout
+bindsym $mod+n layout stacking
+
 # Tabbed container layout
 bindsym $mod+w layout tabbed
+
+# Toggle floating
+bindsym $mod+f floating toggle
 
 # Splitted container layout
 bindsym $mod+e layout toggle split
@@ -183,7 +189,6 @@ bindsym $mod+o scratchpad show
 
 bindsym $mod+g exec chromium
 bindsym $mod+Shift+g exec "chromium-sl --incognito"
-bindsym $mod+f exec filezilla
 
 # Open node REPL
 bindsym $mod+Shift+t exec termite -e node
