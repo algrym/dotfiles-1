@@ -11,3 +11,5 @@ let b:match_words = '\<function\>:\<return\>,'
   \ . '\<try\>:\<catch\>:\<finally\>'
 
 nnoremap <buffer> <localleader>l :put='console.log(\"<C-r><C-w>\", <C-r><C-w>);'<CR>==
+
+nnoremap <buffer> <localleader>= ?{<CR>v%:s/\v\s*:\s*/: /<cr>:noh<cr>
