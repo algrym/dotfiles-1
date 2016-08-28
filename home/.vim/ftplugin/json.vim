@@ -8,7 +8,7 @@ inoremap <buffer> [<cr> []<left><cr><tab>.<cr><esc>kA<bs>
 
 nnoremap <buffer> <localleader>S :call <SID>JQ(['--sort-keys', '.'])<cr>
 
-nnoremap <buffer> <localleader>b :call <SID>JQ(['.'])<cr>
+nnoremap <buffer> g= :call <SID>JQ(['.'])<cr>
 
 function! s:JQ(args)
     let l:command = ['jq', '--indent', &shiftwidth]
