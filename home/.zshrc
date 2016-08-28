@@ -14,7 +14,7 @@ fi
 # Can be overridden with '>|'
 set -C
 
-export TERM=xterm
+export TERM=xterm-256color
 
 # Root zshell directory, used to store history, etc...
 mkdir -p "$HOME/.zsh"
