@@ -237,7 +237,7 @@ nnoremap <silent> <leader>ww mz:let z=@/<cr>:%s/\s\+$//<cr>:let @/=z<cr>`z
 nnoremap J mzJ`z
 
 " Split Line
-nnoremap S :let z=@/<cr>i<cr><esc>^mzgk:s/\v\s+$//<cr>:let @/=z<cr>`z
+nnoremap S :let z=@/<cr>i<cr><esc>^mzgk:silent! s/\v\s+$//<cr>:let @/=z<cr>`z
 
 " zg will add <cword> to the custom spell file, sort that file after adding
 nnoremap zg zg:silent ! sort ~/.vim/spell.utf-8.add -o
