@@ -14,7 +14,7 @@ set delete=ask-yes                        # Ask before doing a delete.
 set include                               # Include the message in replies.
 set sort=reverse-threads
 set sort_aux=last-date-received
-set charset=iso-8859-1
+set charset=utf-8
 set send_charset=utf-8
 set noallow_8bit                          # 8bit isn't safe via Demon.
                                           # Attribution line.
