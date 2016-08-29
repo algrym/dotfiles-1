@@ -21,13 +21,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'baskerville/bubblegum'
 
 " Basics
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
-
-" Make <C-a>/<C-x> work on dates, times etc.
-Plugin 'tpope/vim-speeddating'
 
 Plugin 'tpope/vim-unimpaired'
 
@@ -95,6 +91,7 @@ set title
 set linebreak
 set colorcolumn=+1
 set shell=/bin/sh
+set path+=**
 
 " Spelling
 "
@@ -497,19 +494,6 @@ augroup plugin_commentary
   au FileType vim setlocal commentstring=\"\ %s
   au FileType lisp,scheme setlocal commentstring=;\ %s
 augroup END
-
-" }}}
-" Ctrl-P {{{
-
-let g:ctrlp_follow_symlinks=1
-let g:ctrlp_show_hidden=1
-let g:ctrlp_match_window='bottom,order:bottom'
-
-" Only list files versioned within git
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-
-let g:ctrlp_map = '<leader>,'
-nnoremap <leader>. :CtrlPBuffer<cr>
 
 " }}}
 " DelimitMate {{{
