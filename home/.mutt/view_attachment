@@ -9,11 +9,14 @@ type=$2
 case $type in
   html)
     perl -p0e 'BEGIN {
+        binmode(STDOUT, ":utf8");
+        binmode(STDIN, ":utf8");
         use HTML::Strip;
       }
       my $parser = HTML::Strip->new();
       $_ = $parser->parse($_);
-      s/\s+\n\s+/\n/g' "$file"
+      s/\s+\n\s+/\n/g;
+      s/^\s+//mg;' "$file"
     ;;
   *)
     chromium "$file"
