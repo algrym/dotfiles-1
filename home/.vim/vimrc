@@ -91,7 +91,7 @@ set title
 set linebreak
 set colorcolumn=+1
 set shell=/bin/sh
-set path+=**
+set path=**
 
 " Spelling
 "
