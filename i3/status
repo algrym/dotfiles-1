@@ -31,7 +31,7 @@ while (my ($statusline) = (<$i3status> =~ /^,?(.*)/)) {
   my $backlight = `xbacklight`;
   splice(@blocks, -2, 0, {
     full_text => sprintf("\x{f0eb} %.0f", $backlight)
-  }) unless defined $backlight;
+  }) if defined $backlight;
 
   print encode_json(\@blocks) . ",\n";
 }
