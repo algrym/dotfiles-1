@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.tpl setlocal filetype=html.mustache syntax=mustache
+au BufNewFile,BufRead *.tpl setlocal filetype=html.mustache syntax=html.mustache

@@ -1,1 +1,2 @@
-nnoremap <buffer> <localleader>i i{{i18n ''}}<esc>hhi
+nnoremap <buffer> <localleader>i ciW{{i18n ''}}<esc>hhP
+nnoremap <buffer> <localleader>l :-1put='{{log \"<C-r><C-w>\" <C-r><C-w>}};'<CR>==
