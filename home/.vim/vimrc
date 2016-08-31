@@ -313,16 +313,11 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " }}}
 " Searching and movement {{{
 
-" Use sane regexes.
-nnoremap / /\v
-vnoremap / /\v
-
 set ignorecase
 set smartcase
 set incsearch
 set showmatch
 set hlsearch
-set gdefault
 
 set scrolloff=5
 set sidescroll=1
