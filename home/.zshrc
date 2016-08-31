@@ -249,6 +249,11 @@ d() {
   date +'Week %W, %a %F, %T'
 }
 
+sm_ed() {
+  SITEMULE_EDITOR='perl -e sleep(86400)' sm_open "$1" &
+  cd /tmp/sm_open-"$1"
+}
+
 if [ -f "$HOME/work/Sitemule/util/.zshrc" ]; then
   source "$HOME/work/Sitemule/util/.zshrc"
 fi

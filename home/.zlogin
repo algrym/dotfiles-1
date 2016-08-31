@@ -13,7 +13,6 @@ declare -x TERMINAL=termite
 # Default Editor
 declare -x VISUAL=vim
 declare -x EDITOR="$VISUAL"
-declare -x SITEMULE_EDITOR="$VISUAL"
 
 # Default Pager
 declare -x LESS=' -RSNCi '
