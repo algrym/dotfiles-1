@@ -210,17 +210,10 @@ alias grep="grep --color=auto --exclude-dir={.git}"
 # }}}
 # Function and includes {{{
 
-_update_open_suggest() {
-  local arg="_files -W '$PWD'; _files -W '${CDPATH//:/"'; _files -W '"}'"
-  compdef "$arg" open
-}
-_update_open_suggest
-
 # After mounting the work development server its nice to be able to use
 # 'cd dfd', 'cd bas', ...
 work() {
   export CDPATH="/mnt/dksrv206/www/dev:$CDPATH"
-  _update_open_suggest
 }
 
 # Exit files from PATH list:
