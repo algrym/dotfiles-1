@@ -251,8 +251,6 @@ cnoremap w!! w !sudo tee % >/dev/null
 inoremap {<cr> {}<left><cr><tab>.<cr><esc>kA<bs>
 
 " Store relative line number jumps in the jumplist
-nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
-nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
 " Toggle list & number {{{
 "
@@ -261,30 +259,6 @@ nnoremap <leader>n :setlocal number!<bar>setlocal relativenumber!<cr>
 
 " Toggle invisible characters
 nnoremap <leader>i :set list!<cr>
-
-" }}}
-" Wrap in quotes, brackets, and other special characters {{{
-
-function! s:QuoteMotions()
-  let motions = {
-    \ 'w': 'iw',
-    \ 'W': 'iW',
-    \ '$': '$',
-    \ }
-
-  for key in keys(l:motions)
-    let motion = motions[key]
-    for char in [ '''''', '<>', '""', '()', '{}', '[]', '**', '``' ]
-      let a = char[0]
-      let b = char[1]
-      for trigger in a != b ? [ key . a, key . b ] : [ key . a ]
-        execute 'nnoremap -' . trigger . ' mzv' . motion . '<esc>`>a' . b . '<esc>`<i' . a . '<esc>`z'
-      endfor
-    endfor
-  endfor
-endfunction
-
-call <SID>QuoteMotions()
 
 " }}}
 " Insert Mode Completion {{{
