@@ -202,13 +202,8 @@ alias cd..="cd .."
 # Suppress annoying directory print when directory is found in '$CDPATH'
 alias cd="cd > /dev/null"
 
-# Vim muscle memory
-alias :q=" exit"
-alias :e="vim"
-
 alias ls='ls --color=auto'
 alias l='ls -lAh'
-alias ll='ls -lh'
 
 alias grep="grep --color=auto --exclude-dir={.git}"
 
