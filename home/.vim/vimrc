@@ -224,7 +224,6 @@ iabbrev al@ andreas@louv.dk
 " Convenience mappings {{{
 
 " Enable <C-z> in insert mode and keep selection in visual
-inoremap <C-z> <esc><C-z>a
 vnoremap <C-z> <esc><C-z>gv
 
 " sort lines
@@ -318,7 +317,6 @@ nnoremap n :normal! nzzzv<cr>
 nnoremap N :normal! Nzzzv<cr>
 
 " Quick way to exit insert mode
-inoremap jk <esc>
 
 noremap j gj
 noremap k gk
@@ -335,6 +333,7 @@ cnoremap <C-b> <left>
 cnoremap <C-f> <right>
 cnoremap <C-a> <home>
 cnoremap <C-e> <end>
+cnoremap <C-d> <del>
 
 " }}}
 " Visual Mode {{{
