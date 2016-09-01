@@ -326,8 +326,8 @@ noremap gj j
 noremap gk k
 
 " Speed up scrolling of the viewport slightly
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
+nnoremap <expr> <C-e> (v:count > 0 ? '' : 2) . '<C-e>'
+nnoremap <expr> <C-y> (v:count > 0 ? '' : 2) . '<C-y>'
 
 " Emacs like keys for command line {{{
 
