@@ -118,8 +118,8 @@ precmd () {
 # Make '$PROMPT' evaluate '$'
 setopt PROMPT_SUBST
 
-_prompt_date() {
-  echo "%{$fg[cyan]%}($(date +%r))%{%b%}"
+_prompt_user() {
+  echo "%{$fg[cyan]%}(%n@%M)%{%b%}"
 }
 _prompt_jobs() {
   echo "%{$fg[yellow]%}$(jobs | awk '/^\[/{c++}; END {if (c) print " " c}')"
@@ -139,7 +139,7 @@ _prompt_git() {
     fi
   fi
 }
-declare -x PROMPT="%{$fg_bold[yellow]%} %~ %{%b%}\$(_prompt_date)\$(_prompt_jobs) \$(_prompt_sudo) %{$reset_color%b%}"
+declare -x PROMPT="%{$fg_bold[yellow]%} %~ %{%b%}\$(_prompt_user)\$(_prompt_jobs) \$(_prompt_sudo) %{$reset_color%b%}"
 declare -x PROMPT2="%{$fg_bold[red]%}-->%{$reset_color$b%} "
 declare -x RPROMPT="\$?\$(_prompt_git)"
 
