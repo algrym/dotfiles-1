@@ -98,9 +98,6 @@ bindkey -s ',sz' 'source ~/.zshrc\n'
 # }}}
 # Pre command and PS1, PS2, right PS1 {{{
 
-# Set this to one to disable git prompt, on mounted drives
-export PROMPT_NO_MOUNT=1
-
 precmd () {
   # List most recent changed files when changing directory
   if [ ! "$_OLDDIR" = "$PWD" ]; then
@@ -118,9 +115,6 @@ precmd () {
 # Make '$PROMPT' evaluate '$'
 setopt PROMPT_SUBST
 
-_prompt_user() {
-  echo "%{$fg[cyan]%}(%n@%M)%{%b%}"
-}
 _prompt_jobs() {
   echo "%{$fg[yellow]%}$(jobs | awk '/^\[/{c++}; END {if (c) print " " c}')"
 }
@@ -132,16 +126,21 @@ _prompt_git() {
   # Usually I mount samba drives which might contain git repos, and the
   # prompt will stall if we are calling git status after each command
   if git rev-parse --is-inside-work-tree &> /dev/null; then
-    if [[ "$PWD" =~ "/mnt"* ]] && [ "$PROMPT_NO_MOUNT" -eq 1 ]; then
+    if [[ "$PWD" =~ "/mnt"* ]]; then
       echo "%{$fg[red]%}NO GIT%{%b%}"
     else
       echo "$(git-radar --zsh --fetch)"
+      return 0
     fi
   fi
+  return 1
 }
-declare -x PROMPT="%{$fg_bold[yellow]%} %~ %{%b%}\$(_prompt_user)\$(_prompt_jobs) \$(_prompt_sudo) %{$reset_color%b%}"
+_prompt_user() {
+  echo " %{$fg[blue]%}%n%{%b%}@%{$fg[blue]%}%M%{%b%} [%{$fg_bold[red]%}%?%{%b%}]"
+}
+declare -x PROMPT="%{$fg_bold[yellow]%} %~%{%b%}\$(_prompt_jobs) \$(_prompt_sudo) %{$reset_color%b%}"
 declare -x PROMPT2="%{$fg_bold[red]%}-->%{$reset_color$b%} "
-declare -x RPROMPT="\$?\$(_prompt_git)"
+declare -x RPROMPT="\$(_prompt_git || _prompt_user)"
 
 # }}}
 
