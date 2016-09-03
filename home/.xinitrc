@@ -8,6 +8,8 @@ fi
 # When running 'startx' the current directory is inherited by the X-session and
 # therefore each opened terminal emulator will start in said directory.
 cd ~
+id=$(xinput list | sed -n '/TouchPad/{s/.*=\([[:digit:]]*\).*/\1/p;q}')
+[ "$id" -gt 0 ] && xinput disable "$id"
 
 xmodmap ~/.Xmodmap
 exec ssh-agent i3 > /tmp/i3-log 2>&1
