@@ -22,16 +22,17 @@ set $ws10 "10:"
 # }}}
 # Gaps {{{
 
-gaps inner 10
-gaps outer 2
-smart_gaps on
-smart_borders no_gaps
-
 workspace $ws7 gaps outer 70
 workspace $ws7 gaps inner 20
 
+workspace $ws8 gaps outer 10
+workspace $ws8 gaps inner 2
+
 workspace $ws9 gaps outer 70
 workspace $ws9 gaps inner 20
+
+workspace $ws10 gaps outer 70
+workspace $ws10 gaps inner 20
 
 # }}}
 # Container focus {{{
