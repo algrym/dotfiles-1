@@ -187,7 +187,7 @@ bindsym $mod+u exec --no-startup-id "$root_dir/i3/ws"
 bindsym $mod+Shift+s exec --no-startup-id $root_dir/i3/lock
 
 # Close focuced container
-bindsym $mod+q exec --no-startup-id $root_dir/i3/menu-kill
+bindsym $mod+q kill
 
 # Change background image
 bindsym $mod+s exec --no-startup-id reddit-wallpaper
