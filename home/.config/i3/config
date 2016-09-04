@@ -119,6 +119,7 @@ for_window [class="^rdesktop"] floating enable
 
 bindsym $mod+r mode "resize"
 bindsym $mod+m mode "Move workspace"
+bindsym $mod+g mode "Gaps"
 
 # Resize containers {{{
 
@@ -133,7 +134,6 @@ mode "resize" {
   bindsym $mod+k focus up
   bindsym $mod+l focus right
 
-  bindsym Return mode "default"
   bindsym Escape mode "default"
 }
 
@@ -150,7 +150,20 @@ mode "Move workspace" {
   bindsym $mod+k focus up
   bindsym $mod+l focus right
 
-  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+# }}}
+# Change gaps {{{
+
+# This is good when working with multiply monitors
+mode "Gaps" {
+  bindsym o gaps outer current plus 10
+  bindsym Shift+o gaps outer current minus 10
+
+  bindsym i gaps inner current plus 10
+  bindsym Shift+i gaps inner current minus 10
+
   bindsym Escape mode "default"
 }
 
@@ -190,17 +203,13 @@ bindsym $mod+o scratchpad show
 # }}}
 # Applications {{{
 
-bindsym $mod+g exec chromium
+bindsym $mod+Return exec chromium
 bindsym $mod+Shift+g exec "chromium-sl --incognito"
 
-# Open node REPL
-bindsym $mod+Shift+t exec termite -e node
-
 # Open 5250 emulator
-bindsym $mod+Shift+Return exec --no-startup-id "acs-launch"
+bindsym $mod+Shift+t exec --no-startup-id "acs-launch"
 
-# Open terminal, with theme that suits the time of day
-bindsym $mod+Return exec termite
+# Open terminal
 bindsym $mod+t exec termite
 
 # Clipboard manager
