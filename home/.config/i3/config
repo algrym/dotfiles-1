@@ -108,7 +108,9 @@ bindsym $mod+e layout toggle split
 bindsym $mod+space fullscreen
 
 # }}}
-# Fix floating {{{
+# Floating config {{{
+
+floating_modifier $mod
 
 for_window [class="^rdesktop"] floating enable
 
