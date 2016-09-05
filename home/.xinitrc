@@ -11,7 +11,7 @@ cd ~
 
 # A naive way to disable the TouchPad
 id=$(xinput list | sed -n '/TouchPad/{s/.*=\([[:digit:]]*\).*/\1/p;q}')
-[ "$id" -gt 0 ] && xinput disable "$id"
+[ -n "$id" ] && xinput disable "$id"
 
 xmodmap ~/.Xmodmap
 exec ssh-agent i3 > /tmp/i3-log 2>&1

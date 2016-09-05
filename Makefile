@@ -12,7 +12,7 @@ deps-install:
 	sudo pacman -S base-devel gvim xorg-backlight sysstat alsa-utils termite \
 		xautolock chromium nodejs npm feh acpi acpid ttf-dejavu redshift xclip ed \
 		rdesktop openssh deadbeef imagemagick scrot dmenu perl-json dunst \
-		getmail mutt gnome-keyring libnotify perl-html-strip
+		getmail mutt gnome-keyring libnotify lynx
 
 	sudo npm install -g jscs
 	sudo cpan install Perl::Critic
