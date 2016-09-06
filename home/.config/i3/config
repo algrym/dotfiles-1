@@ -119,7 +119,6 @@ for_window [class="^rdesktop"] floating enable
 
 bindsym $mod+r mode "resize"
 bindsym $mod+m mode "Move workspace"
-bindsym $mod+g mode "Gaps"
 
 # Resize containers {{{
 
@@ -133,6 +132,12 @@ mode "resize" {
   bindsym $mod+j focus down
   bindsym $mod+k focus up
   bindsym $mod+l focus right
+
+  bindsym o gaps outer current plus 10
+  bindsym Shift+o gaps outer current minus 10
+
+  bindsym i gaps inner current plus 10
+  bindsym Shift+i gaps inner current minus 10
 
   bindsym Escape mode "default"
 }
@@ -149,20 +154,6 @@ mode "Move workspace" {
   bindsym $mod+j focus down
   bindsym $mod+k focus up
   bindsym $mod+l focus right
-
-  bindsym Escape mode "default"
-}
-
-# }}}
-# Change gaps {{{
-
-# This is good when working with multiply monitors
-mode "Gaps" {
-  bindsym o gaps outer current plus 10
-  bindsym Shift+o gaps outer current minus 10
-
-  bindsym i gaps inner current plus 10
-  bindsym Shift+i gaps inner current minus 10
 
   bindsym Escape mode "default"
 }

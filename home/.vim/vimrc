@@ -36,9 +36,6 @@ Plugin 'sjl/gundo.vim'
 " Auto insert quotes, ...
 Plugin 'Raimondi/delimitMate'
 
-" More and better text objects
-Plugin 'wellle/targets.vim'
-
 " Auto detect tabstop, shiftwidth, softtabstop and expandtab
 Plugin 'tpope/vim-sleuth'
 
@@ -112,9 +109,6 @@ set backupskip=/tmp/*,/private/tmp/*"
 " Better Completion
 set complete=.,w,b,u,t
 set completeopt=longest,menuone,preview
-
-" Save when losing focus
-au FocusLost * :silent! wall
 
 " Resize splits when the window is resized
 au VimResized * :wincmd =
