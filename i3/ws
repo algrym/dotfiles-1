@@ -22,7 +22,6 @@ case $current_id in
   9)
     append_layout "music"
     deadbeef &
-    termite -d ~/Music &
     ;;
   10)
     termite -e 'mutt' -t 'mutt-mail'
