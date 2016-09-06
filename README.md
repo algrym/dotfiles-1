@@ -28,7 +28,7 @@ Quick links
 * [`.festivalrc`](home/.festivalrc)
 * [`.getmail`](home/.getmail)
 * [`.gitconfig`](home/.gitconfig)
-* [`.i3/config`](home/.config/i3)
+* [`.i3`](home/.config/i3)
 * [`.i3status.conf`](home/.i3status.conf)
 * [`.inputrc`](home/.inputrc)
 * [`.jscsrc`](home/.jscsrc)
