@@ -36,9 +36,6 @@ Plugin 'sjl/gundo.vim'
 " Auto insert quotes, ...
 Plugin 'Raimondi/delimitMate'
 
-" More and better text objects
-Plugin 'wellle/targets.vim'
-
 " Auto detect tabstop, shiftwidth, softtabstop and expandtab
 Plugin 'tpope/vim-sleuth'
 
