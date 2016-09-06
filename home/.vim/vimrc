@@ -113,9 +113,6 @@ set backupskip=/tmp/*,/private/tmp/*"
 set complete=.,w,b,u,t
 set completeopt=longest,menuone,preview
 
-" Save when losing focus
-au FocusLost * :silent! wall
-
 " Resize splits when the window is resized
 au VimResized * :wincmd =
 
