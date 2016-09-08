@@ -280,6 +280,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " }}}
 " Searching and movement {{{
 
+set grepprg=grep\ -n\ --exclude-dir=.git\ -R
+
 set ignorecase
 set smartcase
 set incsearch
