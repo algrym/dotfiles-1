@@ -20,7 +20,7 @@ declare -x PAGER=less
 
 # Use Vim as man pager. The substitution part is to avoid POSIX man pages from
 # having an annoying multibyte dash (U+2212 MINUS SIGN).
-export MANPAGER="/bin/sh -c \"col -b | 's/−/-/g' | vim +'set ft=man' -\""
+export MANPAGER="/bin/sh -c \"col -b | sed 's/−/-/g' | vim +'set ft=man' -\""
 
 # reddit-wallaper
 declare -x REDDIT_WALLPAPER_OUTPUT="$HOME/Pictures/Wallpapers"
