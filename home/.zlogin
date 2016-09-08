@@ -18,8 +18,9 @@ declare -x EDITOR="$VISUAL"
 declare -x LESS=' -RSNCi '
 declare -x PAGER=less
 
-# Use Vim as man pager
-export MANPAGER="/bin/sh -c \"col -b | vim +'set ft=man' -\""
+# Use Vim as man pager. The substitution part is to avoid POSIX man pages from
+# having an annoying multibyte dash (U+2212 MINUS SIGN).
+export MANPAGER="/bin/sh -c \"col -b | 's/−/-/g' | vim +'set ft=man' -\""
 
 # reddit-wallaper
 declare -x REDDIT_WALLPAPER_OUTPUT="$HOME/Pictures/Wallpapers"
