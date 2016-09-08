@@ -1,0 +1,10 @@
+#!/bin/sh
+
+for pgm in redshift compton clipbored dunst cvim-server xautolock cat-batt cat-cpu-temp; do
+  pgrep "^$pgm\$" | while read -r pid; do
+    kill "$pid"
+  done
+done
+test -f /tmp/clipbored.pid && rm /tmp/clipbored.pid
+
+i3-msg exit
