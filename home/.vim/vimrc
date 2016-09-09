@@ -57,7 +57,6 @@ set showcmd
 set hidden
 set visualbell
 set ttyfast
-set ruler
 set backspace=indent,eol,start
 set relativenumber
 set laststatus=2
@@ -282,8 +281,6 @@ set grepprg=grep\ -n\ --exclude-dir=.git\ -R
 
 set ignorecase
 set smartcase
-set incsearch
-set showmatch
 set hlsearch
 
 set scrolloff=5
