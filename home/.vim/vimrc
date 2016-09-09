@@ -23,7 +23,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 
 " Easy access of undolist
-Plugin 'sjl/gundo.vim'
+Plugin 'mbbill/undotree'
 
 " Auto insert quotes, ...
 Plugin 'Raimondi/delimitMate'
@@ -449,7 +449,7 @@ let delimitMate_excluded_ft = "lisp"
 " }}}
 " Gundo {{{
 
-nnoremap <F9> :GundoToggle<CR>
+nnoremap <F9> :UntotreeToggle<CR>
 
 " }}}
 " Supertab {{{
