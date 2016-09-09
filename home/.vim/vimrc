@@ -3,10 +3,6 @@
 " This is my personal vim configuration.
 " Use at own risk, NO WARRANTY, to the extent permitted by law.
 
-" With great respect and thanks to: Tim Pope Steve Losh, Amir Salihefendic,
-" Henrik Nyh, Martin Grenfell and many others for fantastic help and
-" inspiration
-
 " Basic options {{{
 
 " Vundle {{{
@@ -21,14 +17,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'baskerville/bubblegum'
 
 " Basics
-Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
 
 Plugin 'tpope/vim-unimpaired'
-
-" Auto complete on <tab>
-Plugin 'ervandew/supertab'
 
 " Easy access of undolist
 Plugin 'sjl/gundo.vim'
@@ -38,10 +30,6 @@ Plugin 'Raimondi/delimitMate'
 
 " Auto detect tabstop, shiftwidth, softtabstop and expandtab
 Plugin 'tpope/vim-sleuth'
-
-" Statusline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 
 " Language specific plugins
 Plugin 'pangloss/vim-javascript'
@@ -94,6 +82,21 @@ set path=**
 "
 set dictionary=/usr/share/dict/words
 set spellfile=~/.vim/spell.utf-8.add
+
+" Statusline
+set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+"              | | | | |  |   |      |  |     |    |
+"              | | | | |  |   |      |  |     |    +-- current column
+"              | | | | |  |   |      |  |     +-- current line
+"              | | | | |  |   |      |  +-- current % into file
+"              | | | | |  |   |      +-- current syntax
+"              | | | | |  |   +-- current fileformat
+"              | | | | |  +-- number of lines
+"              | | | | +-- preview flag in square brackets
+"              | | | +-- help flag in square brackets
+"              | | +-- readonly flag in square brackets
+"              | +-- rodified flag in square brackets
+"              +-- full path to file in the buffer
 
 " Don't try to highlight lines longer than 800 characters.
 set synmaxcol=800
@@ -254,13 +257,6 @@ nnoremap <leader>n :setlocal number!<bar>setlocal relativenumber!<cr>
 nnoremap <leader>i :set list!<cr>
 
 " }}}
-" Insert Mode Completion {{{
-
-inoremap <c-f> <c-x><c-f>
-inoremap <c-]> <c-x><c-]>
-inoremap <c-l> <c-x><c-l>
-
-" }}}
 
 " }}}
 " Quick editing {{{
@@ -272,8 +268,10 @@ nnoremap <leader>es :split ~/.vim/spell.utf-8.add<cr>
 nnoremap <leader>ei :split ~/.config/i3/config<cr>
 
 " Edit file in same directory as current file:
-" vimcasts.org/e/14
-nnoremap <leader>ew :e <C-r>=expand("%:p:h")."/"<CR>
+nnoremap <leader>ew :e <C-r>=fnameescape(expand("%:p:h") . "/")<CR>
+
+" List all buffers in command mode:
+nnoremap <leader>eb :b <C-d>
 
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
@@ -297,11 +295,6 @@ set virtualedit+=block
 noremap <silent> <C-l> :noh<cr>:call clearmatches()<cr>
 
 runtime macros/matchit.vim
-map <tab> %
-
-" Since we map <tab> (<C-i>) we will need to remap <C-i> to get control of our
-" jumplist again
-nnoremap <C-p> <C-i>
 
 " Don't move on *
 " I'd use a function for this but Vim clobbers the last search when you're in
@@ -438,17 +431,6 @@ augroup END
 " }}}
 " Plugin settings {{{
 
-" AirLine {{{
-
-let g:airline_theme = 'base16'
-
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-" }}}
 " Commentary {{{
 
 augroup plugin_commentary
@@ -477,25 +459,5 @@ let g:SuperTabLongestHighlight = 1
 let g:SuperTabCrMapping = 1
 
 "}}}
-" Syntastic {{{
-
-let g:syntastic_javascript_checkers=['jscs']
-let g:syntastic_perl_checkers=['perlcritic']
-let g:syntastic_scss_checkers=['scss_lint']
-let g:syntastic_enable_signs = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_auto_jump = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_mode_map = {
-            \ "mode": "active",
-            \ "active_filetypes": [],
-            \ "passive_filetypes": ['html', 'rst']
-            \ }
-let g:syntastic_stl_format = '[%E{%e Errors}%B{, }%W{%w Warnings}]'
-
-nnoremap <leader>C :SyntasticCheck<cr>
-
-" }}}
 
 " }}}
