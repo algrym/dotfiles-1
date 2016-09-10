@@ -134,7 +134,7 @@ augroup END
 " Wildmenu completion {{{
 
 set wildmenu
-set wildmode=longest,full
+set wildmode=full
 
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
@@ -434,17 +434,10 @@ augroup END
 let delimitMate_excluded_ft = "lisp"
 
 " }}}
-" Gundo {{{
+" UndotreeToggle {{{
 
-nnoremap <F9> :UntotreeToggle<CR>
+nnoremap <F9> :UndotreeToggle<CR>
 
 " }}}
-" Supertab {{{
-
-let g:SuperTabDefaultCompletionType = "<c-n>"
-let g:SuperTabLongestHighlight = 1
-let g:SuperTabCrMapping = 1
-
-"}}}
 
 " }}}
