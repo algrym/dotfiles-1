@@ -19,14 +19,10 @@ Plugin 'baskerville/bubblegum'
 " Basics
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
-
 Plugin 'tpope/vim-unimpaired'
 
 " Easy access of undolist
 Plugin 'mbbill/undotree'
-
-" Auto insert quotes, ...
-Plugin 'Raimondi/delimitMate'
 
 " Auto detect tabstop, shiftwidth, softtabstop and expandtab
 Plugin 'tpope/vim-sleuth'
@@ -34,13 +30,7 @@ Plugin 'tpope/vim-sleuth'
 " Language specific plugins
 Plugin 'pangloss/vim-javascript'
 Plugin 'andlrc/rpgle.vim'
-Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'elzr/vim-json'
-Plugin 'mxw/vim-jsx'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'yko/mojo.vim'
-Plugin 'vito-c/jq.vim'
 
 call vundle#end()
 
