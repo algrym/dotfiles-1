@@ -1,3 +1,6 @@
 # Files containing password
 home/.msmtprc
 home/.fetchmailrc
+
+# Output files
+build
