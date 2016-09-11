@@ -2,17 +2,19 @@ root := $$(git rev-parse --show-toplevel)
 
 all:
 	@echo "Run:"
-	@echo "  deps-install"
 	@echo "  yaourt-install"
+	@echo "  deps-install"
 	@echo "  dash-install"
 	@echo "  rc-install"
 	@echo "  vim-install"
 
 deps-install:
-	sudo pacman -S base-devel gvim xorg-backlight sysstat alsa-utils termite \
+	sudo pacman -S base-devel gvim sysstat alsa-utils termite \
 		xautolock chromium nodejs npm feh acpi acpid ttf-dejavu redshift xclip ed \
 		rdesktop openssh deadbeef imagemagick scrot dmenu perl-json dunst \
-		getmail mutt gnome-keyring libnotify lynx
+		getmail mutt gnome-keyring libnotify lynx weechat openconnect pptpclient
+
+	yaourt -S ttf-font-awesome
 
 	sudo npm install -g jscs
 	sudo cpan install Perl::Critic

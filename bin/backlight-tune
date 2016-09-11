@@ -3,15 +3,17 @@
 
 [ "$#" -lt 1 ] && { >&2 printf "Usage '%s +inc'\n" "${0##*/}"; exit 2; }
 
-readonly min=2
-readonly max=100
+readonly min=20
+readonly max=$(cat /sys/class/backlight/intel_backlight/max_brightness)
 
 inc=$1; shift
-current=$(xbacklight)
-current=${current%%.*}
+inc=$((inc * max / 100))
+file=/sys/class/backlight/intel_backlight/brightness
+cat "$file"
+current=$(cat "$file")
 next=$((inc + current))
 
 [ "$next" -lt "$min" ] && next="$min"
 [ "$next" -gt "$max" ] && next="$max"
 
-xbacklight -time 0 -set "$next"
+echo "$next" > "$file"

@@ -28,7 +28,15 @@ while (my ($statusline) = (<$i3status> =~ /^,?(.*)/)) {
   }
 
   # Backlight
-  my $backlight = `xbacklight`;
+  my $backlight = do {
+    open my $fh, '<', '/sys/class/backlight/intel_backlight/brightness';
+    my $cur = <$fh>;
+    close $fh;
+    open my $fh, '<', '/sys/class/backlight/intel_backlight/max_brightness';
+    my $max = <$fh>;
+    close $fh;
+    $cur / $max * 100;
+  };
   splice(@blocks, -2, 0, {
     full_text => sprintf("\x{f0eb} %.0f", $backlight)
   }) if defined $backlight;
