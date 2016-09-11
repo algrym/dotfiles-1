@@ -161,16 +161,22 @@ setopt always_to_end
 # Make <Tab> complete word left of cursor instead word under cursor:
 # sud|ls /etc/blah -> <Tab> -> sudols /etc/blah
 #    ^ Cursor
-bindkey '^i' expand-or-complete-prefix
+bindkey '^I' expand-or-complete-prefix
 
-# Write part of command and press <Up>/<Down> complete it though history search
+# Unbind arrow keys
+bindkey -r '^[[A'
+bindkey -r '^[[B'
+bindkey -r '^[[C'
+bindkey -r '^[[D'
+
+# Write part of command and press <C-P>/<C-N> complete it though history search
 # and bring the cursor to the end of the line
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey '^[[A' up-line-or-beginning-search
-bindkey '^[[B' down-line-or-beginning-search
+bindkey '^P' up-line-or-beginning-search
+bindkey '^N' down-line-or-beginning-search
 
 # Enable <S-Tab> to reverse navigation though suggestions
 bindkey '^[[Z' reverse-menu-complete
