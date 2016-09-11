@@ -264,7 +264,7 @@ nnoremap <leader>ei :split ~/.config/i3/config<cr>
 nnoremap <leader>ew :e <C-r>=fnameescape(expand("%:p:h") . "/")<CR>
 
 " List all buffers in command mode:
-nnoremap <leader>eb :b <C-d>
+nnoremap gb :ls<cr>:b<space>
 
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
