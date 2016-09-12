@@ -20,6 +20,7 @@ Plugin 'baskerville/bubblegum'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-surround'
 
 " Easy access of undolist
 Plugin 'mbbill/undotree'
