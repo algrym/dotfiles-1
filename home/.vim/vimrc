@@ -262,6 +262,11 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 set grepprg=grep\ -n\ --exclude-dir=.git\ -R
 
+augroup qfix
+    autocmd!
+    autocmd QuickFixCmdPost grep,make,lmake nested below cwindow
+augroup END
+
 set ignorecase
 set smartcase
 set hlsearch
