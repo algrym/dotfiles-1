@@ -14,7 +14,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Theme
-Plugin 'baskerville/bubblegum'
+Plugin 'romainl/Apprentice'
 
 " Basics
 Plugin 'tpope/vim-commentary'
@@ -192,7 +192,7 @@ endif
 set t_Co=256
 syntax on
 set background=dark
-colorscheme bubblegum-256-dark
+colorscheme apprentice
 
 " }}}
 
@@ -351,7 +351,7 @@ nnoremap zO zczO
 
 set fillchars+=fold:\ 
 
-hi Folded term=standout ctermfg=9
+hi Folded term=standout ctermfg=9 ctermbg=235
 
 function! MyFoldText() " {{{
   let s:left = substitute(getline(v:foldstart), '{{' . '{', '', 'g')
