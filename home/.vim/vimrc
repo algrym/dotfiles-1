@@ -49,7 +49,7 @@ set hidden
 set visualbell
 set ttyfast
 set backspace=indent,eol,start
-set relativenumber
+set relativenumber number
 set laststatus=2
 set history=1000
 set undofile
@@ -239,18 +239,6 @@ inoremap {<cr> {}<left><cr><tab>.<cr><esc>kA<bs>
 
 " Be able to undo <C-u>
 inoremap <c-u> <c-g>u<c-u>
-
-" Store relative line number jumps in the jumplist
-
-" Toggle list & number {{{
-"
-" Toggle between relative and line numbers
-nnoremap <leader>n :setlocal number!<bar>setlocal relativenumber!<cr>
-
-" Toggle invisible characters
-nnoremap <leader>i :set list!<cr>
-
-" }}}
 
 " }}}
 " Quick editing {{{
