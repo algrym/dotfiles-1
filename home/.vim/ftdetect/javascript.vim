@@ -1,2 +1,2 @@
-au BufNewFile,BufRead *.widget setlocal filetype=javascript
+au BufNewFile,BufRead *.widget setlocal filetype=javascript.widget
 

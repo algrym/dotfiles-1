@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Linter for widget files in vim. widgets are special as they are not valid JS.
+# But I like to lint them as JS. This can be done by wrapping the file in
+# 'var a = ...;'.
+
+cmd=$1; shift
+args=()
+prev=
+for arg; do
+  if [ -n "$prev" ]; then
+    args+=("$prev")
+  fi
+  prev=$arg
+done
+file=$prev
+
+{
+  printf "var a = %s;\n" "$(< "$file")";
+} | "$cmd" "${args[@]}" | sed 's:^input:'"$file"':'
