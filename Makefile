@@ -12,13 +12,16 @@ deps-install:
 	sudo pacman -S base-devel gvim sysstat alsa-utils termite \
 		xautolock chromium nodejs npm feh acpi acpid ttf-dejavu redshift xclip ed \
 		rdesktop openssh deadbeef imagemagick scrot dmenu perl-json dunst \
-		getmail mutt gnome-keyring libnotify lynx weechat openconnect pptpclient
+		getmail mutt gnome-keyring libnotify lynx weechat openconnect pptpclient \
+		compton jq ruby jre8-openjdk
 
 	yaourt -S ttf-font-awesome
 
 	sudo npm install -g jscs
 	sudo cpan install Perl::Critic
 	sudo pacman -S shellcheck
+
+	gem install scss-lint
 
 	git clone https://github.com/trapd00r/clipbored "$(HOME)/.clipbored" || true
 	git clone https://github.com/michaeldfallen/git-radar "$(HOME)/.git-radar" || true
