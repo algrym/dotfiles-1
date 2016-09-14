@@ -230,6 +230,10 @@ nnoremap S :let z=@/<cr>i<cr><esc>^mzgk:silent! s/\v\s+$//<cr>:let @/=z<cr>`z
 nnoremap zg zg:silent ! sort ~/.vim/spell.utf-8.add -o
   \ ~/.vim/spell.utf-8.add<cr>:redraw!<cr>
 
+nnoremap <leader>f :find 
+nnoremap <leader>g :grep 
+nnoremap <leader>m :make<cr>
+
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 
