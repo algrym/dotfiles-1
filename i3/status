@@ -30,10 +30,10 @@ while (my ($statusline) = (<$i3status> =~ /^,?(.*)/)) {
   # Backlight
   my $backlight = do {
     open my $fh, '<', '/sys/class/backlight/intel_backlight/brightness';
-    my $cur = <$fh>;
+    my $cur = <$fh> || 1;
     close $fh;
     open my $fh, '<', '/sys/class/backlight/intel_backlight/max_brightness';
-    my $max = <$fh>;
+    my $max = <$fh> || 1;
     close $fh;
     $cur / $max * 100;
   };
