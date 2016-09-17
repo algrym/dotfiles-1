@@ -22,6 +22,9 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 
+" Better QF
+Plugin 'romainl/vim-qf'
+
 " Easy access of undolist
 Plugin 'mbbill/undotree'
 
