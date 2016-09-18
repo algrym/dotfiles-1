@@ -163,12 +163,11 @@ setopt always_to_end
 #    ^ Cursor
 bindkey '^I' expand-or-complete-prefix
 
-# Unbind arrow keys and <Return>
+# Unbind arrow keys
 bindkey -r '^[[A'
 bindkey -r '^[[B'
 bindkey -r '^[[C'
 bindkey -r '^[[D'
-bindkey -r '^M'
 
 # Write part of command and press <C-P>/<C-N> complete it though history search
 # and bring the cursor to the end of the line
