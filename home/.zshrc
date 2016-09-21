@@ -38,9 +38,7 @@ autoload -U colors && colors
 
 # Make 'cd' push directories so 'cd -N', where 'N' is an integer, can be used
 # to navigate back to old directories.
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt pushdminus
+setopt auto_pushd pushd_ignore_dups pushdminus
 
 # }}}
 # History configuration {{{
