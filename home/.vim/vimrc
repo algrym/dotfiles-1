@@ -264,10 +264,6 @@ set ignorecase
 set smartcase
 set hlsearch
 
-set scrolloff=5
-set sidescroll=1
-set sidescrolloff=10
-
 set virtualedit+=block
 
 noremap <silent> <C-l> :noh<cr>:call clearmatches()<cr>
