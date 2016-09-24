@@ -215,20 +215,8 @@ iabbrev al@ andreas@louv.dk
 " }}}
 " Convenience mappings {{{
 
-" Enable <C-z> in insert mode and keep selection in visual
-vnoremap <C-z> <esc><C-z>gv
-
-" sort lines
-vnoremap <leader>s :!sort<cr>
-
 " Clean trailing whitespace
 nnoremap <silent> <leader>ww mz:let z=@/<cr>:%s/\s\+$//<cr>:let @/=z<cr>`z
-
-" Keep the cursor in place while joining lines
-nnoremap J mzJ`z
-
-" Split Line
-nnoremap S :let z=@/<cr>i<cr><esc>^mzgk:silent! s/\v\s+$//<cr>:let @/=z<cr>`z
 
 " zg will add <cword> to the custom spell file, sort that file after adding
 nnoremap zg zg:silent ! sort ~/.vim/spell.utf-8.add -o
@@ -238,12 +226,15 @@ nnoremap <leader>f :find
 nnoremap <leader>g :grep 
 nnoremap <leader>m :make<cr>
 
+" List all buffers in command mode:
+nnoremap gb :ls<cr>:b<space>
+
+" Edit file in same directory as current file:
+nnoremap <leader>ew :e <C-r>=fnameescape(expand("%:p:h") . "/")<CR>
+
+
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
-
-" Make {<cr> insert a pair of brackets in such a way that the cursor is correctly
-" positioned inside of them AND the following code doesn't get unfolded.
-inoremap {<cr> {}<left><cr><tab>.<cr><esc>kA<bs>
 
 " Be able to undo <C-u>
 inoremap <c-u> <c-g>u<c-u>
@@ -256,12 +247,6 @@ nnoremap <leader>ez :split ~/.zshrc<cr>
 nnoremap <leader>eg :split ~/.gitconfig<cr>
 nnoremap <leader>es :split ~/.vim/spell.utf-8.add<cr>
 nnoremap <leader>ei :split ~/.config/i3/config<cr>
-
-" Edit file in same directory as current file:
-nnoremap <leader>ew :e <C-r>=fnameescape(expand("%:p:h") . "/")<CR>
-
-" List all buffers in command mode:
-nnoremap gb :ls<cr>:b<space>
 
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
@@ -289,25 +274,14 @@ noremap <silent> <C-l> :noh<cr>:call clearmatches()<cr>
 
 runtime macros/matchit.vim
 
-" Don't move on *
-" I'd use a function for this but Vim clobbers the last search when you're in
-" a function so fuck it, practicality beats purity.
-nnoremap <silent> * :let stay_star_view = winsaveview()<cr>*:call winrestview(stay_star_view)<cr>
-
-" Keep search matches in the middle of the window.
-nnoremap n :normal! nzzzv<cr>
-nnoremap N :normal! Nzzzv<cr>
-
-" Quick way to exit insert mode
-
 noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
 
 " Speed up scrolling of the viewport slightly
-nnoremap <expr> <C-e> (v:count > 0 ? '' : 2) . '<C-e>'
-nnoremap <expr> <C-y> (v:count > 0 ? '' : 2) . '<C-y>'
+nnoremap <expr> <C-e> (v:count > 0 ? '' : 3) . '<C-e>'
+nnoremap <expr> <C-y> (v:count > 0 ? '' : 3) . '<C-y>'
 
 " Emacs like keys for command line {{{
 
