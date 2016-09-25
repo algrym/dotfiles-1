@@ -248,7 +248,7 @@ inoremap <c-u> <c-g>u<c-u>
 command! -range=% RemoveComma keepp <line1>,<line2>s/,\ze\_s*[]}]//cg
 
 " Insert missing comma
-command! -range=% AddComma keepp <line1>,<line2>s/\(\_s\|[[{,]\)\@<!\ze\_s\_s*\(\w\w*\|".\{-}\(\\\)\@<!"\):/&,/cg
+command! -range=% AddComma keepp <line1>,<line2>s/\(\_s\|[[{,;]\)\@<!\ze\_s\_s*\(\w\w*\|".\{-}\(\\\)\@<!"\):/&,/cg
 
 " }}}
 
