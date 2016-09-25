@@ -15,7 +15,7 @@ deps-install:
 		getmail mutt gnome-keyring libnotify lynx weechat openconnect pptpclient \
 		compton jq ruby jre8-openjdk tcl aspell lua
 
-	yaourt -S ttf-font-awesome
+	yaourt -S ttf-font-awesome xcape
 
 	sudo npm install -g jscs
 	sudo cpan install Perl::Critic
