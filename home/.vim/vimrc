@@ -71,7 +71,6 @@ set colorcolumn=+1
 set shell=/bin/sh
 set path=**
 set nrformats-=octal
-set cpoptions+=$
 
 " Spelling
 "
@@ -140,7 +139,7 @@ augroup END
 " Wildmenu completion {{{
 
 set wildmenu
-set wildmode=full
+set wildmode=longest,full
 
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
