@@ -1,5 +1,4 @@
-setlocal noexpandtab
-setlocal tabstop=4 shiftwidth=4 softtabstop=4
+setlocal noexpandtab tabstop=2 shiftwidth=2 softtabstop=2
 
 " Sort properties in selector
 nnoremap <buffer> <localleader>s ?{<CR>jV/\v^\s*\}?$<CR>k:sort<cr>gv:sort /\v(^\s+-\a+-)?\zs\a+(-\a+)*\ze:/ r<CR>:noh<CR>

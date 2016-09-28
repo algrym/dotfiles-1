@@ -4,6 +4,9 @@ setlocal include=
 
 setlocal foldmethod=syntax
 
+setlocal noexpandtab
+setlocal textwidth=100
+
 let b:match_words = '\<function\>:\<return\>,'
   \ . '\<do\>:\<while\>,'
   \ . '\<switch\>:\<case\>:\<default\>,'

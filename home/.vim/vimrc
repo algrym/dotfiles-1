@@ -28,9 +28,6 @@ Plugin 'romainl/vim-qf'
 " Easy access of undolist
 Plugin 'mbbill/undotree'
 
-" Auto detect tabstop, shiftwidth, softtabstop and expandtab
-Plugin 'tpope/vim-sleuth'
-
 " Language specific plugins
 Plugin 'pangloss/vim-javascript'
 Plugin 'andlrc/rpgle.vim'
