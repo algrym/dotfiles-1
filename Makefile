@@ -21,7 +21,7 @@ deps-install:
 	sudo cpan install Perl::Critic
 	sudo pacman -S shellcheck
 
-	gem install scss-lint
+	gem install scss_lint
 
 	git clone https://github.com/trapd00r/clipbored "$(HOME)/.clipbored" || true
 	git clone https://github.com/michaeldfallen/git-radar "$(HOME)/.git-radar" || true
