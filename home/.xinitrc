@@ -17,9 +17,6 @@ id=$(xinput list | sed -n '/TouchPad/{s/.*=\([[:digit:]]*\).*/\1/p;q}')
 # and <C-I> -> <Tab>. Oh and <C-[> -> <Esc>.
 # This should work for all application, while <Control_L> shouldn't be changed
 # to another key. 
-# In the meantime we go with the below, which makes <CapsLock> behave as <Ctrl>
-# and <Escape>
 xmodmap ~/.Xmodmap
-xcape -e 'Control_L=Escape'
 
 exec ssh-agent i3 > /tmp/i3-log 2>&1
