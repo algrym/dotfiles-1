@@ -21,6 +21,8 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
+Plugin 'wellle/targets.vim'
+Plugin 'justinmk/vim-sneak'
 
 " Better QF
 Plugin 'romainl/vim-qf'
