@@ -77,22 +77,10 @@ set dictionary=/usr/share/dict/words
 set spellfile=~/.vim/spell.utf-8.add
 
 " Statusline
-set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
-"              | | | | |  |   |      |  |     |    |
-"              | | | | |  |   |      |  |     |    +-- current column
-"              | | | | |  |   |      |  |     +-- current line
-"              | | | | |  |   |      |  +-- current % into file
-"              | | | | |  |   |      +-- current syntax
-"              | | | | |  |   +-- current fileformat
-"              | | | | |  +-- number of lines
-"              | | | | +-- preview flag in square brackets
-"              | | | +-- help flag in square brackets
-"              | | +-- readonly flag in square brackets
-"              | +-- rodified flag in square brackets
-"              +-- full path to file in the buffer
+set statusline=%r%t\ %y\ \#%n%=0x%B\ [%02p%%\ %l:%c/%L]
 
-" Don't try to highlight lines longer than 800 characters.
-set synmaxcol=800
+" Don't try to highlight lines longer than 200 characters.
+set synmaxcol=200
 
 " Time out on key codes but not mappings.
 set notimeout
