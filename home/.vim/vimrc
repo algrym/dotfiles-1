@@ -23,6 +23,8 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'wellle/targets.vim'
 Plugin 'justinmk/vim-sneak'
+
+" Readline Style keybinds
 Plugin 'tpope/vim-rsi'
 
 " Better QF
