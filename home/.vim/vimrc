@@ -23,6 +23,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'wellle/targets.vim'
 Plugin 'justinmk/vim-sneak'
+Plugin 'tpope/vim-rsi'
 
 " Better QF
 Plugin 'romainl/vim-qf'
@@ -208,8 +209,8 @@ nnoremap <silent> <leader>ww mz:let z=@/<cr>:%s/\s\+$//<cr>:let @/=z<cr>`z
 nnoremap zg zg:silent ! sort ~/.vim/spell.utf-8.add -o
   \ ~/.vim/spell.utf-8.add<cr>:redraw!<cr>
 
-nnoremap <leader>f :find 
-nnoremap <leader>g :grep 
+nnoremap <leader>f :find<space>
+nnoremap <leader>g :grep<space>
 nnoremap <leader>m :make<cr>
 
 " List all buffers in command mode:
@@ -274,16 +275,6 @@ noremap k gk
 noremap gj j
 noremap gk k
 
-" Emacs like keys for command line {{{
-
-cnoremap <C-b> <left>
-cnoremap <C-f> <right>
-cnoremap <C-a> <home>
-cnoremap <C-e> <end>
-cnoremap <C-d> <del>
-
-" }}}
-"
 " }}}
 " Folding {{{
 
