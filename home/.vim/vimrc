@@ -239,7 +239,7 @@ command! -range=% AddComma keepp <line1>,<line2>s/\(\_s\|[[{,;]\)\@<!\ze\_s\_s*\
 " }}}
 " Duplicate word {{{
 
-command! -range=% DupWord keepp <line1>,<line2>s/\(\w\+\)\zs\_s\+\1//cg
+command! -range=% DupWord keepp <line1>,<line2>s/\(\<\w\+\>\)\zs\_s\+\<\1\>//cg
 
 " }}}
 
