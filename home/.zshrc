@@ -70,6 +70,13 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 # }}}
+# <C-X><C-E> will edit current command in editor {{{
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
+# }}}
 # Working with GIT {{{
 
 bindkey -s ',ga' 'git add -p\n'
