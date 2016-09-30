@@ -73,6 +73,7 @@ set colorcolumn=+1
 set shell=/bin/sh
 set path=**
 set nrformats-=octal
+set scrolloff=1 sidescrolloff=5
 
 " Spelling
 "
