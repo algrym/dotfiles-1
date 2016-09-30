@@ -162,7 +162,7 @@ set softtabstop=2
 set expandtab
 set nowrap
 set textwidth=80
-set formatoptions=tcr1
+set formatoptions=tcr1j
 
 " }}}
 " Backups {{{
@@ -274,8 +274,11 @@ runtime macros/matchit.vim
 
 " Nudge {{{
 
-nnoremap <expr> j (v:count > 0 ? 'gj' : '')
-nnoremap <expr> k (v:count > 0 ? 'gk' : '')
+nnoremap <expr> j (v:count ? 'gj' : ':echoerr "Count required!"<CR>')
+nnoremap <expr> k (v:count ? 'gk' : ':echoerr "Count required!"<CR>')
+
+nnoremap gj j
+nnoremap gk k
 
 " }}}
 
