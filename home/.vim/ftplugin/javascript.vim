@@ -19,4 +19,5 @@ nnoremap <buffer> g= ?{<CR>v%:s/\v\s*:\s*/: /<cr>:noh<cr>gv=
 
 setlocal errorformat=%f:%l:%c:\ %m
 setlocal makeprg=jscs\ --no-colors\ --max-errors\ -1\ --reporter\ unix\ %
-autocmd! BufWritePost <buffer> silent make! | silent redraw! | silent wincmd p
+
+autocmd! BufWritePost <buffer> if line('$') < 1000 | silent make! | silent redraw! | endif
