@@ -302,10 +302,10 @@ augroup LazyFolds
 
   function! s:LazyFolds(type)
     if a:type == 0
-      let s:lazy_foldmethod=&foldmethod
+      let b:lazy_foldmethod=&foldmethod
       setlocal foldmethod=manual
-    else
-      execute 'setlocal foldmethod=' . s:lazy_foldmethod
+    elseif exists('b:lazy_foldmethod')
+      execute 'setlocal foldmethod=' . b:lazy_foldmethod
     endif
   endfunction
 
