@@ -45,8 +45,7 @@ call vundle#end()
 filetype plugin on
 
 set encoding=utf-8
-set modeline
-set modelines=2
+set modeline modelines=2
 set autoindent
 set showmode
 set showcmd
@@ -64,11 +63,8 @@ set listchars=tab:¦\ ,eol:¬,extends:❯,precedes:❮
 set lazyredraw
 set matchtime=0
 set showbreak=↪
-set splitbelow
-set splitright
 set shiftround
 set title
-set linebreak
 set colorcolumn=+1
 set shell=/bin/sh
 set path=**
@@ -163,7 +159,7 @@ set softtabstop=2
 set expandtab
 set nowrap
 set textwidth=80
-set formatoptions=tcr1j
+set formatoptions+=j
 
 " }}}
 " Backups {{{
