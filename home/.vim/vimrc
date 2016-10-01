@@ -316,7 +316,7 @@ nnoremap zO zczO
 
 set fillchars+=fold:\ 
 
-hi Folded term=standout ctermfg=9 ctermbg=235
+hi Folded term=standout ctermfg=100 ctermbg=235
 
 function! MyFoldText() " {{{
   let s:left = substitute(getline(v:foldstart), '{{' . '{', '', 'g')
