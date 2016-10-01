@@ -242,6 +242,11 @@ command! -range=% AddComma keepp <line1>,<line2>s/\(\_s\|[[{,;]\)\@<!\ze\_s\_s*\
 command! -range=% DupWord keepp <line1>,<line2>s/\(\<\w\+\>\)\zs\_s\+\<\1\>//cg
 
 " }}}
+" Uppercase first word after period {{{
+
+command! -range=% UCFirst keepp <line1>,<line2>s/\.\_s\+\zs\l/\u&/cg
+
+" }}}
 
 " }}}
 " Quick editing {{{
