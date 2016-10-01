@@ -369,15 +369,6 @@ augroup AutoChmodX
 
 augroup END
 
-" Set new files ft to __new__ so that a ftplugin can be ran, this is a nice way
-" to enable maps for new files only
-augroup NewFT
-
-  au!
-  au BufNewFile * setlocal ft=__new__
-
-augroup END
-
 " }}}
 " Plugin settings {{{
 
