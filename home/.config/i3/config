@@ -139,7 +139,7 @@ mode "resize" {
   bindsym i gaps inner current plus 10
   bindsym Shift+i gaps inner current minus 10
 
-  bindsym Escape mode "default"
+  bindcode --release Ctrl+34 mode "default"
 }
 
 # }}}
@@ -155,7 +155,7 @@ mode "Move workspace" {
   bindsym $mod+k focus up
   bindsym $mod+l focus right
 
-  bindsym Escape mode "default"
+  bindcode --release Ctrl+34 mode "default"
 }
 
 # }}}
@@ -165,6 +165,14 @@ mode "Move workspace" {
 
 # Open remote desktop as big as current monitor size
 bindsym $mod+i exec "$root_dir/i3/so-work"
+
+# Terminal binds in every application (Ctrl-J, Ctrl-H, ...) {{{
+
+bindsym --release Ctrl+j exec --no-startup-id xdotool key --clearmodifiers Return
+bindsym --release Ctrl+h exec --no-startup-id xdotool key --clearmodifiers BackSpace
+bindcode --release Ctrl+34 exec --no-startup-id xdotool key --clearmodifiers Escape
+
+# }}}
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
