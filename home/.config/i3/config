@@ -170,6 +170,7 @@ bindsym $mod+i exec "$root_dir/i3/so-work"
 
 bindsym --release Ctrl+j exec --no-startup-id xdotool key --clearmodifiers Return
 bindsym --release Ctrl+h exec --no-startup-id xdotool key --clearmodifiers BackSpace
+bindsym --release Ctrl+i exec --no-startup-id xdotool key --clearmodifiers Tab
 bindcode --release Ctrl+34 exec --no-startup-id xdotool key --clearmodifiers Escape
 
 # }}}
