@@ -24,6 +24,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'wellle/targets.vim'
 Plugin 'justinmk/vim-sneak'
 
+" Align text with on regular expression
+Plugin 'godlygeek/tabular'
+
 " Readline Style keybinds
 Plugin 'tpope/vim-rsi'
 
