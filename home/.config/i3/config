@@ -202,7 +202,7 @@ bindsym $mod+o scratchpad show
 # }}}
 # Applications {{{
 
-bindsym $mod+Return exec chromium
+bindsym $mod+g exec chromium
 bindsym $mod+Shift+g exec "chromium-sl --incognito"
 
 # Open 5250 emulator
