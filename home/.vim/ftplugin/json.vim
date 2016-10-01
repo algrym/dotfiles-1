@@ -1,12 +1,8 @@
 setlocal foldmethod=syntax
 
-function! s:JQ(...) " {{{1
+function! s:JQ(...) range " {{{1
     let args = []
-    let range = '%'
     if a:0 > 0 | let args = a:1 | endif
-    if a:0 > 2 | let range=a:2 . ',' . a:3 | endif
-
-    echom range
 
     if len(filter(args[:], { key, val -> strpart(val, 0, 1) != '-' })) == 0
         call extend(args, ['.'])
@@ -18,10 +14,10 @@ function! s:JQ(...) " {{{1
     endif
 
     call extend(l:command, args)
-    :execute ':silent ' . range . '!' . join(l:command, ' ')
+    execute ':silent ' . a:firstline . ',' . a:lastline . '!' . join(l:command, ' ')
 endfunction
 
-command! -range=% -nargs=* JQ call <SID>JQ([<f-args>], <line1>, <line2>)
+command! -range=% -nargs=* JQ <line1>,<line2>call <SID>JQ([<f-args>])
 
 " }}}
 
