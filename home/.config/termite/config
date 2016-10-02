@@ -1,5 +1,6 @@
 [options]
-font = Monospace 10 # Remember <Ctrl-Shift-R> will reload current window
+# Remember <Ctrl-Shift-R> will reload current window
+font = Monospace 10
 
 [colors]
 # special
