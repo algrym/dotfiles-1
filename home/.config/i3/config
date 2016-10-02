@@ -4,8 +4,8 @@
 # Use at own risk, NO WARRANTY, to the extent permitted by law.
 # Variables {{{
 
-# Use Mod4 (SUPER_L) which is mapped on <Alt> see ../../.Xmodmap
-set $mod Mod4
+set $super_key Mod4 # Note that Alt and Super is remapped,
+set $alt_key Mod1 # So pressing <Alt> is trigger Mod4
 set $root_dir $DOTFILES_ROOT
 
 set $ws1  "1"
@@ -38,49 +38,49 @@ workspace $ws10 gaps inner 20
 # Container focus {{{
 
 # Change focuced container
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $super_key+h focus left
+bindsym $super_key+j focus down
+bindsym $super_key+k focus up
+bindsym $super_key+l focus right
 
 # Focus next/previous workspace
-bindsym $mod+Ctrl+h workspace prev_on_output
-bindsym $mod+Ctrl+l workspace next_on_output
+bindsym $super_key+Ctrl+h workspace prev_on_output
+bindsym $super_key+Ctrl+l workspace next_on_output
 
 # Bring workspace in focus
 workspace_auto_back_and_forth yes
 
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $super_key+1 workspace $ws1
+bindsym $super_key+2 workspace $ws2
+bindsym $super_key+3 workspace $ws3
+bindsym $super_key+4 workspace $ws4
+bindsym $super_key+5 workspace $ws5
+bindsym $super_key+6 workspace $ws6
+bindsym $super_key+7 workspace $ws7
+bindsym $super_key+8 workspace $ws8
+bindsym $super_key+9 workspace $ws9
+bindsym $super_key+0 workspace $ws10
 
 # }}}
 # Container movement {{{
 
 # Move focuced container
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $super_key+Shift+h move left
+bindsym $super_key+Shift+j move down
+bindsym $super_key+Shift+k move up
+bindsym $super_key+Shift+l move right
 
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $super_key+Shift+1 move container to workspace $ws1
+bindsym $super_key+Shift+2 move container to workspace $ws2
+bindsym $super_key+Shift+3 move container to workspace $ws3
+bindsym $super_key+Shift+4 move container to workspace $ws4
+bindsym $super_key+Shift+5 move container to workspace $ws5
+bindsym $super_key+Shift+6 move container to workspace $ws6
+bindsym $super_key+Shift+7 move container to workspace $ws7
+bindsym $super_key+Shift+8 move container to workspace $ws8
+bindsym $super_key+Shift+9 move container to workspace $ws9
+bindsym $super_key+Shift+0 move container to workspace $ws10
 
 # }}}
 # Container layout {{{
@@ -89,36 +89,36 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 new_window normal 1 px
 
 # Vertical/Horizontal split, this will open next container accordingly
-bindsym $mod+v split vertical
-bindsym $mod+b split horizontal
+bindsym $super_key+v split vertical
+bindsym $super_key+b split horizontal
 
 # Stacked container layout
-bindsym $mod+n layout stacking
+bindsym $super_key+n layout stacking
 
 # Tabbed container layout
-bindsym $mod+w layout tabbed
+bindsym $super_key+w layout tabbed
 
 # Toggle floating
-bindsym $mod+f floating toggle
+bindsym $super_key+f floating toggle
 
 # Splitted container layout
-bindsym $mod+e layout toggle split
+bindsym $super_key+e layout toggle split
 
 # Toggle fullscreen
-bindsym $mod+space fullscreen
+bindsym $super_key+space fullscreen
 
 # }}}
 # Floating config {{{
 
-floating_modifier $mod
+floating_modifier $super_key
 
 for_window [class="^rdesktop"] floating enable
 
 # }}}
 # Modes {{{
 
-bindsym $mod+r mode "resize"
-bindsym $mod+m mode "Move workspace"
+bindsym $super_key+r mode "resize"
+bindsym $super_key+m mode "Move workspace"
 
 # Resize containers {{{
 
@@ -128,10 +128,10 @@ mode "resize" {
   bindsym k resize shrink height 10 px or 10 ppt
   bindsym l resize grow width 10 px or 10 ppt
 
-  bindsym $mod+h focus left
-  bindsym $mod+j focus down
-  bindsym $mod+k focus up
-  bindsym $mod+l focus right
+  bindsym $super_key+h focus left
+  bindsym $super_key+j focus down
+  bindsym $super_key+k focus up
+  bindsym $super_key+l focus right
 
   bindsym o gaps outer current plus 10
   bindsym Shift+o gaps outer current minus 10
@@ -150,10 +150,10 @@ mode "Move workspace" {
   bindsym h move workspace to output left
   bindsym l move workspace to output right
 
-  bindsym $mod+h focus left
-  bindsym $mod+j focus down
-  bindsym $mod+k focus up
-  bindsym $mod+l focus right
+  bindsym $super_key+h focus left
+  bindsym $super_key+j focus down
+  bindsym $super_key+k focus up
+  bindsym $super_key+l focus right
 
   bindcode --release Ctrl+34 mode "default"
 }
@@ -164,7 +164,7 @@ mode "Move workspace" {
 # Other key binds {{{
 
 # Open remote desktop as big as current monitor size
-bindsym $mod+i exec "$root_dir/i3/so-work"
+bindsym $super_key+i exec "$root_dir/i3/so-work"
 
 # Terminal binds in every application (Ctrl-J, Ctrl-H, ...) {{{
 
@@ -176,64 +176,64 @@ bindcode --release Ctrl+34 exec --no-startup-id xdotool key --clearmodifiers Esc
 # }}}
 
 # Reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $super_key+Shift+c reload
 
 # Restart i3 inplace
-bindsym $mod+Shift+r restart
+bindsym $super_key+Shift+r restart
 
-bindsym $mod+u exec --no-startup-id "$root_dir/i3/ws"
+bindsym $super_key+u exec --no-startup-id "$root_dir/i3/ws"
 
 # Lock the screen
-bindsym $mod+Shift+s exec --no-startup-id $root_dir/i3/lock
+bindsym $super_key+Shift+s exec --no-startup-id $root_dir/i3/lock
 
 # Close focuced container
-bindsym $mod+q kill
+bindsym $super_key+q kill
 
 # Change background image
-bindsym $mod+s exec --no-startup-id reddit-wallpaper
+bindsym $super_key+s exec --no-startup-id reddit-wallpaper
 
 # Program launcher
-bindsym $mod+p exec --no-startup-id dmenu_run
+bindsym $super_key+p exec --no-startup-id dmenu_run
 
 # Scratchpad {{{
 
-bindsym $mod+Shift+m move scratchpad
-bindsym $mod+o scratchpad show
+bindsym $super_key+Shift+m move scratchpad
+bindsym $super_key+o scratchpad show
 
 # }}}
 # Applications {{{
 
-bindsym $mod+g exec chromium
-bindsym $mod+Shift+g exec "chromium-sl --incognito"
+bindsym $super_key+g exec chromium
+bindsym $super_key+Shift+g exec "chromium-sl --incognito"
 
 # Open 5250 emulator
-bindsym $mod+Shift+t exec --no-startup-id "acs-launch"
+bindsym $super_key+Shift+t exec --no-startup-id "acs-launch"
 
 # Open terminal
-bindsym $mod+t exec termite
+bindsym $super_key+t exec termite
 
 # Clipboard manager
-bindsym $mod+d exec --no-startup-id dclip
+bindsym $super_key+d exec --no-startup-id dclip
 
 # }}}
 # Volume {{{
 
 # Toggle volume on/off with <Alt-F1>
-bindcode $mod+67 exec --no-startup-id "amixer sset Master toggle && killall -USR1 i3status"
+bindcode $super_key+67 exec --no-startup-id "amixer sset Master toggle && killall -USR1 i3status"
 
 # Decrease volume with <Alt-F3>
-bindcode $mod+68 exec --no-startup-id "amixer sset Master 2%- && killall -USR1 i3status"
+bindcode $super_key+68 exec --no-startup-id "amixer sset Master 2%- && killall -USR1 i3status"
 
 # Increase volume with <Alt-F2>
-bindcode $mod+69 exec --no-startup-id "amixer sset Master 2%+ && killall -USR1 i3status"
+bindcode $super_key+69 exec --no-startup-id "amixer sset Master 2%+ && killall -USR1 i3status"
 
 # }}}
 # Backlight {{{
 
 # Decrease backlight with <Alt-F5>
-bindcode $mod+71 exec --no-startup-id "backlight-tune -10 && killall -USR1 i3status"
+bindcode $super_key+71 exec --no-startup-id "backlight-tune -10 && killall -USR1 i3status"
 # Increase backlight with <Alt-F6>
-bindcode $mod+72 exec --no-startup-id "backlight-tune 10 && killall -USR1 i3status"
+bindcode $super_key+72 exec --no-startup-id "backlight-tune 10 && killall -USR1 i3status"
 
 # }}}
 # Screenshot {{{
@@ -259,7 +259,7 @@ bar {
   status_command "$root_dir/i3/status"
   mode hide
   hidden_state hide
-  modifier $mod
+  modifier $super_key
   tray_output no
   strip_workspace_numbers yes
 
