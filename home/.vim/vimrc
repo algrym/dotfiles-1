@@ -393,7 +393,14 @@ let delimitMate_excluded_ft = "lisp"
 " }}}
 " UndotreeToggle {{{
 
+let g:undotree_SetFocusWhenToggle = 1
 nnoremap <F9> :UndotreeToggle<CR>
+
+function g:Undotree_CustomMap()
+  map <buffer> <c-n> J
+  map <buffer> <c-p> K
+endfunction
+
 
 " }}}
 
