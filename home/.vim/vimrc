@@ -221,7 +221,6 @@ nnoremap gb :ls<cr>:b<space>
 " Edit file in same directory as current file:
 nnoremap <leader>ew :e <C-r>=fnameescape(expand("%:p:h") . "/")<CR>
 
-
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 
@@ -397,7 +396,7 @@ let delimitMate_excluded_ft = "lisp"
 let g:undotree_SetFocusWhenToggle = 1
 nnoremap <F9> :UndotreeToggle<CR>
 
-function g:Undotree_CustomMap()
+function! g:Undotree_CustomMap()
   map <buffer> <c-n> J
   map <buffer> <c-p> K
 endfunction
