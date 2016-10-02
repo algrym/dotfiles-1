@@ -255,6 +255,7 @@ command! -range=% UCFirst keepp <line1>,<line2>s/\.\_s\+\zs\l/\u&/cg
 " Quick editing {{{
 
 nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>et :split ~/.config/termite/config<cr>
 nnoremap <leader>ez :split ~/.zshrc<cr>
 nnoremap <leader>eg :split ~/.gitconfig<cr>
 nnoremap <leader>es :split ~/.vim/spell.utf-8.add<cr>
