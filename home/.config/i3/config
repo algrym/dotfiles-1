@@ -4,8 +4,10 @@
 # Use at own risk, NO WARRANTY, to the extent permitted by law.
 # Variables {{{
 
-set $super_key Mod4 # Note that Alt and Super is remapped,
-set $alt_key Mod1 # So pressing <Alt> is trigger Mod4
+# Note that Alt and Super is remapped,
+# So pressing <Alt> is trigger Mod4
+set $super_key Mod4
+set $alt_key Mod1
 set $root_dir $DOTFILES_ROOT
 
 set $ws1  "1"
@@ -165,15 +167,6 @@ mode "Move workspace" {
 
 # Open remote desktop as big as current monitor size
 bindsym $super_key+i exec "$root_dir/i3/so-work"
-
-# Terminal binds in every application (Ctrl-J, Ctrl-H, ...) {{{
-
-bindsym --release Ctrl+j exec --no-startup-id xdotool key --clearmodifiers Return
-bindsym --release Ctrl+h exec --no-startup-id xdotool key --clearmodifiers BackSpace
-bindsym --release Ctrl+i exec --no-startup-id xdotool key --clearmodifiers Tab
-bindcode --release Ctrl+34 exec --no-startup-id xdotool key --clearmodifiers Escape
-
-# }}}
 
 # Reload the configuration file
 bindsym $super_key+Shift+c reload
