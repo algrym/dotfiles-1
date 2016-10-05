@@ -74,6 +74,9 @@ set path=**
 set nrformats-=octal
 set scrolloff=1 sidescrolloff=5
 
+" Keep backspaced characters
+set cpoptions+=v
+
 " Spelling
 "
 set dictionary=/usr/share/dict/words
