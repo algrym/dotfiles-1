@@ -4,6 +4,7 @@
   signingkey = 14838A6A
 [push]
   default = simple
+  recurseSubmodules = check
 [color]
   ui = auto
 [color "branch"]
