@@ -16,4 +16,4 @@ file=$prev
 
 printf "var a = %s;\n" "$(< "$file")" \
   | "$cmd" "${args[@]}" \
-  | sed 's:^input:'"$file"':'
+  | awk -F: -v file="$file" '{ $1 = file }; 1' OFS=:
