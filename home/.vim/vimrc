@@ -294,8 +294,6 @@ runtime macros/matchit.vim
 
 set foldlevelstart=10
 
-set foldmethod=indent
-
 " Automatic set foldmethod to manual when entering insert mode, this is done to
 " prevent vim from unfolding automatic folds, when the code changes.
 
