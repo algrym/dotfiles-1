@@ -1,2 +1,1 @@
-setlocal foldmethod=marker
-setlocal foldmarker={{{,}}}
+setlocal keywordprg=:help
