@@ -208,7 +208,7 @@ iabbrev al@ andreas@louv.dk
 " Convenience mappings {{{
 
 " Clean trailing whitespace
-nnoremap <silent> <leader>ww mz:keepp %s/\s\+$//<cr>`z
+nnoremap <silent> <leader>ww mz:keepp %s/\(\\\)\@<!\s\+$//<cr>`z
 
 " zg will add <cword> to the custom spell file, sort that file after adding
 nnoremap zg zg:silent ! sort ~/.vim/spell.utf-8.add -o
