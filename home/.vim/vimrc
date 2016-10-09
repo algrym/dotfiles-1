@@ -214,6 +214,10 @@ nnoremap <silent> <leader>ww mz:keepp %s/\s\+$//<cr>`z
 nnoremap zg zg:silent ! sort ~/.vim/spell.utf-8.add -o
   \ ~/.vim/spell.utf-8.add<cr>:redraw!<cr>
 
+" Store relative movement in the jumplist
+nnoremap <expr> j (v:count ? "m'" . v:count : '') . 'j'
+nnoremap <expr> k (v:count ? "m'" . v:count : '') . 'k'
+
 nnoremap <leader>f :find<space>
 nnoremap <leader>g :grep<space>
 nnoremap <leader>m :make<cr>
@@ -284,16 +288,6 @@ set virtualedit+=block
 noremap <silent> <C-l> :noh<cr>:call clearmatches()<cr>
 
 runtime macros/matchit.vim
-
-" Nudge {{{
-
-nnoremap <expr> j (v:count ? 'gj' : ':echoerr "Count required!"<CR>')
-nnoremap <expr> k (v:count ? 'gk' : ':echoerr "Count required!"<CR>')
-
-nnoremap gj j
-nnoremap gk k
-
-" }}}
 
 " }}}
 " Folding {{{
