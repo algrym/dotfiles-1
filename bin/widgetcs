@@ -14,6 +14,6 @@ for arg; do
 done
 file=$prev
 
-{
-  printf "var a = %s;\n" "$(< "$file")";
-} | "$cmd" "${args[@]}" | sed 's:^input:'"$file"':'
+printf "var a = %s;\n" "$(< "$file")" \
+  | "$cmd" "${args[@]}" \
+  | sed 's:^input:'"$file"':'
