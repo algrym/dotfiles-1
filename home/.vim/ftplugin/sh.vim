@@ -2,5 +2,22 @@ setlocal foldmethod=syntax
 setlocal sw=2 ts=2 expandtab
 let g:sh_fold_enabled = 7
 
+" Don't break commands with a newline as it wont work, would be nice if it could
+" insert a backslash infront. But not break strings, i.e:
+" ##############################################
+" | curl -trace-ascii my_trace.txt --b \       |
+" | my_cookie.jar \                            |
+" | "This string should not be broken, as it's a string" \
+" | -- https://example.com                     |
+" | ~                                          |
+" | ~                                          |
+" | ~                                          |
+" | ~                                          |
+" | ~                                          |
+" | ~                                          |
+" ##############################################
+" "This string should automati
+setlocal formatoptions-=t
+
 setlocal makeprg=shellcheck\ -x\ -f\ gcc\ %
 autocmd! BufWritePost <buffer> silent make! | silent redraw! | silent wincmd p
