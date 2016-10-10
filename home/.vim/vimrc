@@ -200,12 +200,6 @@ if has("gui_running")
 endif
 
 " }}}
-" Registers {{{
-
-" Run line under cursor as shell command
-let @s = "0y$:r!\":\'[,']s/^/# /:noh"
-
-" }}}
 " Abbreviations {{{
 
 iabbrev al@ andreas@louv.dk
