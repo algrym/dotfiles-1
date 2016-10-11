@@ -2,6 +2,9 @@ setlocal foldmethod=syntax
 setlocal sw=2 ts=2 expandtab
 let g:sh_fold_enabled = 7
 
+" This makes sure that shell scripts are highlighted as bash scripts
+let g:is_posix = 1
+
 " Don't break commands with a newline as it wont work, would be nice if it could
 " insert a backslash infront. But not break strings, i.e:
 " ##############################################
