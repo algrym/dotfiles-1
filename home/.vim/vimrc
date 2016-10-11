@@ -197,6 +197,8 @@ colorscheme apprentice
 
 if has("gui_running")
   set guicursor=a:block-cursor
+  set guioptions=
+  set mouse=
 endif
 
 " }}}
