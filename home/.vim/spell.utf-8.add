@@ -7,12 +7,15 @@ crontab
 Ctrl
 deadbeef
 dotfiles
+falsy
+filesystem
 filetype
 filetypes
 foldmethod
 github
 golang
 GPG
+HTML5
 i3
 i3wm
 iSeries
@@ -25,6 +28,7 @@ mojolicious
 namespacing
 POSIX
 PowerShell
+regexes
 reindent
 reindented
 StackOverflow
