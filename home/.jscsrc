@@ -11,7 +11,6 @@
     "disallowMixedSpacesAndTabs": true,
     "disallowMultipleLineBreaks": true,
     "disallowMultipleLineStrings": true,
-    "disallowMultipleSpaces": { "allowEOLComments": true },
     "disallowMultipleVarDecl": true,
     "disallowNewlineBeforeBlockStatements": true,
     "disallowNodeTypes": ["LabeledStatement"],
