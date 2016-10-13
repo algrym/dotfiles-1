@@ -1,4 +1,5 @@
 setlocal foldmethod=syntax
+setlocal shiftwidth=2 softtabstop=2 expandtab
 
 let g:perl_fold = 1
 let g:perl_sync_dist = 250

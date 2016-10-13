@@ -4,7 +4,7 @@ setlocal include=require\\s*(
 
 setlocal foldmethod=syntax
 
-setlocal noexpandtab
+setlocal tabstop=2 shiftwidth=2 softtabstop=2
 setlocal textwidth=100
 
 let b:match_words = '\<function\>:\<return\>,'

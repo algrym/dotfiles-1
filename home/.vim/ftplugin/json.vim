@@ -1,3 +1,4 @@
+setlocal expandtab shiftwidth=2 softtabstop=2
 setlocal foldmethod=syntax
 
 function! s:JQ(...) range " {{{1

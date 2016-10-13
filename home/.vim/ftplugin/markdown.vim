@@ -1,3 +1,5 @@
+setlocal shiftwidth=4 softtabstop=4 expandtab
+
 function! Get_Markdown_Header_Level(lnum) " {{{
     let l1 = getline(a:lnum)
 

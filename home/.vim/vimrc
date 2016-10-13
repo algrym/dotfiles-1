@@ -157,12 +157,8 @@ augroup line_return
 augroup END
 
 " }}}
-" Tabs, spaces, wrapping {{{
+" Wrapping {{{
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
 set nowrap
 set textwidth=80
 set formatoptions+=j
