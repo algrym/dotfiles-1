@@ -1,6 +1,6 @@
 setlocal define=
-setlocal suffixesadd+=.js
-setlocal include=require\\s*(
+setlocal suffixesadd+=.js,.jsx
+setlocal include=\\<import\\>
 
 setlocal foldmethod=syntax
 
