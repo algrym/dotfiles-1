@@ -22,11 +22,6 @@ declare -x PAGER=less
 # having an annoying multibyte dash (U+2212 MINUS SIGN).
 export MANPAGER="/bin/sh -c \"col -b | sed 's/−/-/g' | vim +'set ft=man' -\""
 
-# reddit-wallaper
-declare -x REDDIT_WALLPAPER_OUTPUT="$HOME/Pictures/Wallpapers"
-declare -x REDDIT_WALLPAPER_CACHE=1
-declare -x REDDIT_WALLPAPER_ALWAYS_NEW=1
-
 # Used by clipbored
 declare -x CLIPBORED_X_SELECTION='clipboard';
 
