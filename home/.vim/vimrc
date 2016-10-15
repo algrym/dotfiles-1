@@ -133,6 +133,7 @@ augroup END
 
 set wildmenu
 set wildmode=longest,full
+set wildignorecase
 
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
