@@ -23,7 +23,7 @@ command! -range=% -nargs=* JQ <line1>,<line2>call <SID>JQ([<f-args>])
 " }}}
 
 " Sort and indent
-nnoremap <buffer> <localleader>S :call <SID>JQ(['--sort-keys'])<cr>
+nnoremap <buffer> <localleader>S :%call <SID>JQ(['--sort-keys'])<cr>
 
 " Proper indent
 nnoremap <buffer> g= :call <SID>JQ()<cr>
