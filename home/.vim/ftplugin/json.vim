@@ -6,12 +6,12 @@ function! s:JQ(...) range " {{{1
     if a:0 > 0 | let args = a:1 | endif
 
     if len(filter(args[:], { key, val -> strpart(val, 0, 1) != '-' })) == 0
-        call extend(args, ['.'])
+        call add(args, '.')
     endif
 
     let l:command = ['jq', '--indent', &shiftwidth]
     if &expandtab == 0
-        call extend(l:command, ['--tab'])
+        call add(l:command, '--tab')
     endif
 
     call extend(l:command, args)
