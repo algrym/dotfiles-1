@@ -232,6 +232,10 @@ work() {
 
 # Exit files from PATH list:
 vibin() {
+  if [ $# -eq 0 ]; then
+    >&2 printf 'Usage: %s <command>\n' "vibin"
+    return 1
+  fi
   loc=$(which -p "$1")
   if [ $? -eq 0 ]; then
     $EDITOR "$loc"
