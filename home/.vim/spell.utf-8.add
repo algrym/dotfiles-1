@@ -2,8 +2,10 @@ autocommand
 autocommands
 Autocommands
 config
+const
 coreutils
 crontab
+ctags
 Ctrl
 deadbeef
 dotfiles
@@ -31,6 +33,7 @@ PowerShell
 regexes
 reindent
 reindented
+RPGle
 StackOverflow
 submodules
 SuperOffice
