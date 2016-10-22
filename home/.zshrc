@@ -57,8 +57,8 @@ bindkey -e
 # <C-Z> will call 'fg' when no process is running in the foreground {{{
 
 fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
-    if [ $(jobs | wc -l) -gt 0 ]; then
+  if [ "${#BUFFER}" -eq 0 ]; then
+    if [ "$(jobs | wc -l)" -gt 0 ]; then
       fg
       zle accept-line
     fi
