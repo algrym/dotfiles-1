@@ -26,6 +26,9 @@ deps-install:
 
 	git clone https://github.com/trapd00r/clipbored "$(HOME)/.clipbored" || true
 	git clone https://github.com/michaeldfallen/git-radar "$(HOME)/.git-radar" || true
+	git clone https://github.com/andlrc/rpglectags "$(root)/../rpglectags"; \
+		cd $(root)/../rpglectags && sudo make install; \
+		true
 
 yaourt-install:
 	mkdir -p build
