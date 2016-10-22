@@ -7,19 +7,18 @@ let g:is_posix = 1
 
 " Don't break commands with a newline as it wont work, would be nice if it could
 " insert a backslash infront. But not break strings, i.e:
-" ##############################################
-" | curl -trace-ascii my_trace.txt --b \       |
-" | my_cookie.jar \                            |
-" | "This string should not be broken, as it's a string" \
-" | -- https://example.com                     |
-" | ~                                          |
-" | ~                                          |
-" | ~                                          |
-" | ~                                          |
-" | ~                                          |
-" | ~                                          |
-" ##############################################
-" "This string should automati
+"     +--------------------------------------------+
+"     | curl -trace-ascii my_trace.txt --b \       |
+"     | my_cookie.jar \                            |
+"     | "This string should not be broken, as it's a string" \
+"     | -- https://example.com                     |
+"     | ~                                          |
+"     | ~                                          |
+"     | ~                                          |
+"     | ~                                          |
+"     | ~                                          |
+"     | ~                                          |
+"     +--------------------------------------------+
 setlocal formatoptions-=t
 
 setlocal makeprg=shellcheck\ -x\ -f\ gcc\ %
