@@ -1,3 +1,5 @@
+setlocal textwidth=0
+
 function! DiffFoldLevel()
     let l:line=getline(v:lnum)
 
