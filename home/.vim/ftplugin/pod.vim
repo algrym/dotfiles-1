@@ -1,3 +1,6 @@
+setlocal shiftwidth=4 softtabstop=4 expandtab
+setlocal spell
+
 function! Foldexpr_Pod(lev)
     let mytext = getline(a:lev)
     let result="="
