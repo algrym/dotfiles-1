@@ -22,7 +22,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'wellle/targets.vim'
-Plugin 'justinmk/vim-sneak'
 
 " Align text with on regular expression
 Plugin 'godlygeek/tabular'
