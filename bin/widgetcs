@@ -3,17 +3,26 @@
 # But I like to lint them as JS. This can be done by wrapping the file in
 # 'var a = ...;'.
 
-cmd=$1; shift
-args=()
-prev=
-for arg; do
-  if [ -n "$prev" ]; then
-    args+=("$prev")
-  fi
-  prev=$arg
-done
-file=$prev
+if [ -t 0 ]; then
+  cmd=$1; shift
+  args=()
+  prev=
+  for arg; do
+    if [ -n "$prev" ]; then
+      args+=("$prev")
+    fi
+    prev=$arg
+  done
+  file=$prev
 
-printf "var a = %s;\n" "$(< "$file")" \
-  | "$cmd" "${args[@]}" \
-  | awk -F: -v file="$file" '{ $1 = file }; 1' OFS=:
+  printf "var a = %s;\n" "$(cat "$file")" \
+    | "$cmd" "${args[@]}" \
+    | awk -F: -v file="$file" '{ $1 = file }; 1' OFS=:
+else
+  cmd=$1; shift
+  args=("$@")
+  file=-
+  printf "var a = %s;\n" "$(cat "$file")" \
+    | "$cmd" "${args[@]}" \
+    | sed '1s/var a = //;$s/;//'
+fi
