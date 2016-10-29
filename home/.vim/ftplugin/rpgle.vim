@@ -1,8 +1,9 @@
-set foldmethod=syntax
-set textwidth=73 " 80 - 7 columns that icebreak addeds when compiling
+setlocal foldmethod=syntax
+setlocal textwidth=73 " 80 - 7 columns that icebreak addeds when compiling
+setlocal tagcase=ignore
 
 setlocal suffixesadd=.aspx,.asmx
-set include=\\s*/\\s*include
+setlocal include=\\s*/\\s*include
 
 let g:rpgle_fold_enabled = 1
 let g:rpgle_fold = 64 + 128 + 256
