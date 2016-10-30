@@ -83,7 +83,7 @@ set dictionary=/usr/share/dict/words
 set spellfile=~/.vim/spell.utf-8.add
 
 " Statusline
-set statusline=%r%t\ %m%y\ \#%n%=0x%B\ [%02p%%\ %l:%c/%L]
+set statusline=%r%t\ %m%y\ \#%n%=%02v:%l/%L
 
 " Don't try to highlight lines longer than 200 characters.
 set synmaxcol=200
