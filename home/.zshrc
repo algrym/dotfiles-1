@@ -154,6 +154,10 @@ declare -x RPROMPT="\$(_prompt_git || _prompt_user)"
 # }}}
 # Command completion {{{
 
+# Don't complain about unmatched globs, do as a POSIX shell and print the glob
+# literal:
+unsetopt nomatch
+
 # Enable <tab> completion
 autoload -U compinit promptinit
 compinit
