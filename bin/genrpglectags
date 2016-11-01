@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+if [ "$#" -ne 1 ]; then
+  >&2 printf "Usage: '%s project'\n" "${0##*/}"
+  exit 1
+fi
+
+project=$1; shift
+
+portfolio_dir=/mnt/dksrv206/www/Portfolio/Admin/Services
+bas_dir=/mnt/dksrv206/www/dev/bas/shared/services
+project_dir=/mnt/dksrv206/www/dev/$project/customized/services
+
+args=(
+  "$portfolio_dir"/*.{aspx,asmx}
+  "$bas_dir"/*.{aspx,asmx}
+)
+
+if [ "$project" != "bas" ]; then
+  args+=("$project_dir"/*.{aspx,asmx})
+fi
+
+rpglectags "${args[@]}"
