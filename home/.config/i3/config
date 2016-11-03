@@ -177,7 +177,7 @@ bindsym $super_key+Shift+r restart
 bindsym $super_key+u exec --no-startup-id "$root_dir/i3/ws"
 
 # Lock the screen
-bindsym $super_key+Shift+s exec --no-startup-id $root_dir/i3/lock
+bindsym $super_key+Shift+s exec --no-startup-id "$root_dir/i3/lock"
 
 # Close focuced container
 bindsym $super_key+q kill
@@ -270,8 +270,8 @@ bar {
 # }}}
 # Startup scripts {{{
 
-exec --no-startup-id "pgrep '^cat-batt$' || $root_dir/i3/cat-batt"
-exec --no-startup-id "pgrep '^cat-cpu-temp$' || $root_dir/i3/cat-cpu-temp"
+exec --no-startup-id "pgrep '^cat-batt$' || \"$root_dir/i3/cat-batt\""
+exec --no-startup-id "pgrep '^cat-cpu-temp$' || \"$root_dir/i3/cat-cpu-temp\""
 
 exec --no-startup-id "pgrep '^redshift$' || redshift"
 exec --no-startup-id "pgrep '^dunst$' || dunst"

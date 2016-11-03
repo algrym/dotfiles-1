@@ -33,7 +33,7 @@ fi
 
 # Termite is not by default recognized properly, so it's needed to have a
 # hard coded LS_COLORS variable
-export LS_COLORS="$(tr $'\n' ':' < $DOTFILES_ROOT/resources/term-colors)"
+export LS_COLORS="$(tr $'\n' ':' < "$DOTFILES_ROOT"/resources/term-colors)"
 autoload -U colors && colors
 
 # Make 'cd' push directories so 'cd -N', where 'N' is an integer, can be used
