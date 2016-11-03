@@ -9,6 +9,7 @@ keycode 34 = bracketleft braceleft U00E5 U00C5
 ! Remap <CapsLock> -> <Control>
 clear lock
 keycode 66 = Control_L NoSymbol Control_L
+keycode 105 = Control_L NoSymbol Control_L
 add Control = Control_L
 
 ! Swap <Super> and <Alt>
