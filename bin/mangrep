@@ -1,0 +1,22 @@
+#!/bin/sh
+# Released to the public domain
+# Fusion between man and grep. Which also uses locale as C to avoid anoying 
+# unicode dash used in the POSIX man section
+#
+# Date: 09/24/16
+# Author: Andreas Louv <andreas@louv.dk>
+
+if [ "$#" -lt 2 ]; then
+  >&2 printf "Usage: %s [SECTION] page --grep-option\n" "${0%%/*}"
+  exit 1
+fi
+
+# mangrep section page --grep-option
+if [ -z "`printf "%s\n" "$1" | sed 's/^[[:digit:]].*//'`" ]; then
+  section=$1; shift
+  page=$1; shift
+  LC_ALL=C exec man "$section" "$page" | grep "$@"
+else
+  page=$1; shift
+  LC_ALL=C exec man "$page" | grep "$@"
+fi

@@ -1,0 +1,42 @@
+#!/usr/bin/python3
+# Author: Andreas Louv <andreas@louv.dk>
+# This script enables editing <textarea>'s on websites in gvim
+# Requires: cvim for Chromium
+
+import os
+import sys
+from json import loads
+import subprocess
+from tempfile import mkstemp
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+def edit_file(content):
+    fd, fn = mkstemp(suffix='.md', prefix='cvim-', text=True)
+    os.write(fd, content.encode('utf8'))
+    os.close(fd)
+    subprocess.Popen([':e', fn]).wait()
+    text = None
+    with open(fn, 'r') as f:
+        text = f.read()
+    # Don't remove the file since it's nice to keep a backup and after all its
+    # only stored until the computer is rebooted
+    # os.unlink(fn)
+    return text
+
+
+class CvimServer(BaseHTTPRequestHandler):
+    def do_POST(self):
+        length = int(self.headers['Content-Length'])
+        content = loads(self.rfile.read(length).decode('utf8'))
+        edit = edit_file(content['data'])
+        self.send_response(200)
+        self.send_header('Content-Type', 'text/plain')
+        self.end_headers()
+        self.wfile.write(edit.encode('utf8'))
+
+try:
+    server_address = ('127.0.0.1', 8001)
+    httpd = HTTPServer(server_address, CvimServer)
+    httpd.serve_forever()
+except KeyboardInterrupt:
+    pass
