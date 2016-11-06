@@ -1,8 +1,10 @@
 #!/bin/sh
 # Author: Andreas Louv <andreas@louv.dk>
 # A naive clipboard manager
-exec 3>>~/.dclipd
-old_cc=$(tail -1 ~/.dclipd | jq -r .)
+out_file="$HOME/.dclipd"
+exec 3>>"$out_file"
+chmod 700 "$out_file"
+old_cc=$(tail -1 "$out_file" | jq -r .)
 while sleep 1; do
   cc=$(xclip -sel clip -out)
   if [ -n "$cc" ]; then
