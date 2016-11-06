@@ -201,6 +201,7 @@ endif
 " }}}
 " Abbreviations {{{
 
+iabbrev <al@ <andreas@louv.dk
 iabbrev al@ andreas@louv.dk
 
 " }}}
