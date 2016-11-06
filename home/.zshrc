@@ -236,7 +236,6 @@ work() {
   export CDPATH="/mnt/dksrv206/www/dev:$CDPATH"
 }
 
-# Exit files from PATH list:
 cdbin() {
   if [ $# -eq 0 ]; then
     >&2 printf 'Usage: %s <command>\n' "cdbin"
@@ -251,7 +250,6 @@ cdbin() {
   fi
 }
 
-# Exit files from PATH list:
 vibin() {
   if [ $# -eq 0 ]; then
     >&2 printf 'Usage: %s <command>\n' "vibin"
@@ -260,6 +258,20 @@ vibin() {
   loc=$(which -p "$1")
   if [ $? -eq 0 ]; then
     $EDITOR "$loc"
+  else
+    >&2 printf "%s\n" "$loc"
+    return 1
+  fi
+}
+
+catbin() {
+  if [ $# -eq 0 ]; then
+    >&2 printf 'Usage: %s <command>\n' "catbin"
+    return 1
+  fi
+  loc=$(which -p "$1")
+  if [ $? -eq 0 ]; then
+    cat -- "$loc"
   else
     >&2 printf "%s\n" "$loc"
     return 1
@@ -289,6 +301,6 @@ fi
 # Auto Complete the following scripts
 compdef _gnu_generic zipSeries
 
-compdef "_files -W '${PATH//:/"'; _files -W '"}'" cdbin vibin
+compdef "_files -W '${PATH//:/"'; _files -W '"}'" cdbin vibin catbin
 
 # }}}
