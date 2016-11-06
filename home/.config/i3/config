@@ -276,6 +276,8 @@ exec --no-startup-id "pgrep '^cat-cpu-temp$' || \"$root_dir/i3/cat-cpu-temp\""
 exec --no-startup-id "pgrep '^redshift$' || redshift"
 exec --no-startup-id "pgrep '^dunst$' || dunst"
 
+exec --no-startup-id "pgrep '^dclipd$' || dclipd"
+
 exec_always --no-startup-id "feh --bg-fill \"$root_dir/wallpaper.jpg\""
 
 # exec --no-startup-id "pgrep '^compton$' || compton -b"
@@ -285,7 +287,5 @@ exec --no-startup-id "pgrep '^xautolock$' || xautolock -time 5 -locker \"$root_d
 
 exec --no-startup-id "amixer sset Master mute"
 exec --no-startup-id "amixer sset Master 30%"
-
-exec --no-startup-id "pgrep '^clipbored$' || clipbored"
 
 # }}}

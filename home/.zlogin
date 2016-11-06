@@ -22,9 +22,6 @@ declare -x EDITOR="$VISUAL"
 # having an annoying multibyte dash (U+2212 MINUS SIGN).
 # export MANPAGER="/bin/sh -c \"col -b | sed 's/−/-/g' | vim +'set ft=man' -\""
 
-# Used by clipbored
-declare -x CLIPBORED_X_SELECTION='clipboard';
-
 declare -x LC_ALL=en_US.UTF-8
 declare -x LANG="$LC_ALL"
 declare -x LANGUAGE="$LC_ALL"
@@ -34,7 +31,6 @@ declare -x NODE_PATH="/usr/lib/node_modules/"
 # The PATH list need to be set before startx is called, this will make
 # 'i3' and therefore 'dmenu_run' run with the proper path
 path+=(
-  "$HOME/.clipbored"
   "$HOME/bin"
   "$HOME/work/zipSeries/bin"
   "$HOME/work/charinfo"
