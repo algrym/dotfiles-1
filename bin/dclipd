@@ -1,13 +1,14 @@
 #!/bin/sh
 # Author: Andreas Louv <andreas@louv.dk>
 # A naive clipboard manager
-
 exec 3>>~/.dclipd
-
+old_cc=$(tail -1 ~/.dclipd | jq -r .)
 while sleep 1; do
   cc=$(xclip -sel clip -out)
-  if [ "$cc" != "$old_cc" ]; then
-    printf '%s' "$cc" | jq -Rs . >&3
+  if [ -n "$cc" ]; then
+    if [ "$cc" != "$old_cc" ]; then
+      printf '%s' "$cc" | jq -Rs . >&3
+    fi
+    old_cc=$cc
   fi
-  old_cc=$cc
 done
