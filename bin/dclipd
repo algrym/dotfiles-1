@@ -3,7 +3,7 @@
 # A naive clipboard manager
 out_file="$HOME/.dclipd"
 exec 3>>"$out_file"
-chmod 700 "$out_file"
+chmod 600 "$out_file"
 old_cc=$(tail -1 "$out_file" | jq -r .)
 while sleep 1; do
   cc=$(xclip -sel clip -out)
