@@ -11,4 +11,4 @@ let g:rpgle_fold = 64 + 128 + 256
 
 setlocal shiftwidth=2 softtabstop=2 expandtab
 
-nnoremap <buffer> <localleader>ts :Tabularize /dcl-s\s\+\w\+\zs<CR>
+nnoremap <buffer> <localleader>ts :Tabularize /dcl-\(s\\|c\\|ds\)\s\+\w\+\zs<CR>
