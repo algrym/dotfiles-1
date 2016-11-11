@@ -25,6 +25,7 @@
 --regex-js=/(['"]?)aliases\1:\s*\[\s*(['"])(.+?)\2/\3/c,class/
 --regex-js=/function\s+(\w+)/\1/f,function/
 --regex-js=/(['"]?)(\w+)\1:\s*function/\2/f,function/
+--regex-js=/(\w+)\s*=\s*\(?function/\1/f,function/
 
 --langdef=_css
 --langmap=_css:.css
