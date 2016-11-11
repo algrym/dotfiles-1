@@ -40,7 +40,8 @@ autoload -U colors && colors
 # to navigate back to old directories.
 setopt auto_pushd pushd_ignore_dups pushdminus
 
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+# Make <C-w> be more intuitive
+WORDCHARS=''
 
 # }}}
 # History configuration {{{
