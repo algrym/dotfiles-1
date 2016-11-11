@@ -36,3 +36,5 @@
   tool = vimdiff
 [commit]
   gpgsign = true
+[core]
+  pager = vip +'%s/\\e.\\{-}m//g' +'set ft=diff' +':1'
