@@ -15,21 +15,22 @@
 --exclude=\*.pyc
 --exclude=\*.tar.\*
 --exclude=source/current/script/lib
---exclude=source/current/font
 --exclude=projects/script/lib
---exclude=projects/font
 
 --langdef=js
 --langmap=js:.js
 
---regex-js=/(['"]?)aliases\1:\s*\[\s*(['"])(.+?)\2/\3/c,class/
+--regex-js=/(['"]?)aliases\1:\s*\[\s*(['"])([^'"]+)\2/\3/c,class/
 --regex-js=/function\s+(\w+)/\1/f,function/
 --regex-js=/(['"]?)(\w+)\1:\s*function/\2/f,function/
 --regex-js=/(\w+)\s*=\s*\(?function/\1/f,function/
+--regex-js=/registerHelper\s*\(\s*(['"]?)(\w+)\1/\2/f,function/
 
 --langdef=_css
 --langmap=_css:.css
 --langmap=_css:+.scss
+
+--regex-_css=/\.([^ :{]+)/\1/c,class/
 
 --langdef=_json
 --langmap=_json:.json
