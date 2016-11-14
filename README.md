@@ -17,9 +17,9 @@ home directory (`$HOME`). Directories will be created as needed.
 Installation:
 ------------
 
-	git clone https://github.com/andlrc/dotfiles "$HOME/work/dotfiles"
-	cd "$HOME/work/dotfiles" || exit 2
-	make install
+	git clone https://github.com/andlrc/dotfiles "$HOME/work/dotfiles" \
+	&& cd "$HOME/work/dotfiles" \
+	&& make install
 
 Quick links
 -----------
