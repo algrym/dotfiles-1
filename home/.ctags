@@ -25,12 +25,16 @@
 --regex-js=/(['"]?)(\w+)\1:\s*function/\2/f,function/
 --regex-js=/(\w+)\s*=\s*\(?function/\1/f,function/
 --regex-js=/registerHelper\s*\(\s*(['"]?)(\w+)\1/\2/f,function/
+--regex-js=/Padform(\.\w+)*\.(\w+)\s*=\s*/\2/v,variable/
+
+--langdef=tpl
+--langmap=tpl:.tpl
 
 --langdef=_css
 --langmap=_css:.css
 --langmap=_css:+.scss
 
---regex-_css=/\.([^ :{]+)/\1/c,class/
+--regex-_css=/[^:]*\.((-|\w)+).*[,{]\s*$/\1/c,class/
 
 --langdef=_json
 --langmap=_json:.json

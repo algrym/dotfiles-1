@@ -24,3 +24,5 @@ setlocal makeprg=jscs\ --no-colors\ --max-errors\ -1\ --reporter\ unix\ %
 nnoremap <buffer> <localleader>s :%!jscs -x<CR>
 
 autocmd! BufWritePost <buffer> if line('$') < 1000 | silent make! | silent redraw! | endif
+
+setlocal tags=./js.tags,js.tags,./tags,tags,./html.tags,html.tags

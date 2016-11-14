@@ -4,3 +4,5 @@ setlocal iskeyword+=-
 
 " Auto insert closing tags
 inoremap <buffer> </ </<C-x><C-o>
+
+setlocal tags=./html.tags,html.tags,./tags,tags,./js.tags,js.tags
