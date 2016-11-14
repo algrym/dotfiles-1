@@ -18,8 +18,8 @@ Installation:
 ------------
 
 	git clone https://github.com/andlrc/dotfiles "$HOME/work/dotfiles" \
-	&& cd "$HOME/work/dotfiles" \
-	&& make install
+		&& cd "$HOME/work/dotfiles" \
+		&& make install
 
 Quick links
 -----------
