@@ -286,7 +286,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " }}}
 " Searching and movement {{{
 
-set grepprg=grep\ -n\ --exclude-dir=.git\ -R
+set grepprg=grep\ -n\ --exclude-dir=.git\ -R\ '$*'
 
 augroup qfix
     autocmd!
