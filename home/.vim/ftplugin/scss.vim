@@ -14,6 +14,8 @@ function! s:ScssExec(args)
   endfor
 endfunction
 
+setlocal tags=./html.tags,html.tags,./tags,tags,./js.tags,js.tags
+
 setlocal errorformat=%f:%l:%c\ [E]\ %m
 setlocal makeprg=scss-lint\ %
 autocmd! BufWritePost <buffer> silent make! | silent redraw! | silent wincmd p
