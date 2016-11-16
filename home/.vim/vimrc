@@ -245,9 +245,6 @@ cnoreabbr w!! w !sudo tee % >/dev/null
 " Make Y work like C and D
 nnoremap Y y$
 
-" Be able to undo <C-u>
-inoremap <c-u> <c-g>u<c-u>
-
 " }}}
 " Commands {{{
 
