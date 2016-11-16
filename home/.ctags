@@ -25,7 +25,9 @@
 --regex-js=/(['"]?)(\w+)\1:\s*function/\2/f,function/
 --regex-js=/(\w+)\s*=\s*\(?function/\1/f,function/
 --regex-js=/registerHelper\s*\(\s*(['"]?)(\w+)\1/\2/f,function/
---regex-js=/Padform(\.\w+)*\.(\w+)\s*=\s*/\2/v,variable/
+--regex-js=/Padform(\.\w+)*\.(\w+)\s*[^=]=[^=]\s*/\2/v,variable/
+--regex-js=/var\s+(\w+)\s*=\s*\w+\.extend\(\{/\1/c,class/
+--regex-js=/trigger\s*\((['"])([^'"]+)\1/\2/e,event/
 
 --langdef=tpl
 --langmap=tpl:.tpl
