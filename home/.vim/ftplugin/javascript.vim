@@ -13,8 +13,11 @@ let b:match_words = '\<function\>:\<return\>,'
   \ . '\<if\>:\<else\>,'
   \ . '\<try\>:\<catch\>:\<finally\>'
 
-nnoremap <buffer> <localleader>l :put='console.log(\"<C-r><C-w>\", window.<C-r><C-w> = <C-r><C-w>);'<CR>==
-nnoremap <buffer> <localleader>L :setlocal iskeyword+=.<CR>:put='console.log(\"<C-r><C-w>\", <C-r><C-w>);'<CR>==:setlocal iskeyword-=.<CR>
+nnoremap <buffer> <localleader>l :put='console.log(\"<C-r><C-w>\",
+  \ window.<C-r><C-w> = <C-r><C-w>);'<CR>==
+nnoremap <buffer> <localleader>L :setlocal iskeyword+=.<CR>
+  \ :put='console.log(\"<C-r><C-w>\", <C-r><C-w>);'
+  \ <CR>==:setlocal iskeyword-=.<CR>
 
 nnoremap <buffer> g= ?{<CR>v%:s/\v\s*:\s*/: /<cr>:noh<cr>gv=
 
