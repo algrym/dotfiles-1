@@ -228,6 +228,7 @@ nnoremap <expr> k (v:count ? "m'" . v:count : '') . 'k'
 nnoremap <leader>f :find<space>
 nnoremap <leader>g :grep<space>
 nnoremap <leader>m :make<cr>
+nnoremap <leader>h :help<space>
 
 " List all buffers in command mode:
 nnoremap gb :ls<cr>:b<space>
