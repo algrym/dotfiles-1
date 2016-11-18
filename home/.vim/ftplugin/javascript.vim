@@ -1,6 +1,7 @@
 setlocal define=
 setlocal suffixesadd+=.js,.jsx
 setlocal include=\\<import\\>
+setlocal includeexpr=substitute(v:fname,'./','','g')
 
 setlocal foldmethod=syntax
 
