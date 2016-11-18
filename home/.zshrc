@@ -289,7 +289,7 @@ d() {
   date +'Week %W, %a %F, %T'
 }
 
-export SITEMULE_OPEN_FAST=1
+export SITEMULE_CTAGS=1
 
 if [ -f "$HOME/work/Sitemule/util/.zshrc" ]; then
   source "$HOME/work/Sitemule/util/.zshrc"
