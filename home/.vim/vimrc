@@ -29,9 +29,6 @@ Plugin 'godlygeek/tabular'
 " Readline Style keybinds
 Plugin 'tpope/vim-rsi'
 
-" Better QF
-Plugin 'romainl/vim-qf'
-
 " Easy access of undolist
 Plugin 'mbbill/undotree'
 
@@ -92,9 +89,6 @@ set synmaxcol=200
 set notimeout
 set ttimeout
 set ttimeoutlen=10
-
-" Make Vim able to edit crontab files again.
-set backupskip=/tmp/*,/private/tmp/*"
 
 " Better Completion
 set complete=.,w,b,u,t
@@ -284,11 +278,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Searching and movement {{{
 
 set grepprg=grep\ -n\ --exclude='*.tags'\ --exclude=tags\ --exclude-dir=.git\ -R\ '$*'
-
-augroup qfix
-    autocmd!
-    autocmd QuickFixCmdPost grep,make,lmake nested below cwindow
-augroup END
 
 set ignorecase
 set smartcase
