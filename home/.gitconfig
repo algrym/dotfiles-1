@@ -37,4 +37,4 @@
 [commit]
   gpgsign = true
 [core]
-  pager = vip +'%s/\\e.\\{-}m//ge' +'set ft=diff' +':1'
+  pager = vip +'%s/\\e.\\{-}m//ge' +'nnoremap q ZQ' +'set ft=diff' +':1'
