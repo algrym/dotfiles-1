@@ -6,6 +6,7 @@ all:
 	@echo "  deps-install"
 	@echo "  dash-install"
 	@echo "  rc-install"
+	@echo "  hwdb-install"
 	@echo "  vim-install"
 
 deps-install:
@@ -68,6 +69,12 @@ rc-install:
 		mkdir -p "$(HOME)/$$(dirname "$${file#home/}")"; \
 		ln -sv "$(root)/$$file" "$(HOME)/$${file#home/}" || true; \
 	done
+
+hwdb-install:
+	for file in hwdb.d/*; do \
+		sudo cp "$$file" /etc/udev/"$$file"; \
+	done
+	sudo udevadm hwdb --update && sudo udevadm trigger && sleep 1 && xmodmap ~/.Xmodmap
 
 vim-clean:
 
