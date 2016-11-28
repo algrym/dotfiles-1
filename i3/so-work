@@ -3,8 +3,8 @@
 IFS=x read -r width height <<< "$(xrandr \
   | sed 's/[[:space:]]*\([[:digit:]]*x[[:digit:]]*\).*\*.*/\1/p;d')"
 
-[ "$width" -gt 1024 ] && width=1024
-[ "$height" -gt 768 ] && height=768
+test "$width" -gt 1024 && width=1024
+test "$height" -gt 768 && height=768
 
 screen_size="${width}x${height}"
 

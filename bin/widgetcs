@@ -3,12 +3,12 @@
 # But I like to lint them as JS. This can be done by wrapping the file in
 # 'var a = ...;'.
 
-if [ -t 0 ]; then
+if test -t 0; then
   cmd=$1; shift
   args=()
   prev=
   for arg; do
-    if [ -n "$prev" ]; then
+    if test -n "$prev"; then
       args+=("$prev")
     fi
     prev=$arg

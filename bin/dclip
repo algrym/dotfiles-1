@@ -11,7 +11,7 @@ choice=$(tail -n "$last" ~/.dclipd \
 
 choice_number=$(printf "%s" "$choice" | sed 's/^[^0-9]*\([0-9]*\).*$/\1/')
 
-if [ "$choice_number" = "" ]; then
+if test "$choice_number" = ""; then
   >&2 printf "%s: no item selected\n" "$pgm"
   exit 2
 fi

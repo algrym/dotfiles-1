@@ -15,7 +15,7 @@ readonly bat0="/sys/class/power_supply/BAT0/uevent"
 readonly bat1="/sys/class/power_supply/BAT1/uevent"
 
 while :; do
-	(if [ -f "$bat1" ]; then
+	(if test -f "$bat1"; then
 		paste -d '=' "$bat0" "$bat1" | \
 			awk -F '=' '/Charging/{ print($1 "=Charging"); next } { print($1 "=" ($2+$4)/2) }'
 	else

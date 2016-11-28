@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$#" -ne 1 ]; then
+if test "$#" -ne 1; then
   >&2 printf "Usage: '%s project'\n" "${0##*/}"
   exit 1
 fi
@@ -16,7 +16,7 @@ args=(
   "$bas_dir"/*.{aspx,asmx}
 )
 
-if [ "$project" != "bas" ]; then
+if test "$project" != "bas"; then
   args+=("$project_dir"/*.{aspx,asmx})
 fi
 

@@ -8,7 +8,7 @@ lock() {
   fi
 }
 
-if [ $# -gt 0 ]; then
+if test "$#" -gt 0; then
   xset dpms force off
   sleep 5
   # If screen if still off then continue locking

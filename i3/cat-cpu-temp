@@ -18,7 +18,7 @@ while :; do
 	max=0
 	for t in temp*_input; do
 		cur=$(cat "$t")
-		[ "$max" -lt "$cur" ] && max="$cur"
+		test "$max" -lt "$cur" && max="$cur"
 	done
 	
 	printf "%s" "$max" > /tmp/cat-cpu-temp.input

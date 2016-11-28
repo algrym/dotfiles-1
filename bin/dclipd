@@ -3,13 +3,13 @@
 # A naive clipboard manager
 out_file="$HOME/.dclipd"
 chmod 600 "$out_file"
-if [ -f "$out_file" ]; then
+if test -f "$out_file"; then
   old_cc=$(tail -1 "$out_file" | jq -r .)
 fi
 while sleep 1; do
   cc=$(xclip -sel clip -out)
-  if [ -n "$cc" ]; then
-    if [ "$cc" != "$old_cc" ]; then
+  if test -n "$cc"; then
+    if test "$cc" != "$old_cc"; then
       printf '%s' "$cc" | jq -Rs . >> "$out_file"
     fi
     old_cc=$cc

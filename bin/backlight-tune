@@ -1,7 +1,7 @@
 #!/bin/sh
 # Author: Andreas Louv <andreas@louv.dk>
 
-[ "$#" -lt 1 ] && { >&2 printf "Usage '%s +inc'\n" "${0##*/}"; exit 2; }
+test "$#" -lt 1 && { >&2 printf "Usage '%s +inc'\n" "${0##*/}"; exit 2; }
 
 readonly min=20
 readonly max=$(cat /sys/class/backlight/intel_backlight/max_brightness)
@@ -13,7 +13,7 @@ cat "$file"
 current=$(cat "$file")
 next=$((inc + current))
 
-[ "$next" -lt "$min" ] && next="$min"
-[ "$next" -gt "$max" ] && next="$max"
+test "$next" -lt "$min" && next="$min"
+test "$next" -gt "$max" && next="$max"
 
 echo "$next" > "$file"

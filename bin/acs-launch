@@ -6,8 +6,8 @@ opts=$(printf "NEW\n%s" "$(find "$session_dir" -type f -name "*.hod" -print \
 
 ans="$(printf "%s" "$opts" | dmenu -i -p "Which emulator to start?")"
 
-if [ -f "$session_dir/$ans.hod" ]; then
+if test -f "$session_dir/$ans.hod"; then
 	acs "$session_dir/$ans.hod"
-elif [ "$ans" = "NEW" ]; then
+elif test "$ans" = "NEW"; then
 	acs sm
 fi
