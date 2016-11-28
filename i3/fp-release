@@ -1,0 +1,18 @@
+#!/bin/sh
+# Tool called when foot pedel is released. 
+# Do class specific things i.e. close current window in Chromium.
+
+window_id=$(xprop -root | sed 's/^_NET_ACTIVE_WINDOW(WINDOW): window id # \(.*\)/\1/p;d')
+if test "$window_id" != "0x0"; then
+  window_class=$(xprop -id "$window_id" | sed 's/^WM_CLASS.*"\([^"]*\)"$/\1/p;d')
+  echo "$window_class"
+
+  case $window_class in
+    Chromium)
+      xdotool key 'control+w'
+      ;;
+    Termite)
+      echo 1
+      ;;
+  esac
+fi >> ~/log

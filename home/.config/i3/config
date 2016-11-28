@@ -166,8 +166,7 @@ mode "Move workspace" {
 # Other key binds {{{
 
 # KEY_WWW is a foot pedal, see /usr/include/linux/input-event-codes.h
-# For now use it to toggle workspaces
-bindsym XF86WWW workspace next
+bindsym --release XF86WWW exec --no-startup-id "$root_dir/i3/fp-release"
 
 # Open remote desktop as big as current monitor size
 bindsym $super_key+i exec "$root_dir/i3/so-work"
