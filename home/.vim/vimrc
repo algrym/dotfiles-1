@@ -139,23 +139,6 @@ set wildignore+=classes
 set wildignore+=lib
 
 " }}}
-" Make sure Vim returns to the same line when you reopen a file. {{{
-augroup line_return
-  au!
-  let s:buf_read_post_modeline = 0
-  au BufReadPost * let s:buf_read_post_modeline = 1
-  au BufWinEnter * call <SID>Refocus_Line()
-
-  function! s:Refocus_Line()
-    if s:buf_read_post_modeline == 1
-      \ && line("'\"") > 0 && line("'\"") <= line("$")
-      execute 'normal! g`"zvzz'
-      let s:buf_read_post_modeline = 0
-    endif
-  endfunction
-augroup END
-
-" }}}
 " Wrapping {{{
 
 set nowrap
