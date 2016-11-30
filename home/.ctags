@@ -17,6 +17,8 @@
 --exclude=source/current/script/lib
 --exclude=projects/script/lib
 
+--regex-sh=/^\s*(\w+)=/\1/v,variable/
+
 --langdef=js
 --langmap=js:.js
 
