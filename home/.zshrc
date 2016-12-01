@@ -127,7 +127,7 @@ _prompt_jobs() {
   echo "%{$fg[yellow]%}$(jobs | awk '/^\[/{c++}; END {if (c) print " " c}')"
 }
 _prompt_sudo() {
-  echo "$(sudo -n true 2> /dev/null && echo "%{$fg[red]%}\$" || echo "%{$fg[green]%}%%")"
+  echo "$(sudo -n true 2> /dev/null && echo "%{$fg[red]%}#" || echo "%{$fg[green]%}\$")"
 }
 _prompt_git() {
   # Show git information on the right, unless we are in a mounted directory.
