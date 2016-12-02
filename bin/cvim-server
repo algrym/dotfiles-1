@@ -11,7 +11,7 @@ from tempfile import mkstemp
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 def edit_file(content):
-    fd, fn = mkstemp(suffix='.md', prefix='cvim-', text=True)
+    fd, fn = mkstemp(suffix='.cvim', prefix='cvim-', text=True)
     os.write(fd, content.encode('utf8'))
     os.close(fd)
     subprocess.Popen([':e', fn]).wait()
