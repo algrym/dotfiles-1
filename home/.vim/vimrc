@@ -98,17 +98,6 @@ au VimResized * :wincmd =
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
-" Cursorline {{{
-" Only show cursorline in the current window and in normal mode.
-
-augroup cline
-  set cursorline
-  au!
-  au WinLeave,InsertEnter * set nocursorline
-  au WinEnter,InsertLeave * set cursorline
-augroup END
-
-" }}}
 " Trailing whitespace {{{
 " Only shown when not in insert mode
 
