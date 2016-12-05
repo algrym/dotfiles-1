@@ -1,0 +1,12 @@
+#!/bin/sh
+pgm=${0##*/}
+if [ $# -eq 0 ]; then
+  >&2 printf 'Usage: %s <command>\n' "catbin"
+  return 1
+fi
+if loc=$(command -v "$1"); then
+  cat -- "$loc"
+else
+  >&2 printf "%s\n" "$pgm: $1: No such command"
+  exit 1
+fi

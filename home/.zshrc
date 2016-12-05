@@ -237,48 +237,6 @@ work() {
   export CDPATH="/mnt/dksrv206/www/dev:$CDPATH"
 }
 
-cdbin() {
-  if [ $# -eq 0 ]; then
-    >&2 printf 'Usage: %s <command>\n' "cdbin"
-    return 1
-  fi
-  loc=$(which -p "$1")
-  if [ $? -eq 0 ]; then
-    cd -- "${loc%/*}"
-  else
-    >&2 printf "%s\n" "$loc"
-    return 1
-  fi
-}
-
-vibin() {
-  if [ $# -eq 0 ]; then
-    >&2 printf 'Usage: %s <command>\n' "vibin"
-    return 1
-  fi
-  loc=$(which -p "$1")
-  if [ $? -eq 0 ]; then
-    $EDITOR "$loc"
-  else
-    >&2 printf "%s\n" "$loc"
-    return 1
-  fi
-}
-
-catbin() {
-  if [ $# -eq 0 ]; then
-    >&2 printf 'Usage: %s <command>\n' "catbin"
-    return 1
-  fi
-  loc=$(which -p "$1")
-  if [ $? -eq 0 ]; then
-    cat -- "$loc"
-  else
-    >&2 printf "%s\n" "$loc"
-    return 1
-  fi
-}
-
 # Update PATH list, nice when just installed a program and want to run it
 # immediately, but are to lazy to type the full name
 u() {
