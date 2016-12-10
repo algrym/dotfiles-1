@@ -1,0 +1,4 @@
+#!/bin/sh
+# Run shell command after pacman is done running:
+while [ -f /var/lib/pacman/db.lck ]; do sleep 5; done
+"$@"
