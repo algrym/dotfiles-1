@@ -1,32 +1,27 @@
-#!/bin/sh
-# ...
+#!/usr/bin/sed -f
+# Sanitize scss files
 #
 # Usage:
-#	scssfix <file>...
+# scssfix [-i] <file>
 
-for file
-do
-  sed '
-  # Convert block comments to multiply single line comments:
-  /^\/\*/ {
-    :start
-    /\*\//b end
-    N
-    b start
-    :end
+# Convert block comments to multiply single line comments:
+/^\/\*/ {
+  :start
+  /\*\//b end
+  N
+  b start
+  :end
 
-    s=/\*==
-    s=\*/==
-    s=\(^\|\n\)\(// *\)*=\1// \2=g
-    b
-  }
+  s=/\*==
+  s=\*/==
+  s=\(^\|\n\)\(// *\)*=\1// \2=g
+  b
+}
 
-  # Convert comment colors
-  s/color: *white *;$/color: #fff;/
-  s/color: *black *;$/color: #000;/
-  s/color: *gr[ae]y;$/color: #080808;/
+# Convert comment colors
+s/color: *white *;$/color: #fff;/
+s/color: *black *;$/color: #000;/
+s/color: *gr[ae]y;$/color: #080808;/
 
-  # Lowercase hexidecimal colors
-  s/#\([[:xdigit:]]\{3\}\)\{1,2\}/\L&/
-  ' "$file" > "$file.tmp" && mv "$file.tmp" "$file"
-done
+# Lowercase hexidecimal colors
+s/#\([[:xdigit:]]\{3\}\)\{1,2\}/\L&/
