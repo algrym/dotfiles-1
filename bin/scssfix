@@ -5,7 +5,7 @@
 #	scssfix [-i] <file>
 #
 # Author:  Andreas Louv <andreas@louv.dk>
-# Version: 0.4
+# Version: 0.5
 
 # Convert every four leading space to tab:
 :start
@@ -72,3 +72,4 @@ s/color: *gr[ae]y;$/color: #808080;/; t
 
 # Lowercase hexidecimal colors
 s/#\([[:xdigit:]]\{3\}\)\{1,2\}/\L&/
+s/#\([[:xdigit:]]\)\1\([[:xdigit:]]\)\2\([[:xdigit:]]\)\3/#\1\2\3/
