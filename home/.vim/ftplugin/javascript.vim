@@ -28,3 +28,40 @@ setlocal makeprg=jscs\ --no-colors\ --max-errors\ -1\ --reporter\ unix\ %
 nnoremap <buffer> <localleader>s mz:%!jscs -x<CR>`z
 
 setlocal tags=./js.tags,js.tags,./tags,tags,./html.tags,html.tags
+
+" Somewhat proper section jumping {{{
+
+function! s:NextSection(type, backwards)
+  if a:type == 1
+    let pattern = '\(function\|=>\s*{\)'
+  elseif a:type == 2
+    let pattern = '}'
+  endif
+
+  if a:backwards
+    let dir = '?'
+  else
+    let dir = '/'
+  endif
+
+  execute 'silent :keepp normal! ' . dir . pattern . dir . 'e' . "\r"
+
+endfunction
+
+function! s:GoDefinition()
+  let word = expand('<cword>')
+  call s:NextSection(1, 1)
+
+  " TODO: There is no search highlight
+  call setreg('/', '\<' . word . '\>', 'c')
+  normal n
+endfunction
+
+noremap <script> <buffer> <silent> gd :call <SID>GoDefinition()<CR>
+
+noremap <script> <buffer> <silent> ]] :call <SID>NextSection(1, 0)<CR>
+noremap <script> <buffer> <silent> ][ :call <SID>NextSection(2, 0)<CR>
+noremap <script> <buffer> <silent> [[ :call <SID>NextSection(1, 1)<CR>
+noremap <script> <buffer> <silent> [] :call <SID>NextSection(2, 1)<CR>
+
+" }}}
