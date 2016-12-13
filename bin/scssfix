@@ -5,7 +5,7 @@
 #	scssfix [-i] <file>
 #
 # Author:  Andreas Louv <andreas@louv.dk>
-# Version: 0.3
+# Version: 0.4
 
 # Convert every four leading space to tab:
 :start
@@ -30,7 +30,7 @@ s/^\(\t*\)    /\1\t/; t stab
 # Convert comment colors, goto end if case of match
 s/color: *white *;$/color: #fff;/; t
 s/color: *black *;$/color: #000;/; t
-s/color: *gr[ae]y;$/color: #080808;/; t
+s/color: *gr[ae]y;$/color: #808080;/; t
 
 # Add trailing lines between blocks
 :sline
