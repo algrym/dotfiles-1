@@ -176,6 +176,11 @@ iabbrev al@ andreas@louv.dk
 " }}}
 " Convenience mappings {{{
 
+" Easy search and jump to match
+nnoremap <leader>g :g//#<left><left>
+nnoremap <leader>v :g//#<left><left>
+cnoremap <expr> <CR> getcmdline() =~# '^[vg]/.*/#$' ? '<CR>:' : '<CR>'
+
 " Clean trailing whitespace
 nnoremap <silent> <leader>ww mz:keepp %s/\(\\\)\@<!\s\+$//e<cr>`z
 
@@ -188,7 +193,7 @@ nnoremap <expr> j (v:count ? "m'" . v:count : '') . 'j'
 nnoremap <expr> k (v:count ? "m'" . v:count : '') . 'k'
 
 nnoremap <leader>f :find<space>
-nnoremap <leader>g :grep<space>
+nnoremap <leader>G :grep<space>
 nnoremap <leader>m :make<cr>
 nnoremap <leader>l :lmake<cr>
 nnoremap <leader>h :help<space>
