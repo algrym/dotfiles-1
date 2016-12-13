@@ -35,6 +35,11 @@ s/color: *gr[ae]y;$/color: #080808;/; t
 :sline
 /}$/ {
 	N
+
+	# Convert every four leading space to tab:
+	:slinet
+	s/\(^\|\n\)\(\t*\)    /\1\2\t/; t slinet
+
 	$b
 	//b sline
 	s/}\n\([[:space:]]*[@&#.*:[:alnum:]]\)/}\n\n\1/
