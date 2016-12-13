@@ -4,7 +4,8 @@
 # Usage:
 #	scssfix [-i] <file>
 #
-# Version: 0.2
+# Author:  Andreas Louv <andreas@louv.dk>
+# Version: 0.3
 
 # Convert every four leading space to tab:
 :start
