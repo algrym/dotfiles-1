@@ -7,6 +7,8 @@
 # Version: 0.2
 
 # Convert every four leading space to tab:
+:start
+
 :stab
 s/^\(\t*\)    /\1\t/; t stab
 
@@ -43,15 +45,23 @@ s/color: *gr[ae]y;$/color: #080808;/; t
 	s/\n[^\n]*$//p
 	x
 	s/^.*\n//
-
+	b start
 }
 
 # Remove empty blocks
 /{$/ {
-	N;
+	:scomma
+	s/\(^\|\n\)\([[:space:]]*\)\([^,\n]*,\) *\([^\n]*{\)$/\1\2\3\n\2\4/; t scomma
+	N
 	/{\n[[:space:]]*}/d
 
-	P;D
+	# Print and remove everything but the last line from the patter space,
+	# effectially leaving us with a "normal" line in the pattern space:
+	h
+	s/\n[^\n]*$//p
+	x
+	s/^.*\n//
+	b start
 }
 
 # Lowercase hexidecimal colors
