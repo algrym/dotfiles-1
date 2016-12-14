@@ -355,11 +355,6 @@ augroup plugin_commentary
 augroup END
 
 " }}}
-" DelimitMate {{{
-
-let delimitMate_excluded_ft = "lisp"
-
-" }}}
 " UndotreeToggle {{{
 
 let g:undotree_SetFocusWhenToggle = 1
