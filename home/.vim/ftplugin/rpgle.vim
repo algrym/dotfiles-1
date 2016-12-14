@@ -12,3 +12,6 @@ let g:rpgle_fold = 64 + 128 + 256
 setlocal shiftwidth=2 softtabstop=2 expandtab
 
 nnoremap <buffer> <localleader>ts :Tabularize /dcl-\(s\\|c\\|ds\)\s\+\w\+\zs<CR>
+
+set errorformat=%f:%l:\ %m
+set makeprg=rpglemake\ %:p
