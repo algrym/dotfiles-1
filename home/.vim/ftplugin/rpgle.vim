@@ -6,10 +6,12 @@ setlocal tagcase=ignore
 setlocal nosmartcase
 setlocal ignorecase
 
-
 setlocal suffixesadd=.aspx,.asmx,.mbr
 setlocal include=\\s*/\\s*include
 setlocal includeexpr=substitute(v:fname,',','/','g')
+
+" Match '^ dcl-s word word', and '^ word word'
+let &define='^\s*\%(dcl-[dspic]*\)\=\s\+\ze\w\+\s\+\w\+'
 
 let g:rpgle_fold_enabled = 1
 let g:rpgle_fold = 64 + 128 + 256
