@@ -47,20 +47,24 @@ function! s:NextSection(type, backwards)
     let dir = '/'
   endif
 
-  execute 'silent :keepp normal! ' . dir . pattern . dir . 'e' . "\r"
+  " Todo shouldn't /pattern/W disable wrapscan?
+  let ws = &wrapscan
+  let pos = getpos('.')
+  setlocal nowrapscan
+  execute 'silent! :keepp normal! ' . dir . pattern . dir . 'e' . "\r"
+  let &wrapscan = ws
+
+  if pos == getpos('.')
+    if a:backwards
+      normal! gg
+    else
+      normal! G
+    endif
+  endif
 
 endfunction
 
-function! s:GoDefinition()
-  let word = expand('<cword>')
-  call s:NextSection(1, 1)
-
-  " TODO: There is no search highlight
-  call setreg('/', '\<' . word . '\>', 'c')
-  normal n
-endfunction
-
-noremap <script> <buffer> <silent> gd :call <SID>GoDefinition()<CR>
+noremap <script> <buffer> <silent> gd :execute 'keepj normal [[/\<<C-r><C-w>\>/' . "\r"<CR>
 
 noremap <script> <buffer> <silent> ]] :call <SID>NextSection(1, 0)<CR>
 noremap <script> <buffer> <silent> ][ :call <SID>NextSection(2, 0)<CR>
