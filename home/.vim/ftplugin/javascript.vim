@@ -20,6 +20,9 @@ nnoremap <buffer> <localleader>L :setlocal iskeyword+=.<CR>
   \ :put='console.log(\"<C-r><C-w>\", <C-r><C-w>);'
   \ <CR>==:setlocal iskeyword-=.<CR>
 
+nnoremap <buffer> <localleader>d odebugger;<ESC>
+nnoremap <buffer> <localleader>D Odebugger;<ESC>
+
 nnoremap <buffer> g= ?{<CR>v%:s/\v\s*:\s*/: /<cr>:noh<cr>gv=
 
 setlocal errorformat=%f:%l:%c:\ %m
