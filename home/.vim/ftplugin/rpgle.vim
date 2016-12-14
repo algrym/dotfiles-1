@@ -1,6 +1,11 @@
 setlocal foldmethod=syntax
-setlocal textwidth=73 " 80 - 7 columns that icebreak addeds when compiling
+setlocal textwidth=73 " 80 - 7 columns that IceBreak adds when compiling
+
+" RPG/ILE is in case-sensitive
 setlocal tagcase=ignore
+setlocal nosmartcase
+setlocal ignorecase
+
 
 setlocal suffixesadd=.aspx,.asmx,.mbr
 setlocal include=\\s*/\\s*include
@@ -13,5 +18,5 @@ setlocal shiftwidth=2 softtabstop=2 expandtab
 
 nnoremap <buffer> <localleader>ts :Tabularize /dcl-\(s\\|c\\|ds\)\s\+\w\+\zs<CR>
 
-set errorformat=%f:%l:\ %m
-set makeprg=rpglemake\ %:p
+setlocal errorformat=%f:%l:\ %m
+setlocal makeprg=rpglemake\ %:p

@@ -21,7 +21,7 @@ let g:is_posix = 1
 "     +--------------------------------------------+
 setlocal formatoptions-=t
 
-set includeexpr=substitute(v:fname,'\\$\\w\\+/\\=','','g')
+setlocal includeexpr=substitute(v:fname,'\\$\\w\\+/\\=','','g')
 
 setlocal makeprg=shellcheck\ -x\ -f\ gcc\ %
 autocmd! BufWritePost <buffer> silent make! | silent redraw! | silent wincmd p
