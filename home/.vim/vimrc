@@ -46,7 +46,6 @@ filetype plugin on
 
 set encoding=utf-8
 set modeline modelines=2
-set autoindent smartindent
 set showmode
 set showcmd
 set hidden
@@ -69,6 +68,10 @@ set shell=/bin/sh
 set path=**
 set nrformats-=octal
 set scrolloff=1 sidescrolloff=5
+
+" Indent
+set autoindent
+runtime indent.vim
 
 " Spelling
 "

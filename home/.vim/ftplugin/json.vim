@@ -1,4 +1,5 @@
 setlocal expandtab shiftwidth=2 softtabstop=2
+setlocal smartindent
 setlocal foldmethod=syntax
 
 " Sort and indent

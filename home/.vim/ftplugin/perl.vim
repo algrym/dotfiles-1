@@ -1,5 +1,7 @@
 setlocal foldmethod=syntax
 setlocal shiftwidth=2 softtabstop=2 expandtab
+setlocal smartindent
+inoremap # X<BS>#
 
 let g:perl_fold = 1
 let g:perl_sync_dist = 250
