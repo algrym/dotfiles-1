@@ -1,7 +1,10 @@
 setlocal define=
-setlocal suffixesadd+=.js,.jsx
-setlocal include=\\<import\\>
-setlocal includeexpr=substitute(v:fname,'./','','g')
+setlocal suffixesadd+=.js
+
+setlocal define=^\\s*\\%(var\\s\\+\\)\\=\\ze\\w\\+\\s*[:=]\\s*function
+setlocal include=^\\s*\\%(var\\s\\+\\w\\+\\s*=\\s*\\)\\=require(
+
+setlocal includeexpr=findfile(v:fname)
 setlocal smartindent
 
 setlocal foldmethod=syntax
