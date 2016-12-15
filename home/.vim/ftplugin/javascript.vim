@@ -40,9 +40,9 @@ setlocal tags=./js.tags,js.tags,./tags,tags,./html.tags,html.tags
 
 function! s:NextSection(type, backwards)
   if a:type == 1
-    let pattern = '\(function\|=>\s*{\)'
+    let pattern = '^\%(\t\t\| \{8}\)\w\+\s*:\s*function'
   elseif a:type == 2
-    let pattern = '}'
+    let pattern = '^\%(\t\t\| \{8\}\)}'
   endif
 
   if a:backwards
