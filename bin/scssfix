@@ -27,10 +27,11 @@ s/^\(\t*\)    /\1\t/; t stab
 	b
 }
 
-# Convert comment colors, goto end if case of match
-s/color: *white *;$/color: #fff;/; t
-s/color: *black *;$/color: #000;/; t
-s/color: *gr[ae]y;$/color: #808080;/; t
+# Convert comment colors
+s/\(color\|background\): *white *;$/\1: #fff;/; t
+s/\(color\|background\): *black *;$/\1: #000;/; t
+s/\(color\|background\): *gr[ae]y;$/\1: #808080;/; t
+
 
 # Add trailing lines between blocks
 :sline
