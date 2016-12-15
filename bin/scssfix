@@ -5,7 +5,7 @@
 #	scssfix [-i] <file>
 #
 # Author:  Andreas Louv <andreas@louv.dk>
-# Version: 0.5
+# Version: 0.6
 
 # Convert every four leading space to tab:
 :start
@@ -60,11 +60,16 @@ s/ 0px\>/ 0/; t
 	b start
 }
 
-# Remove empty blocks
+# Remove empty blocks, and break multiply selectors to each line; a, b => a,\nb
 /{$/ {
+	# Break selectors
 	:scomma
 	s/\(^\|\n\)\([[:space:]]*\)\([^,\n]*,\) *\([^\n]*{\)$/\1\2\3\n\2\4/; t scomma
+
+	# Remove empty blocks
+	:reblock
 	N
+	/{\(\n[[:space:]]*\)*$/b reblock
 	/{\n[[:space:]]*}/d
 
 	# Print and remove everything but the last line from the patter space,
