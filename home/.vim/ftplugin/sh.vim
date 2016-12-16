@@ -2,6 +2,8 @@ setlocal shiftwidth=2 softtabstop=2 expandtab
 setlocal foldmethod=syntax
 let g:sh_fold_enabled = 7
 
+set include=^\\h*\\%(\\.\\\|source\\)\ \\ze
+
 " This makes sure that shell scripts are highlighted as bash scripts
 let g:is_posix = 1
 
