@@ -3,6 +3,9 @@
 #
 # Usage:
 # 	var2dcl -i <file>
+#
+# Author: Andreas Louv <andreas@louv.dk>
+# Version: 0.1
 
 y/\r//d;
 s/\h*$//;
