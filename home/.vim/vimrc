@@ -42,7 +42,7 @@ call vundle#end()
 
 " }}}
 
-filetype plugin on
+filetype plugin indent on
 
 set encoding=utf-8
 set modeline modelines=2
@@ -68,10 +68,7 @@ set shell=/bin/sh
 set path=**
 set nrformats-=octal
 set scrolloff=1 sidescrolloff=5
-
-" Indent
 set autoindent
-runtime indent.vim
 
 " Spelling
 "
