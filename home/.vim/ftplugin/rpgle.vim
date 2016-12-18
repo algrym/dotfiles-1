@@ -6,7 +6,7 @@ setlocal tagcase=ignore
 setlocal nosmartcase
 setlocal ignorecase
 
-setlocal suffixesadd=.aspx,.asmx,.mbr
+setlocal suffixesadd=.rpgle,.rpgleinc,.aspx,.asmx
 setlocal include=\\s*/\\s*include
 setlocal includeexpr=substitute(v:fname,',','/','g')
 
