@@ -11,8 +11,13 @@ setlocal include=\\s*/\\s*include
 " Hackish way to match pathnames in-case sensitive
 setlocal includeexpr=glob(substitute(v:fname,',','/','g').'.*')
 
-" Match '^ dcl-s word word', and '^ word word'
-let &define='^\s*\%(dcl-[dspic]*\)\=\s\+\ze\w\+\s\+\w\+'
+" Match declarations but also things with word word, as it must also be
+" declarations inside data structures, procedure interfaces:
+" dcl-ds abc;
+"   myVar type(1)
+"   myVar2 type2;
+" end-ds;
+let &define='^\s*\%(dcl-\%([sc]\|proc\|ds\)\)\=\s\+\ze\w\+\s\+\w\+'
 
 let g:rpgle_fold_enabled = 1
 let g:rpgle_fold = 64 + 128 + 256
