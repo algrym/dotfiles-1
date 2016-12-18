@@ -17,7 +17,7 @@ setlocal includeexpr=glob(substitute(v:fname,',','/','g').'.*')
 "   myVar type(1)
 "   myVar2 type2;
 " end-ds;
-let &define='^\s*\%(dcl-\%([sc]\|proc\|ds\)\)\=\s\+\ze\w\+\s\+\w\+'
+setlocal define=^\\s*\\%(dcl-\\%([sc]\\\|proc\\\|ds\\)\\)\\=\\s\\+\\ze\\w\\+\\s\\+\\w\\+
 
 let g:rpgle_fold_enabled = 1
 let g:rpgle_fold = 64 + 128 + 256
