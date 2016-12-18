@@ -202,7 +202,8 @@ nnoremap <leader>h :help<space>
 nnoremap gb :ls<cr>:b<space>
 
 " Edit file in same directory as current file:
-nnoremap <leader>ew :e <C-r>=fnameescape(expand("%:p:h") . "/")<CR>
+nnoremap <leader>ew :e %:h/
+nnoremap <leader>sw :split %:h/
 
 " Toggle first boolean after cursor
 nnoremap <leader>tt V:!perl -pe 's/true/false/ <bar><bar> s/false/true/'<CR>
