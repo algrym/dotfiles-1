@@ -8,7 +8,8 @@ setlocal ignorecase
 
 setlocal suffixesadd=.rpgle,.rpgleinc,.aspx,.asmx
 setlocal include=\\s*/\\s*include
-setlocal includeexpr=substitute(v:fname,',','/','g')
+" Hackish way to match pathnames in-case sensitive
+setlocal includeexpr=glob(substitute(v:fname,',','/','g').'.*')
 
 " Match '^ dcl-s word word', and '^ word word'
 let &define='^\s*\%(dcl-[dspic]*\)\=\s\+\ze\w\+\s\+\w\+'
