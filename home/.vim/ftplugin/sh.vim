@@ -3,6 +3,7 @@ setlocal foldmethod=syntax
 let g:sh_fold_enabled = 7
 
 set include=^\\s*\\%(\\.\\\|source\\)\ \\ze\\f\\+
+set define=^\\s*\\ze\\w\\+=\\\|\\\<read\ \\%(-r\ \\)\\=
 
 " This makes sure that shell scripts are highlighted as bash scripts
 let g:is_posix = 1
