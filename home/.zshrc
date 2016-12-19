@@ -175,16 +175,6 @@ setopt always_to_end
 #    ^ Cursor
 bindkey '^I' expand-or-complete-prefix
 
-# One day I want to bind <C-N> and <C-P> as <down> and <up> arrow keys on X
-# level. But first I need to figure out who applications already using them, eg.
-# vim in insert mode uses them to suggest text. This would need to be mapped.
-# For now just disable them stupid arrow keys
-# Unbind arrow keys
-bindkey -r '^[[A' # Up
-bindkey -r '^[[B' # Down
-bindkey -r '^[[C' # Right
-bindkey -r '^[[D' # Left
-
 # Write part of command and press <C-P>/<C-N> complete it though history search
 # and bring the cursor to the end of the line
 autoload -U up-line-or-beginning-search
