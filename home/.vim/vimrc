@@ -23,6 +23,10 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'wellle/targets.vim'
 
+
+" <tab> completion
+Plugin 'lifepillar/vim-mucomplete'
+
 " Align text with on regular expression
 Plugin 'godlygeek/tabular'
 
@@ -86,8 +90,8 @@ set ttimeout
 set ttimeoutlen=10
 
 " Better Completion
-set complete=.,w,b,u,t
-set completeopt=longest,menuone,preview
+set completeopt+=menu,menuone,noinsert,noselect
+let g:mucomplete#enable_auto_at_startup = 1
 
 " Resize splits when the window is resized
 au VimResized * :wincmd =
