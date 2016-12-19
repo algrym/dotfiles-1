@@ -1,12 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 pgm=${0##*/}
 if [ $# -eq 0 ]; then
-  >&2 printf 'Usage: %s <command>\n' "vibin"
+  >&2 printf 'Usage: %s <command>\n' "$pgm"
   return 1
 fi
-if loc=$(command -v "$1"); then
-  vim "$loc"
-else
-  >&2 printf "%s\n" "$pgm: $1: No such command"
-  exit 1
-fi
+for arg
+do
+  if loc=$(command -v "$arg"); then
+    args+=("$loc")
+  else
+    >&2 printf "%s: %s No such command\n" "$pgm" "$arg"
+    exit 1
+  fi
+done
+
+vim "${args[@]}"
