@@ -23,6 +23,8 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'wellle/targets.vim'
 
+" Snippets
+Plugin 'sirver/UltiSnips'
 
 " <tab> completion
 Plugin 'lifepillar/vim-mucomplete'
@@ -88,10 +90,6 @@ set synmaxcol=200
 set notimeout
 set ttimeout
 set ttimeoutlen=10
-
-" Better Completion
-set completeopt+=menu,menuone,noinsert,noselect
-let g:mucomplete#enable_auto_at_startup = 1
 
 " Resize splits when the window is resized
 au VimResized * :wincmd =
@@ -390,6 +388,19 @@ function! g:Undotree_CustomMap()
   map <buffer> <c-p> K
 endfunction
 
+
+" }}}
+" MuComplete {{{
+
+set completeopt+=menu,menuone,noinsert,noselect
+let g:mucomplete#enable_auto_at_startup = 1
+
+" }}}
+" UltiSnips {{{
+
+let g:UltiSnipsExpandTrigger="<C-x><C-g>"
+let g:UltiSnipsJumpForwardTrigger="<C-g>"
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 
 " }}}
 

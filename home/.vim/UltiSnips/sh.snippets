@@ -1,0 +1,13 @@
+snippet for "for in" b
+for ${1:arg}${2/.+/ in /}${2:"$@"}
+do
+	${0::}
+done
+endsnippet
+
+snippet while "while read -r" b
+while read -r ${1:arg}
+do
+	${0::}
+done
+endsnippet
