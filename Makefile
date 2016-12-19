@@ -14,7 +14,7 @@ deps-install:
 		xautolock chromium nodejs npm feh acpi acpid ttf-dejavu redshift xclip ed \
 		rdesktop openssh deadbeef imagemagick scrot dmenu perl-json dunst \
 		getmail mutt gnome-keyring libnotify lynx weechat openconnect pptpclient \
-		compton jq ruby jre8-openjdk tcl aspell lua xdotool
+		compton jq ruby jre8-openjdk tcl aspell lua xdotool expect
 
 	yaourt -S ttf-font-awesome universal-ctags-git
 
