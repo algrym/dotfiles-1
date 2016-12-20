@@ -262,6 +262,12 @@ noremap <silent> <C-l> :noh<cr>:call clearmatches()<cr>
 
 runtime macros/matchit.vim
 
+nnoremap [I [I:ijump  <C-r><C-w><S-left><left>
+nnoremap ]I ]I:ijump  <C-r><C-w><S-left><left>
+
+nnoremap [D [D:djump  <C-r><C-w><S-left><left>
+nnoremap ]D ]D:djump  <C-r><C-w><S-left><left>
+
 " }}}
 " Folding {{{
 
