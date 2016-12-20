@@ -3,12 +3,12 @@ setlocal smartindent
 setlocal foldmethod=marker foldmarker={,}
 
 " Sort properties in selector
-nnoremap <silent> <buffer> <localleader>s :call <SID>ScssExec(['sort', 'sort /\v(^\s+-\a+-)?\zs\a+(-\a+)*\ze:/ r'])<CR>
+nnoremap <silent> <buffer> <localleader>s :call <SID>ScssExec(['sort',
+  \ 'sort /\v(^\s+-\a+-)?\zs\a+(-\a+)*\ze:/ r',
+  \ 's/\a\zs\s*:\s*/: /' ])<CR>
 
 nnoremap <buffer> <localleader>S :%!scssfix<CR>
 
-" Fix color:red -> color: red, and color :red -> color: red
-nnoremap <silent> <buffer> <localleader>: :call <SID>ScssExec(['s/\a\zs\s*:\s*/: /'])<CR>
 nnoremap <silent> <buffer> <localleader>{ :keepp s/\a\zs\ze{/ /<CR>
 
 function! s:ScssExec(args)
