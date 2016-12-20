@@ -19,7 +19,8 @@ let b:match_words = '\<function\>:\<return\>,'
   \ . '\<try\>:\<catch\>:\<finally\>'
 
 nnoremap <silent> <buffer> <localleader>l :put='console.log(\"<C-r><C-w>\",
-  \ window.<C-r><C-w> = <C-r><C-w>);'<CR>==
+  \ ' . (getline('1') !~# '\<node\>' ? 'window.$<C-r><C-w> = ' : '') .
+  \ '<C-r><C-w>);'<CR>==
 nnoremap <silent> <buffer> <localleader>L :setlocal iskeyword+=.<CR>
   \ :put='console.log(\"<C-r><C-w>\", <C-r><C-w>);'
   \ <CR>==:setlocal iskeyword-=.<CR>
