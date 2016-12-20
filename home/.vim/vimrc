@@ -262,6 +262,11 @@ noremap <silent> <C-l> :noh<cr>:call clearmatches()<cr>
 
 runtime macros/matchit.vim
 
+nnoremap c* *``cgn
+nnoremap c# #``cgN
+nnoremap cg* g*``cgn
+nnoremap cg# g#``cgN
+
 nnoremap [I [I:ijump  <C-r><C-w><S-left><left>
 nnoremap ]I ]I:ijump  <C-r><C-w><S-left><left>
 
