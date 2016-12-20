@@ -1,0 +1,17 @@
+#!/usr/bin/sed -f
+#
+# Head / Tail program to use in a pipeline
+# Usage:
+#	ht < file.txt
+#
+# Author Andreas Louv <andreas@louv.dk>
+# Version: 0.2
+
+# Head
+1,10 b
+
+# Tail
+:tail
+N
+21,$D
+b tail
