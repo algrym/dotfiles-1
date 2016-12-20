@@ -23,9 +23,6 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'wellle/targets.vim'
 
-" Snippets
-Plugin 'sirver/UltiSnips'
-
 " <tab> completion
 Plugin 'lifepillar/vim-mucomplete'
 
@@ -393,13 +390,7 @@ endfunction
 " MuComplete {{{
 
 set completeopt+=menu,menuone,noinsert,noselect
-
-" }}}
-" UltiSnips {{{
-
-let g:UltiSnipsExpandTrigger="<C-x><C-g>"
-let g:UltiSnipsJumpForwardTrigger="<C-x><C-g>"
-let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+let g:mucomplete#enable_auto_at_startup = 1
 
 " }}}
 
