@@ -18,16 +18,16 @@ let b:match_words = '\<function\>:\<return\>,'
   \ . '\<if\>:\<else\>,'
   \ . '\<try\>:\<catch\>:\<finally\>'
 
-nnoremap <buffer> <localleader>l :put='console.log(\"<C-r><C-w>\",
+nnoremap <silent> <buffer> <localleader>l :put='console.log(\"<C-r><C-w>\",
   \ window.<C-r><C-w> = <C-r><C-w>);'<CR>==
-nnoremap <buffer> <localleader>L :setlocal iskeyword+=.<CR>
+nnoremap <silent> <buffer> <localleader>L :setlocal iskeyword+=.<CR>
   \ :put='console.log(\"<C-r><C-w>\", <C-r><C-w>);'
   \ <CR>==:setlocal iskeyword-=.<CR>
 
-nnoremap <buffer> <localleader>d odebugger;<ESC>
-nnoremap <buffer> <localleader>D Odebugger;<ESC>
+nnoremap <silent> <buffer> <localleader>d odebugger;<ESC>
+nnoremap <silent> <buffer> <localleader>D Odebugger;<ESC>
 
-nnoremap <buffer> g= ?{<CR>v%:s/\v\s*:\s*/: /<cr>:noh<cr>gv=
+nnoremap <silent> <buffer> g= ?{<CR>v%:s/\v\s*:\s*/: /<cr>:noh<cr>gv=
 
 setlocal errorformat=%f:%l:%c:\ %m
 setlocal makeprg=jscs\ --no-colors\ --max-errors\ -1\ --reporter\ unix\ %
