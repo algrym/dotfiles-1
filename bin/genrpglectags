@@ -13,13 +13,13 @@ bas_dir=/mnt/dksrv206/www/dev/bas/shared/services
 project_dir=/mnt/dksrv206/www/dev/$project/customized/services
 
 args=(
-  "$portfolio_dir"/*.as[pm]x
-  "$bas_dir"/*.as[pm]x
+  "$portfolio_dir"/[!_]*[!_].as[pm]x
+  "$bas_dir"/[!_]*[!_].as[pm]x
   "$bas_dir/qrpghdr"/*.rpgleinc
 )
 
 if test "$project" != "bas"; then
-  args+=("$project_dir"/*.as[pm]x)
+  args+=("$project_dir"/[!_]*[!_].as[pm]x)
 fi
 
 rpglectags "${args[@]}"
