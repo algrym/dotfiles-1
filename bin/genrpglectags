@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+shopt -s nullglob
 
 if test "$#" -ne 1; then
   >&2 printf "Usage: '%s project'\n" "${0##*/}"
@@ -12,12 +13,13 @@ bas_dir=/mnt/dksrv206/www/dev/bas/shared/services
 project_dir=/mnt/dksrv206/www/dev/$project/customized/services
 
 args=(
-  "$portfolio_dir"/*.{aspx,asmx}
-  "$bas_dir"/*.{aspx,asmx}
+  "$portfolio_dir"/*.as[pm]x
+  "$bas_dir"/*.as[pm]x
+  "$bas_dir/qrpghdr"/*.rpgleinc
 )
 
 if test "$project" != "bas"; then
-  args+=("$project_dir"/*.{aspx,asmx})
+  args+=("$project_dir"/*.as[pm]x)
 fi
 
 rpglectags "${args[@]}"
