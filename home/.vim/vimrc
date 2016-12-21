@@ -250,6 +250,8 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " }}}
 " Searching and movement {{{
 
+set tags=./tags,tags
+
 set grepprg=grep\ -n\ --exclude='*.tags'\ --exclude=tags\ --exclude-dir=.git\ -R\ '$*'
 
 set ignorecase
