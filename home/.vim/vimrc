@@ -176,7 +176,6 @@ iabbrev al@ andreas@louv.dk
 
 " Easy search and jump to match
 nnoremap <leader>g :g//#<left><left>
-nnoremap <leader>v :g//#<left><left>
 cnoremap <expr> <CR> getcmdline() =~# '^[vg]/.*/#$' ? '<CR>:' : '<CR>'
 
 " Clean trailing whitespace
