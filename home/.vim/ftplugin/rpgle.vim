@@ -9,7 +9,7 @@ setlocal ignorecase
 setlocal suffixesadd=.rpgle,.rpgleinc,.aspx,.asmx
 setlocal include=^\\s*/\\s*include\\\|<!--#include.*file="\ze[^"]*"
 " Hackish way to match pathnames in-case sensitive
-setlocal includeexpr=glob(expand('%:p:h').'/'.substitute(v:fname,',','/','g').'.*')
+setlocal includeexpr=substitute(v:fname,',','/','g')
 
 " Match declarations but also things with word word, as it must also be
 " declarations inside data structures, procedure interfaces:
