@@ -200,7 +200,7 @@ nnoremap <leader>h :help<space>
 nnoremap gb :ls<cr>:b<space>
 
 " Edit file in same directory as current file:
-nnoremap <leader>ew :e %:h/
+nnoremap <leader>ew :e %:p:h/
 nnoremap <leader>sw :split %:h/
 
 " Toggle first boolean after cursor
