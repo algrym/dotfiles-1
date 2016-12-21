@@ -340,7 +340,7 @@ augroup FT_Detect
   au BufNewFile,BufRead *.xjson,*.xpd,*.ns,*.dmd,*.lib setlocal filetype=json
   au BufNewFile,BufRead *.md,*.m*down setlocal filetype=markdown
   au BufNewFile,BufRead *.tpl setlocal filetype=html.mustache syntax=html.mustache
-  au BufNewFile,BufRead *.aspx,*.asmx setlocal filetype=rpgle
+  au BufNewFile,BufRead *.aspx,*.asmx,*.rpgleinc setlocal filetype=rpgle
   au BufNewFile,BufRead .xinitrc setlocal filetype=sh syntax=sh
 
 augroup END
