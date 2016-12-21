@@ -7,7 +7,7 @@ setlocal nosmartcase
 setlocal ignorecase
 
 setlocal suffixesadd=.rpgle,.rpgleinc,.aspx,.asmx
-setlocal include=\\s*/\\s*include
+setlocal include=^\\s*/\\s*include\\\|<!--#include.*file="\ze[^"]*"
 " Hackish way to match pathnames in-case sensitive
 setlocal includeexpr=glob(expand('%:p:h').'/'.substitute(v:fname,',','/','g').'.*')
 
