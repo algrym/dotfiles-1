@@ -10,5 +10,7 @@ nnoremap <buffer> <localleader>2 yypVr-:redraw<cr>
 " Italic word under cursor
 nnoremap <buffer> <localleader>i mzciw**<esc>P`zl
 
+setlocal formatoptions+=tn
+
 " Bold word under cursor
 nnoremap <buffer> <localleader>b mzciw****<esc>hP`zll

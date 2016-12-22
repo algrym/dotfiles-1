@@ -61,7 +61,7 @@ setlocal spell
 setlocal wrap
 setlocal textwidth=80
 
-setlocal formatoptions+=n
+setlocal formatoptions+=tn
 
 " Use <localleader>1/2 to add headings:
 nnoremap <buffer> <localleader>1 yypVr=:redraw<cr>

@@ -130,6 +130,7 @@ set wildignore+=lib
 set nowrap
 set textwidth=80
 set formatoptions+=j
+set formatoptions-=t
 
 " }}}
 " Backups {{{
