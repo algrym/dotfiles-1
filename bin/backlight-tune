@@ -1,7 +1,11 @@
 #!/bin/sh
 # Author: Andreas Louv <andreas@louv.dk>
 
-test "$#" -lt 1 && { >&2 printf "Usage '%s +inc'\n" "${0##*/}"; exit 2; }
+if test "$#" -lt 1
+then
+  >&2 printf "Usage '%s +inc'\n" "${0##*/}"
+  exit 2
+fi
 
 readonly min=20
 readonly max=$(cat /sys/class/backlight/intel_backlight/max_brightness)
