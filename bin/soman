@@ -1,0 +1,5 @@
+#!/bin/sh
+# Usefull to paste man pages on StackOverflow (Or part of it).
+# 81 columns is what SO uses, and the leading spaces is for code blocks
+
+MANWIDTH=81 man "$@" | sed 's/^/    /'

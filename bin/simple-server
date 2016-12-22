@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+// Author: Andreas Louv <andreas@louv.dk>
+// Simple server create a local server and serve current working directory on
+// port 1337
+
+"use strict";
+var express = require('express');
+var app = express();
+var fs = require('fs');
+app.use(express.static(process.cwd(), { maxAge: 0 }));
+app.use('*', function(req, res) {
+	fs.readdir(process.cwd() + req.originalUrl, function(err, files) {
+		if (err) {
+			console.log(err);
+			return;
+		}
+
+		res.end(files.map(file => {
+			return `<a href="${file}">${file}</a><br>`;
+		}).join(''));
+	});
+});
+app.listen(1337);
