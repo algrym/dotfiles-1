@@ -5,6 +5,8 @@ let g:sh_fold_enabled = 7
 set include=^\\s*\\%(\\.\\\|source\\)\ \\ze\\f\\+
 set define=^\\s*\\ze\\w\\+=\\\|\\\<read\ \\%(-r\ \\)\\=
 
+setlocal includeexpr=substitute(v:fname,'\\$\\w\\+\\>\\(.\\)/\\=','\\1','g')
+
 " This makes sure that shell scripts are highlighted as bash scripts
 let g:is_posix = 1
 
@@ -22,9 +24,6 @@ let g:is_posix = 1
 "     | ~                                          |
 "     | ~                                          |
 "     +--------------------------------------------+
-setlocal formatoptions-=t
-
-setlocal includeexpr=substitute(v:fname,'\\$\\w\\+\\>\\(.\\)/\\=','\\1','g')
 
 setlocal makeprg=shellcheck\ -x\ -f\ gcc\ %
 autocmd! BufWritePost <buffer> silent make! | silent redraw! | silent wincmd p
