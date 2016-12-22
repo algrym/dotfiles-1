@@ -19,7 +19,6 @@ deps-install:
 	yaourt -S ttf-font-awesome universal-ctags-git
 
 	sudo npm install -g jscs
-	sudo npm install -g es-ctags
 	sudo cpan install Perl::Critic
 	sudo pacman -S shellcheck
 

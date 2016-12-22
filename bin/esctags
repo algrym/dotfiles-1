@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-find -type f -iregex '.*\.jsx*$' -not -path './node_modules/*' -print0 | while read -r -d '' file; do
-  es-ctags --extension "${file##*.}" -f - "$file"
-done | sed '/^$/d' > tags
