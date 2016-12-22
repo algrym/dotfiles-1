@@ -14,7 +14,7 @@ def edit_file(content):
     fd, fn = mkstemp(suffix='.cvim', prefix='cvim-', text=True)
     os.write(fd, content.encode('utf8'))
     os.close(fd)
-    subprocess.Popen([':e', fn]).wait()
+    subprocess.Popen(['gvim', fn]).wait()
     text = None
     with open(fn, 'r') as f:
         text = f.read()
