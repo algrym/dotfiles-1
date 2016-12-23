@@ -1,9 +1,0 @@
-#!/bin/sh
-
-messages=$(getmail | awk 'END { print $1 }')
-
-if test "$messages" -eq 1; then
-  notify-send -u low 'You got one new mail'
-elif test "$messages" -gt 1; then
-  notify-send -u low 'You got new mails'
-fi
