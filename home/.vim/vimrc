@@ -342,6 +342,7 @@ augroup FT_Detect
   au BufNewFile,BufRead *.tpl setlocal filetype=html.mustache syntax=html.mustache
   au BufNewFile,BufRead *.aspx,*.asmx,*.rpgleinc setlocal filetype=rpgle
   au BufNewFile,BufRead .xinitrc setlocal filetype=sh syntax=sh
+  au BufNewFile,BufRead *.log400 setlocal filetype=log400 syntax=log400
 
 augroup END
 
