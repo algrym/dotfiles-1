@@ -39,11 +39,12 @@ setlocal tags=./js.tags,js.tags,./tags,tags,./html.tags,html.tags
 
 " Somewhat proper section jumping {{{
 
+" Just a little better Section Jump
 function! s:NextSection(type, backwards)
   if a:type == 1
-    let pattern = '^\%(\t\t\| \{8}\)\w\+\s*:\s*function'
+    let pattern = '^\ze\%({\|\s*\%(var\s\+\w\+\s\+\)\=function.*{\)'
   elseif a:type == 2
-    let pattern = '^\%(\t\t\| \{8\}\)}'
+    let pattern = '^}'
   endif
 
   if a:backwards
