@@ -10,4 +10,5 @@ ip addr show |
        END            { for (i = 1; i <= l; i++ ) {
                           sub(":$", "", iface[i]);
                           sub("/.*", "", ip[i]);
-                          print iface[i], ip[i] } }'
+                          if (ip[i])
+                            print iface[i], ip[i] } }'
