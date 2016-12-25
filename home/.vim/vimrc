@@ -289,22 +289,32 @@ set fillchars+=fold:\
 
 hi Folded term=standout ctermfg=100 ctermbg=235
 
-function! MyFoldText() " {{{
-  let s:left = substitute(getline(v:foldstart), '{{' . '{', '', 'g')
-  let s:left = substitute(s:left, '\v\t', repeat(' ', &tabstop), 'g')
-  let s:count = printf(' ' . &commentstring, printf('%2d lines', v:foldend - v:foldstart + 1))
-  let s:width = &textwidth
-  if s:width == 0
-    let s:width = 80
-  endif
-  let s:left_max = s:width - len(s:count)
-  let s:left = substitute(s:left, '\v(.{' . (s:left_max - 1) . '}).*', '\1…', '')
-  let s:left = s:left . repeat(' ', s:left_max - len(s:left))
+function! MyFoldText(foldstart, foldend) " {{{
+  let line = getline(a:foldstart)
+  let fold_count = a:foldend - a:foldstart + 1
 
-  return s:left . s:count
+  " Remove fold marker
+  let fold = substitute(line, '\%(" \)\={\{3\}', '', 'g')
+  " Convert leading tabs to spaces
+  let fold = substitute(fold, '\%(^\t*\)\@<=\t', repeat(' ', &tabstop), 'g')
+
+  let tw = &textwidth > 0 ? &textwidth : 80
+
+  " Add '// N lines' to the right side of the line.
+  let rhs = printf(' ' . &cms, printf('%2d lines', fold_count))
+
+  let fold_width = tw - len(rhs)
+
+  " Make sure the folded line doesn't excises textwidth.
+  let fold = substitute(fold, '.\{' . (fold_width - 1) . '\}\zs.*', '\1…', '')
+
+  " Insert spaces, and append rhs
+  let fold = fold . repeat(' ', fold_width - len(fold)) . rhs
+
+  return fold
 endfunction " }}}
 
-set foldtext=MyFoldText()
+set foldtext=MyFoldText(v:foldstart,\ v:foldend)
 
 " }}}
 " FileType Detect {{{
