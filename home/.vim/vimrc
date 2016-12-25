@@ -215,25 +215,7 @@ nnoremap Y y$
 " }}}
 " Commands {{{
 
-" JSON / JavaScript {{{
-
-" Remove trailing commas
-command! -range=% RemoveComma keepp <line1>,<line2>s/,\ze\_s*[]}]//cg
-
-" Insert missing comma
-command! -range=% AddComma keepp <line1>,<line2>s/\(\_s\|[[{,;]\)\@<!\ze\_s\_s*\(\w\w*\|".\{-}\(\\\)\@<!"\):/&,/cg
-
-" }}}
-" Duplicate word {{{
-
-command! -range=% DupWord keepp <line1>,<line2>s/\(\<\w\+\>\)\zs\_s\+\<\1\>//cg
-
-" }}}
-" Uppercase first word after period {{{
-
-command! -range=% UCFirst keepp <line1>,<line2>s/\.\_s\+\zs\l/\u&/cg
-
-" }}}
+" WIP
 
 " }}}
 " Quick editing {{{
