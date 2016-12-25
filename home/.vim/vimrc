@@ -71,33 +71,42 @@ set path=**
 set nrformats-=octal
 set scrolloff=1 sidescrolloff=5
 set autoindent
+set virtualedit+=block
 
-" Spelling
+" Spelling {{{
 "
 set dictionary=/usr/share/dict/words
 set spellfile=~/.vim/spell.utf-8.add
 
-" Statusline
+" }}}
+" Statusline {{{
+
 set statusline=%r%t\ %m%y\ \#%n%=%02v:%l/%L
 
+" }}}
 " Don't try to highlight lines longer than 200 characters.
 set synmaxcol=200
+" Time out on key codes but not mappings. {{{
 
-" Time out on key codes but not mappings.
 set notimeout
 set ttimeout
 set ttimeoutlen=10
 
+" }}}
 " Resize splits when the window is resized
 au VimResized * :wincmd =
+" Leader {{{
 
-" Leader
 let mapleader = "\<Space>"
 let maplocalleader = "\\"
 
+" }}}
 " Trailing whitespace {{{
-" Only shown when not in insert mode
 
+" Clean trailing whitespace
+nnoremap <silent> <leader>ww mz:keepp %s/\\\@<!\s\+$//e<cr>`z
+
+" Only shown when not in insert mode
 augroup trailing
   au!
   au InsertEnter * :set listchars-=trail:⌴
@@ -175,33 +184,15 @@ iabbrev al@ andreas@louv.dk
 " }}}
 " Convenience mappings {{{
 
-" Easy search and jump to match
-nnoremap <leader>g :g//#<left><left>
-cnoremap <expr> <CR> getcmdline() =~# '^[vg]/.*/#$' ? '<CR>:' : '<CR>'
-
-" Clean trailing whitespace
-nnoremap <silent> <leader>ww mz:keepp %s/\\\@<!\s\+$//e<cr>`z
+noremap <silent> <C-l> :noh<cr>:call clearmatches()<cr>
 
 " zg will add <cword> to the custom spell file, sort that file after adding
 nnoremap zg zg:silent ! sort ~/.vim/spell.utf-8.add -o
   \ ~/.vim/spell.utf-8.add<cr>:redraw!<cr>
 
-" Store relative movement in the jumplist
-nnoremap <expr> j (v:count ? "m'" . v:count : '') . 'j'
-nnoremap <expr> k (v:count ? "m'" . v:count : '') . 'k'
-
-nnoremap <leader>f :find<space>
-nnoremap <leader>G :grep<space>
 nnoremap <leader>m :make<cr>
 nnoremap <leader>l :lmake<cr>
 nnoremap <leader>h :help<space>
-
-" List all buffers in command mode:
-nnoremap gb :ls<cr>:b<space>
-
-" Edit file in same directory as current file:
-nnoremap <leader>ew :e %:p:h/
-nnoremap <leader>sw :split %:h/
 
 " Toggle first boolean after cursor
 nnoremap <leader>tt V:!perl -pe 's/true/false/ <bar><bar> s/false/true/'<CR>
@@ -230,26 +221,43 @@ nnoremap <leader>ei :split ~/.config/i3/config<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " }}}
-" Searching and movement {{{
+" Searching and Navigating Files {{{
 
+" Enhanched %
+runtime macros/matchit.vim
+
+set ignorecase smartcase hlsearch
 set tags=./tags,tags
-
 set grepprg=grep\ -n\ --exclude='*.tags'\ --exclude=tags\ --exclude-dir=.git\ -R\ '$*'
 
-set ignorecase
-set smartcase
-set hlsearch
+" Easy search and jump to match {{{
 
-set virtualedit+=block
+nnoremap <leader>g :g//#<left><left>
+cnoremap <expr> <CR> getcmdline() =~# '^[vg]/.*/#$' ? '<CR>:' : '<CR>'
 
-noremap <silent> <C-l> :noh<cr>:call clearmatches()<cr>
+" }}}
 
-runtime macros/matchit.vim
+nnoremap <leader>f :find<space>
+nnoremap <leader>G :grep<space>
+
+" List all buffers in command mode
+nnoremap gb :ls<cr>:b<space>
+
+" Store relative movement in the jumplist {{{
+
+nnoremap <expr> j (v:count ? "m'" . v:count : '') . 'j'
+nnoremap <expr> k (v:count ? "m'" . v:count : '') . 'k'
+
+" }}}
+" Edit and search word under cursor {{{
 
 nnoremap c* *``cgn
 nnoremap c# #``cgN
 nnoremap cg* g*``cgn
 nnoremap cg# g#``cgN
+
+" }}}
+" Faster define and include {{{
 
 nnoremap [I [I:ijump  <C-r><C-w><S-left><left>
 nnoremap ]I ]I:ijump  <C-r><C-w><S-left><left>
@@ -258,13 +266,20 @@ nnoremap [D [D:djump  <C-r><C-w><S-left><left>
 nnoremap ]D ]D:djump  <C-r><C-w><S-left><left>
 
 " }}}
+" Edit file in same directory as current file {{{
+
+nnoremap <leader>ew :e %:p:h/
+nnoremap <leader>sw :split %:h/
+
+" }}}
+
+" }}}
 " Folding {{{
 
 set foldlevelstart=10
 
 " Automatic set foldmethod to manual when entering insert mode, this is done to
 " prevent vim from unfolding automatic folds, when the code changes.
-
 augroup LazyFolds
 
   au!
@@ -287,7 +302,10 @@ nnoremap zO zczO
 
 set fillchars+=fold:\ 
 
+" Nicer colored 'foldtext'
 hi Folded term=standout ctermfg=100 ctermbg=235
+
+" Nicer 'foldtext' {{{
 
 function! MyFoldText(foldstart, foldend) " {{{
   let line = getline(a:foldstart)
@@ -315,6 +333,8 @@ function! MyFoldText(foldstart, foldend) " {{{
 endfunction " }}}
 
 set foldtext=MyFoldText(v:foldstart,\ v:foldend)
+
+" }}}
 
 " }}}
 " FileType Detect {{{
