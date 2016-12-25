@@ -180,7 +180,7 @@ nnoremap <leader>g :g//#<left><left>
 cnoremap <expr> <CR> getcmdline() =~# '^[vg]/.*/#$' ? '<CR>:' : '<CR>'
 
 " Clean trailing whitespace
-nnoremap <silent> <leader>ww mz:keepp %s/\(\\\)\@<!\s\+$//e<cr>`z
+nnoremap <silent> <leader>ww mz:keepp %s/\\\@<!\s\+$//e<cr>`z
 
 " zg will add <cword> to the custom spell file, sort that file after adding
 nnoremap zg zg:silent ! sort ~/.vim/spell.utf-8.add -o

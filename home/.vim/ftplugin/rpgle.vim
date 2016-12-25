@@ -19,9 +19,6 @@ setlocal includeexpr=substitute(v:fname,',','/','g')
 " end-ds;
 setlocal define=^\\s*\\%(dcl-proc\\s\\+\\ze\\w\\+\\\|\\%(dcl-\\%([sc]\\\|ds\\)\\)\\=\\s\\+\\ze\\w\\+\\s\\+\\w\\+\\)
 
-let g:rpgle_fold_enabled = 1
-let g:rpgle_fold = 64 + 128 + 256
-
 setlocal shiftwidth=2 softtabstop=2 expandtab
 
 nnoremap <silent> <buffer> <localleader>ts :Tabularize /dcl-\(s\\|c\\|ds\)\s\+\w\+\zs<CR>
