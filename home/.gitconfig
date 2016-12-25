@@ -1,38 +1,38 @@
 [user]
-  name = Andreas Louv
-  email = andreas@louv.dk
-  signingkey = 14838A6A
+	name = Andreas Louv
+	email = andreas@louv.dk
+	signingkey = 14838A6A
 [push]
-  default = simple
-  recurseSubmodules = check
+	default = simple
+	recurseSubmodules = check
 [color]
-  ui = auto
+	ui = auto
 [color "branch"]
-  current = yellow bold
-  local = green bold
-  remote = cyan bold
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 [color "status"]
-  added = green bold
-  changed = yellow bold
-  untracked = red bold
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
 [diff]
-  tool = vimdiff
-  compactionHeuristic = true
+	tool = vimdiff
+	compactionHeuristic = true
 [submodule]
-  fetchJobs = 8
+	fetchJobs = 8
 [difftool]
-  prompt = false
+	prompt = false
 [url "git@github.com:"]
-  insteadOf = gh:
+	insteadOf = gh:
 [url "ssh://192.168.5.206/git/"]
-  insteadOf = work:
+	insteadOf = work:
 [merge]
-  tool = vimdiff
+	tool = vimdiff
 [commit]
-  gpgsign = true
+	gpgsign = true
