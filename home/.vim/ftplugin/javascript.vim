@@ -39,42 +39,35 @@ setlocal tags=./js.tags,js.tags,./tags,tags,./html.tags,html.tags
 
 " Somewhat proper section jumping {{{
 
-" Just a little better Section Jump
-function! s:NextSection(type, backwards)
-  if a:type == 1
-    let pattern = '^\ze\%({\|\s*\%(var\s\+\w\+\s\+\)\=function.*{\)'
-  elseif a:type == 2
-    let pattern = '^}'
-  endif
+" Little better section jumping {{{
 
-  if a:backwards
-    let dir = '?'
-  else
-    let dir = '/'
-  endif
+function! <SID>NextSection(pattern, flags) range
 
-  " Todo shouldn't /pattern/W disable wrapscan?
-  let ws = &wrapscan
+  let cnt = v:count1
   let pos = getpos('.')
-  setlocal nowrapscan
-  execute 'silent! :keepp normal! ' . dir . pattern . dir . 'e' . "\r"
-  let &wrapscan = ws
 
-  if pos == getpos('.')
-    if a:backwards
-      normal! gg
-    else
-      normal! G
+  normal! 0
+  mark '
+
+  while cnt > 0
+    call search(a:pattern, a:flags . 'W')
+    normal! ^
+
+    if pos == getpos('.')
+      execute 'norm! ' a:flags =~# 'b' ? 'gg' : 'G'
+      break
     endif
-  endif
+
+    let cnt = cnt - 1
+  endwhile
 
 endfunction
 
 noremap <script> <buffer> <silent> gd :execute 'keepj normal [[/\<<C-r><C-w>\>/' . "\r"<CR>
 
-noremap <script> <buffer> <silent> ]] :call <SID>NextSection(1, 0)<CR>
-noremap <script> <buffer> <silent> ][ :call <SID>NextSection(2, 0)<CR>
-noremap <script> <buffer> <silent> [[ :call <SID>NextSection(1, 1)<CR>
-noremap <script> <buffer> <silent> [] :call <SID>NextSection(2, 1)<CR>
+noremap <script> <buffer> <silent> ]] :call <SID>NextSection('^\ze\%({\\|\%(var\s\+\w\+\s*=\s*\)\=function.*{\)', '')<CR>
+noremap <script> <buffer> <silent> ][ :call <SID>NextSection('^}', '')<CR>
+noremap <script> <buffer> <silent> [[ :call <SID>NextSection('^\ze\%({\\|\%(var\s\+\w\+\s*=\s*\)\=function.*{\)', 'b')<CR>
+noremap <script> <buffer> <silent> [] :call <SID>NextSection('^}', 'b')<CR>
 
 " }}}
