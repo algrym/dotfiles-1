@@ -17,23 +17,5 @@ curl --data 'server='"$server" \
   'http://192.168.5.206:5010/ip2-services/andcmp.aspx' 2> /dev/null |
   # Stupid \r
   tr -d '\r' |
-  sed -n '
-  /^[0-9]* \*RNF.... [023]0........[0-9]/ {
-    N
-    /\n[0-9]* \{28\}/ {
-      s/\n[0-9]* */ /;
-      p
-      d
-    }
-    P
-    D
-  }' |
-
-  # Remove unwanted columns
-  sed 's/[^ ]* *//2;s///3;s///3' |
-
-  tr -s ' ' |
-  sed 's=^[^ ]*='"$path"':&:=' |
-
-  # Remove unwanted warnings
-  sed '/: 00 /d'
+  # Change path to local path
+  sed 's=^[^:]*:='"$path":'='

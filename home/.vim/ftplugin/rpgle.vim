@@ -23,5 +23,5 @@ setlocal shiftwidth=2 softtabstop=2 expandtab
 
 nnoremap <silent> <buffer> <localleader>ts :Tabularize /dcl-\(s\\|c\\|ds\)\s\+\w\+\zs<CR>
 
-setlocal errorformat=%f:%l:\ %m
+setlocal errorformat=%f:%l:%m
 setlocal makeprg=rpglemake\ %:p
