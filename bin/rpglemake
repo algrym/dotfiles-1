@@ -1,4 +1,9 @@
 #!/bin/sh
+# Usage:
+#	rpglemake <file>
+#
+# Author: Andreas Louv <andreas@louv.dk>
+# Version: 0.7
 
 path=$1; shift
 

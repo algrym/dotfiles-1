@@ -1,4 +1,10 @@
 #!/bin/sh
 # Run shell command after pacman is done running:
+# Usage:
+# 	pmdo my_cmd "arg1"
+#
+# Author: Andreas Louv <andreas@louv.dk>
+# Version: 0.1
+
 while [ -f /var/lib/pacman/db.lck ]; do sleep 5; done
 "$@"

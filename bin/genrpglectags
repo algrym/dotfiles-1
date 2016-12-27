@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# Usage:
+#	genrpglectags <project>
+#
+# Author: Andreas Louv <andreas@louv.dk>
+# Version: 0.3
+
 shopt -s nullglob
 
 if test "$#" -ne 1; then

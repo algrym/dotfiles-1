@@ -2,6 +2,12 @@
 # Linter for widget files in vim. widgets are special as they are not valid JS.
 # But I like to lint them as JS. This can be done by wrapping the file in
 # 'var a = ...;'.
+# Usage:
+#	widgetcs jscs -x < file.txt
+#	widgetcs jscs file.txt
+#
+# Author: Andreas Louv <andreas@louv.dk>
+# Version: 0.9
 
 if test -t 0; then
   cmd=$1; shift

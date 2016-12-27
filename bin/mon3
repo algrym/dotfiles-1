@@ -1,5 +1,11 @@
 #!/bin/sh
 # Three monitor setup
+# Usage:
+#	mon3
+#
+# Author: Andreas Louv <andreas@louv.dk>
+# Version: 0.1
+
 xrandr --output DP-2-3 --auto
 xrandr --output DP-2-1 --auto --right-of DP-2-3 --rotate right
 xrandr --output eDP-1 --auto --below DP-2-3
