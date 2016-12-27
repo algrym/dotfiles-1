@@ -307,6 +307,8 @@ hi Folded term=standout ctermfg=100 ctermbg=235
 
 " Nicer 'foldtext' {{{
 
+" The produce a nicer fold text, i.e:
+" function! MyFn(a, b)                                                " 32 lines
 function! MyFoldText(foldstart, foldend) " {{{
   let line = getline(a:foldstart)
   let fold_count = a:foldend - a:foldstart + 1
