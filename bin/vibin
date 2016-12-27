@@ -1,12 +1,22 @@
 #!/bin/bash
+# Open specified commands in vim
+#
+# Usage:
+#	vibin <command>
+#
+# Author: Andreas Louv <andreas@louv.dk>
+# Version: 1.0
+
 pgm=${0##*/}
-if [ $# -eq 0 ]; then
+if test $# -eq 0
+then
   >&2 printf 'Usage: %s <command>\n' "$pgm"
   return 1
 fi
 for arg
 do
-  if loc=$(command -v "$arg"); then
+  if loc=$(command -v "$arg")
+  then
     args+=("$loc")
   else
     >&2 printf "%s: %s No such command\n" "$pgm" "$arg"
@@ -14,4 +24,4 @@ do
   fi
 done
 
-vim "${args[@]}"
+exec vim "${args[@]}"
