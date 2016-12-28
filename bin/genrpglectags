@@ -7,12 +7,20 @@
 
 shopt -s nullglob
 
-if test "$#" -ne 1; then
-  >&2 printf "Usage: '%s project'\n" "${0##*/}"
+project=$(pwd | sed 's=^.*/\([^/]*\)/[^/]*/services.*=\1=p;d');
+
+if test -z "$project"
+then
+  project=$1; shift
+fi
+
+if test -z "$project"
+then
+  >&2 printf 'Usage: %s [project]\n\nIf project is omitted, then the project will be extracted from the CWD\n' "${0##*/}"
   exit 1
 fi
 
-project=$1; shift
+>&2 printf "Generating tags for '%s'\n" "$project"
 
 portfolio_dir=/mnt/dksrv206/www/Portfolio/Admin/Services
 bas_dir=/mnt/dksrv206/www/dev/bas/shared/services

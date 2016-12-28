@@ -72,6 +72,17 @@ elsif (m{ (?= ^ d [\w\h]{17} s \h{10} [\d\h]{5} i )
   s/;$/ $keywords;/ if $keywords;
 }
 
+# Convert DS ... likeds(...)
+elsif (m{ (?= ^ d [\w\h]{17} ds \h{18} .* likeds\([^)]*\) )
+  ^ d \h* (?<identifier>\w+) \h* ds \h{18} (?: (?<keywords> .{1,37} ) )
+}xi) {
+  my ($identifier, $keywords) = ($+{identifier}, $+{keywords});
+
+  $keywords =~ s/\s*$//;
+  $_ = "dcl-ds $identifier $keywords;";
+}
+
+
 # Convert varying -> varchar
 elsif (m{ (?= ^ d [\w\h]{17} s \h{10} [\d\h]{5} (?: [a\h] | $) )
   ^ d \h* (?<identifier>\w+) \h* s \h{10} \h* (?<length>\d+) (?: [a\h] | $) \h* (?<keywords> .{1,37} )?
