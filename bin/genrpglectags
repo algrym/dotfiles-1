@@ -20,6 +20,8 @@ then
   exit 1
 fi
 
+>&2 printf "Generating tags for '%s'\n" "$project"
+
 portfolio_dir=/mnt/dksrv206/www/Portfolio/Admin/Services
 bas_dir=/mnt/dksrv206/www/dev/bas/shared/services
 project_dir=/mnt/dksrv206/www/dev/$project/customized/services
