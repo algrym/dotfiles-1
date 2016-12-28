@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+pgm=${0##*/}
+
+if test $# -eq 0
+then
+  >&2 printf 'Usage: %s <file>\n' "$pgm"
+  exit 1
+fi
+
+file=$1; shift
+
+if ! test -f "$file" && test -f "/etc/workmount/$file.conf"
+then
+  file="/etc/workmount/$file.conf"
+fi
+
+if ! test -f "$file"
+then
+  >&2 printf '%s: %s: No such file or directory\n' "$pgm" "$file"
+  exit 2
+fi
+
+uid=$(id -u)
+gid=$(id -g)
+
+source <(sudo sed 's/ /=/' "$file")
+
+options="user=$user,pass=$pass,uid=$uid,gid=$gid"
+share="//$host/$share"
+dest="/mnt/${file##*/}"
+dest="${dest%.conf}"
+
+if mountpoint "$dest" > /dev/null
+then
+  >&2 printf "%s: %s: unmounting\n" "$pgm" "$dest"
+  sudo umount "$dest"
+fi
+
+>&2 printf "%s: %s: mounting\n" "$pgm" "$dest"
+sudo mount -t cifs -o "$options" "$share" "$dest"
