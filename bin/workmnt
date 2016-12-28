@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#
+# Usage:
+#	wrkmnt <config_file>
+# Author: Andreas Louv <andreas@louv.dk>
+# Version: 0.1
 
 pgm=${0##*/}
 
