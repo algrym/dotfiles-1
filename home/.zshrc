@@ -80,23 +80,11 @@ zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
 # }}}
-# Working with GIT {{{
-
-bindkey -s ',ga' 'git add -p\n'
-bindkey -s ',gc' 'git commit -v\n'
-bindkey -s ',gC' 'git commit --amend -v\n'
-bindkey -s ',gp' 'git pull\n'
-bindkey -s ',gP' 'git push\n'
-bindkey -s ',gs' 'git status\n'
-
-# }}}
 # Quick editing {{{
 
-bindkey -s ',ev' 'vim ~/.vim/vimrc\n'
-bindkey -s ',ez' 'vim ~/.zshrc\n'
-bindkey -s ',eg' 'vim ~/.gitconfig\n'
-bindkey -s ',es' 'vim ~/.vim/spell.utf-8.add\n'
-bindkey -s ',ei' 'vim ~/.config/i3/config\n'
+alias ev='vim ~/.vim/vimrc'
+alias ez='vim ~/.zshrc'
+alias sz='. ~/.zshrc'
 
 # Source .zshrc
 bindkey -s ',sz' 'source ~/.zshrc\n'
